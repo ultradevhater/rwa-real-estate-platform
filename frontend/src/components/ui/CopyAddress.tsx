@@ -20,7 +20,7 @@ export function CopyAddress({
   prefixLen,
   suffixLen,
   className = "",
-  textClassName = "text-xs text-slate-500",
+  textClassName = "text-xs text-[#141413]/60",
 }: CopyAddressProps) {
   const [copied, setCopied] = useState(false);
   const resolvedValue = value ?? address;
@@ -28,7 +28,7 @@ export function CopyAddress({
   const sLen = suffixLen ?? (chars ?? 4);
 
   if (!resolvedValue) {
-    return <span className="font-mono text-xs text-slate-400">—</span>;
+    return <span className="font-mono text-xs text-[#141413]/40">—</span>;
   }
 
   const clean = String(resolvedValue).trim();
@@ -54,16 +54,16 @@ export function CopyAddress({
         type="button"
         onClick={handleCopy}
         title={copied ? "Đã sao chép" : "Sao chép"}
-        className="p-0.5 rounded text-slate-400 hover:text-blue-600 hover:bg-slate-100 transition-colors"
+        className="p-0.5 rounded text-[#141413]/45 hover:text-[#B8844A] hover:bg-[#EAE5DA] transition-colors"
       >
         {copied ? (
-          <Check className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.75} />
+          <Check className="w-3.5 h-3.5 text-[#1E6B52]" strokeWidth={1.75} />
         ) : (
           <Copy className="w-3.5 h-3.5" strokeWidth={1.75} />
         )}
       </button>
       {copied && (
-        <span className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 z-50 rounded-md bg-slate-900 px-2 py-0.5 font-sans text-[10px] font-medium text-white shadow-md whitespace-nowrap">
+        <span className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 z-50 rounded-lg bg-[#141413] px-2 py-0.5 font-sans text-[10px] font-medium text-[#F4F1EA] shadow-md whitespace-nowrap">
           Đã sao chép
         </span>
       )}

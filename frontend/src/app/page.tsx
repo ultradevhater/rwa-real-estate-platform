@@ -1,5 +1,5 @@
-import AssetsListPage from "./assets/page";
+import { LandingPage } from "@/components/landing/LandingPage";
 
 export default function HomePage() {
-  return <AssetsListPage />;
+  return <LandingPage />;
 }

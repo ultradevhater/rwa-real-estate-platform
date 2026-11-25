@@ -253,10 +253,10 @@ export function PaymentOtpModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/60 backdrop-blur-[2px] p-4 overflow-y-auto">
-      <div className="bg-white rounded-xl border border-slate-200/80 shadow-2xl max-w-lg w-full overflow-hidden my-6">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-[#141413]/60 backdrop-blur-[2px] p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl border border-[#1B2A24]/12 shadow-2xl max-w-lg w-full overflow-hidden my-6">
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+        <div className="px-6 py-4 bg-[#1B2A24] text-white flex items-center justify-between border-b border-slate-800">
           <div>
             <div className="mb-1">
               <StatusBadge variant={screen === "success" ? "success" : "info"} dot>
@@ -269,9 +269,9 @@ export function PaymentOtpModal({
               {screen === "success" ? (
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" strokeWidth={1.75} />
               ) : screen === "verify" ? (
-                <KeyRound className="w-4 h-4 text-blue-400" strokeWidth={1.75} />
+                <KeyRound className="w-4 h-4 text-[#D7BC8D]" strokeWidth={1.75} />
               ) : (
-                <ShieldCheck className="w-4 h-4 text-blue-400" strokeWidth={1.75} />
+                <ShieldCheck className="w-4 h-4 text-[#D7BC8D]" strokeWidth={1.75} />
               )}
               <span>
                 {screen === "request"
@@ -286,7 +286,7 @@ export function PaymentOtpModal({
             type="button"
             onClick={onClose}
             disabled={busy}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors disabled:opacity-40"
+            className="p-1.5 rounded-lg hover:bg-[#14201B] text-[#141413]/45 hover:text-white transition-colors disabled:opacity-40"
           >
             <X className="w-4 h-4" strokeWidth={1.75} />
           </button>
@@ -294,32 +294,32 @@ export function PaymentOtpModal({
 
         {/* Step Indicator */}
         {screen !== "success" && (
-          <div className="px-6 py-3 bg-slate-50 border-b border-slate-200/80 flex items-center gap-3 text-xs font-medium">
+          <div className="px-6 py-3 bg-[#F4F1EA]/70 border-b border-[#1B2A24]/12 flex items-center gap-3 text-xs font-medium">
             <span
               className={`flex items-center gap-1.5 ${
-                screen === "request" ? "text-blue-600 font-semibold" : "text-emerald-600 font-semibold"
+                screen === "request" ? "text-[#1B2A24] font-semibold" : "text-[#1E6B52] font-semibold"
               }`}
             >
               <span
                 className={`w-5 h-5 rounded-full inline-flex items-center justify-center text-[11px] font-semibold text-white ${
-                  screen === "request" ? "bg-blue-600" : "bg-emerald-600"
+                  screen === "request" ? "bg-[#1B2A24]" : "bg-[#1E6B52]"
                 }`}
               >
                 {screen === "verify" ? "✓" : "1"}
               </span>
               Thông tin &amp; Gmail
             </span>
-            <span className="flex-1 h-px bg-slate-200" />
+            <span className="flex-1 h-px bg-[#EAE5DA]" />
             <span
               className={`flex items-center gap-1.5 ${
-                screen === "verify" ? "text-blue-600 font-semibold" : "text-slate-400"
+                screen === "verify" ? "text-[#1B2A24] font-semibold" : "text-[#141413]/45"
               }`}
             >
               <span
                 className={`w-5 h-5 rounded-full inline-flex items-center justify-center text-[11px] font-semibold ${
                   screen === "verify"
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-200 text-slate-600"
+                    ? "bg-[#1B2A24] text-white"
+                    : "bg-[#EAE5DA] text-[#141413]/65"
                 }`}
               >
                 2
@@ -333,38 +333,38 @@ export function PaymentOtpModal({
           {/* ================= MÀN HÌNH 1: THÔNG TIN & GMAIL ================= */}
           {screen === "request" && (
             <form onSubmit={handleRequestOtp} className="space-y-4">
-              <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 divide-y divide-slate-200/70 overflow-hidden">
+              <div className="rounded-xl border border-[#1B2A24]/12 bg-[#F4F1EA]/70 divide-y divide-slate-200/70 overflow-hidden">
                 <div className="px-4 py-2.5 flex justify-between items-center">
-                  <span className="text-slate-500">Loại giao dịch:</span>
+                  <span className="text-[#141413]/55">Loại giao dịch:</span>
                   <StatusBadge variant="info">
                     {isPrimary ? "Mua sơ cấp" : `Mua thứ cấp (Lệnh #${payload.targetId})`}
                   </StatusBadge>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between items-center">
-                  <span className="text-slate-500">Bất động sản:</span>
-                  <strong className="text-slate-900 font-semibold">
+                  <span className="text-[#141413]/55">Bất động sản:</span>
+                  <strong className="text-[#141413] font-semibold">
                     {payload.estateName} ({payload.symbol})
                   </strong>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between items-center">
-                  <span className="text-slate-500">Số lượng &amp; Đơn giá:</span>
-                  <strong className="text-slate-900 font-semibold tabular-nums">
+                  <span className="text-[#141413]/55">Số lượng &amp; Đơn giá:</span>
+                  <strong className="text-[#141413] font-semibold tabular-nums">
                     {payload.amount.toLocaleString("en-US")} {payload.symbol} × $
                     {payload.pricePerShare.toLocaleString("en-US")}
                   </strong>
                 </div>
-                <div className="px-4 py-3 flex justify-between items-center bg-emerald-50/80">
-                  <span className="font-semibold text-emerald-800">Tổng MockUSDC cần thanh toán:</span>
-                  <span className="text-base font-bold text-emerald-700 tabular-nums">
+                <div className="px-4 py-3 flex justify-between items-center bg-[#E9F4EF]">
+                  <span className="font-semibold text-[#1E6B52]">Tổng số tiền cần thanh toán:</span>
+                  <span className="text-base font-bold text-[#1E6B52] tabular-nums">
                     ${totalUsdc.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} mUSDC
                   </span>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between items-center">
-                  <span className="text-slate-500">Số dư ví hiện có:</span>
+                  <span className="text-[#141413]/55">Số dư ví hiện có:</span>
                   <div className="flex items-center gap-2">
                     <span
                       className={`font-semibold tabular-nums ${
-                        isInsufficientBalance ? "text-rose-600" : "text-emerald-600"
+                        isInsufficientBalance ? "text-[#A63A3A]" : "text-[#1E6B52]"
                       }`}
                     >
                       ${currentBalanceNum.toLocaleString("en-US")} mUSDC
@@ -373,9 +373,9 @@ export function PaymentOtpModal({
                       <button
                         type="button"
                         onClick={claimFaucet}
-                        className="px-2 py-0.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 text-[11px] font-medium transition-colors"
+                        className="px-2 py-0.5 rounded-full bg-[#E9F4EF] hover:bg-[#D8ECE3] text-[#1E6B52] ring-1 ring-inset ring-emerald-600/20 text-[11px] font-medium transition-colors"
                       >
-                        +Faucet
+                        + Nạp thử
                       </button>
                     )}
                   </div>
@@ -383,20 +383,20 @@ export function PaymentOtpModal({
               </div>
 
               {(!isKYCVerified || isFrozen || isInsufficientBalance) && (
-                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200/80 text-xs text-rose-700 space-y-1">
+                <div className="p-3 rounded-xl bg-[#FBF0F0] border border-[#A63A3A]/22 text-xs text-[#A63A3A] space-y-1">
                   {!isKYCVerified && (
                     <p>• Tài khoản chưa được duyệt KYC trên IdentityRegistry.</p>
                   )}
                   {isFrozen && <p>• Ví hiện đang bị đóng băng.</p>}
                   {isInsufficientBalance && (
-                    <p>• Số dư MockUSDC chưa đủ thanh toán. Nhấn +Faucet để nhận thêm 50,000 mUSDC.</p>
+                    <p>• Số dư mUSDC chưa đủ thanh toán. Nhấn &ldquo;+ Nạp thử&rdquo; để nhận thêm $50,000 mUSDC.</p>
                   )}
                 </div>
               )}
 
               <div className="space-y-1.5">
-                <label className="font-medium text-slate-900 flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-blue-600" strokeWidth={1.75} />
+                <label className="font-medium text-[#141413] flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#1B2A24]" strokeWidth={1.75} />
                   <span>Địa chỉ Gmail nhận mã xác nhận OTP (*):</span>
                 </label>
                 <input
@@ -406,33 +406,33 @@ export function PaymentOtpModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="VD: investor@gmail.com"
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none disabled:bg-slate-50 transition-all"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2.5 text-sm text-[#141413] focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none disabled:bg-slate-50 transition-all"
                 />
-                <p className="text-[11px] text-slate-500 leading-relaxed">
+                <p className="text-[11px] text-[#141413]/55 leading-relaxed">
                   Hệ thống sẽ kiểm tra KYC &amp; số dư, khóa tham số giao dịch và gửi mã OTP 6 chữ số (hiệu lực 5 phút) về Gmail này trước khi ký on-chain.
                 </p>
               </div>
 
               {errorMsg && (
-                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200/80 text-xs text-rose-700 flex items-start gap-2 font-medium">
-                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" strokeWidth={1.75} />
+                <div className="p-3 rounded-xl bg-[#FBF0F0] border border-[#A63A3A]/22 text-xs text-[#A63A3A] flex items-start gap-2 font-medium">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-[#A63A3A] mt-0.5" strokeWidth={1.75} />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#1B2A24]/8">
                 <button
                   type="button"
                   disabled={busy}
                   onClick={onClose}
-                  className="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 transition-colors"
+                  className="px-4 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={busy}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium shadow-xs transition-colors disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium shadow-xs transition-colors disabled:opacity-50"
                 >
                   {busy ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -449,11 +449,11 @@ export function PaymentOtpModal({
           {screen === "verify" && (
             <form onSubmit={handleConfirmOtp} className="space-y-4">
               {infoMsg && (
-                <div className="p-3 rounded-xl bg-blue-50 border border-blue-200/80 text-xs text-blue-800 flex items-start gap-2">
-                  <Mail className="w-4 h-4 shrink-0 mt-0.5 text-blue-600" strokeWidth={1.75} />
+                <div className="p-3 rounded-xl bg-[#EEF2F0] border border-[#1B2A24]/18 text-xs text-[#1B2A24] flex items-start gap-2">
+                  <Mail className="w-4 h-4 shrink-0 mt-0.5 text-[#1B2A24]" strokeWidth={1.75} />
                   <div className="space-y-0.5">
                     <p className="font-semibold">{infoMsg}</p>
-                    <p className="text-[11px] text-blue-700">
+                    <p className="text-[11px] text-[#1B2A24]">
                       Vui lòng mở hộp thư đến (hoặc mục Spam) của <strong>{email}</strong> để lấy mã 6 số.
                     </p>
                   </div>
@@ -461,29 +461,29 @@ export function PaymentOtpModal({
               )}
 
               {/* Tóm tắt ngắn gọn giao dịch đã khóa */}
-              <div className="px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs">
-                <span className="text-slate-700">
-                  <strong className="text-slate-900 tabular-nums">
+              <div className="px-3.5 py-2.5 rounded-xl bg-[#F4F1EA]/70 border border-[#1B2A24]/12 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <span className="text-[#141413]/80">
+                  <strong className="text-[#141413] tabular-nums">
                     {payload.amount.toLocaleString("en-US")} {payload.symbol}
                   </strong>{" "}
                   ({payload.estateName})
                 </span>
-                <strong className="text-emerald-700 tabular-nums">
-                  ${totalUsdc.toLocaleString("en-US", { minimumFractionDigits: 2 })} MockUSDC
+                <strong className="text-[#1E6B52] tabular-nums">
+                  ${totalUsdc.toLocaleString("en-US", { minimumFractionDigits: 2 })} mUSDC
                 </strong>
               </div>
 
               {/* 6 ô nhập OTP */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="font-medium text-slate-900">Nhập mã OTP 6 chữ số (*):</label>
+                  <label className="font-medium text-[#141413]">Nhập mã OTP 6 chữ số (*):</label>
                   <span
                     className={`inline-flex items-center gap-1 font-mono font-semibold text-xs tabular-nums ${
                       expiresLeft <= 0
-                        ? "text-rose-600"
+                        ? "text-[#A63A3A]"
                         : expiresLeft <= 60
-                        ? "text-amber-600"
-                        : "text-blue-600"
+                        ? "text-[#B8844A]"
+                        : "text-[#1B2A24]"
                     }`}
                   >
                     <Clock className="w-3.5 h-3.5" strokeWidth={1.75} />
@@ -507,7 +507,7 @@ export function PaymentOtpModal({
                       onKeyDown={(e) => handleDigitKeyDown(idx, e)}
                       onPaste={handlePaste}
                       aria-label={`Chữ số OTP thứ ${idx + 1}`}
-                      className="h-12 text-center text-lg font-bold font-mono tabular-nums rounded-lg border border-slate-300 bg-white text-slate-900 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 focus:outline-none disabled:bg-slate-50 transition-all"
+                      className="h-12 text-center text-lg font-bold font-mono tabular-nums rounded-lg border border-[#1B2A24]/20 bg-white text-[#141413] focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none disabled:bg-slate-50 transition-all"
                     />
                   ))}
                 </div>
@@ -520,7 +520,7 @@ export function PaymentOtpModal({
                       setScreen("request");
                       setErrorMsg(null);
                     }}
-                    className="inline-flex items-center gap-1 text-slate-500 hover:text-slate-900 font-medium transition-colors"
+                    className="inline-flex items-center gap-1 text-[#141413]/55 hover:text-[#141413] font-medium transition-colors"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.75} />
                     <span>Đổi địa chỉ Gmail</span>
@@ -530,7 +530,7 @@ export function PaymentOtpModal({
                     type="button"
                     disabled={busy || resendCooldown > 0}
                     onClick={() => handleRequestOtp()}
-                    className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium disabled:text-slate-400 tabular-nums transition-colors"
+                    className="inline-flex items-center gap-1 text-[#1B2A24] hover:text-[#1B2A24] font-medium disabled:text-slate-400 tabular-nums transition-colors"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${busy ? "animate-spin" : ""}`} strokeWidth={1.75} />
                     <span>
@@ -541,35 +541,35 @@ export function PaymentOtpModal({
               </div>
 
               {busy && (
-                <div className="p-3 rounded-xl bg-blue-50 border border-blue-200/80 text-xs text-blue-700 font-medium flex items-center gap-2">
+                <div className="p-3 rounded-xl bg-[#EEF2F0] border border-[#1B2A24]/18 text-xs text-[#1B2A24] font-medium flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin shrink-0" />
                   <span>
-                    Đang xác thực mã OTP &amp; ký gộp MockUSDC.approve +{" "}
-                    {isPrimary ? "PrimarySale.buy" : "Marketplace.buy"} trên Anvil...
+                    Đang xác thực mã OTP và hoàn tất giao dịch thanh toán{" "}
+                    trên hệ thống...
                   </span>
                 </div>
               )}
 
               {errorMsg && (
-                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200/80 text-xs text-rose-700 flex items-start gap-2 font-medium">
-                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 mt-0.5" strokeWidth={1.75} />
+                <div className="p-3 rounded-xl bg-[#FBF0F0] border border-[#A63A3A]/22 text-xs text-[#A63A3A] flex items-start gap-2 font-medium">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-[#A63A3A] mt-0.5" strokeWidth={1.75} />
                   <span>{errorMsg}</span>
                 </div>
               )}
 
-              <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+              <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#1B2A24]/8">
                 <button
                   type="button"
                   disabled={busy}
                   onClick={onClose}
-                  className="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 transition-colors"
+                  className="px-4 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={busy || expiresLeft <= 0 || otpCode.length !== 6}
-                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium shadow-xs transition-colors disabled:opacity-45"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-lg bg-[#1E6B52] hover:bg-[#175540] text-white text-xs font-medium shadow-xs transition-colors disabled:opacity-45"
                 >
                   {busy ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -585,14 +585,14 @@ export function PaymentOtpModal({
           {/* ================= MÀN HÌNH 3: BIÊN LAI THÀNH CÔNG ================= */}
           {screen === "success" && receipt && (
             <div className="space-y-4">
-              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200/80 flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" strokeWidth={1.75} />
+              <div className="p-4 rounded-xl bg-[#E9F4EF] border border-[#1E6B52]/22 flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[#1E6B52] shrink-0 mt-0.5" strokeWidth={1.75} />
                 <div className="space-y-1">
-                  <p className="font-semibold text-sm text-emerald-900 tabular-nums">
+                  <p className="font-semibold text-sm text-[#1B2A24] tabular-nums">
                     Xác thực OTP &amp; Thanh toán thành công +{receipt.shares_bought.toLocaleString("en-US")}{" "}
                     {payload.symbol}!
                   </p>
-                  <p className="text-xs text-emerald-700">
+                  <p className="text-xs text-[#1E6B52]">
                     {receipt.receipt_email_queued && receipt.recipient_email
                       ? `Biên lai chi tiết giao dịch cũng đã được gửi về Gmail (${receipt.recipient_email}).`
                       : "Giao dịch đã được xác nhận vĩnh viễn trên mạng cục bộ Anvil."}
@@ -600,55 +600,55 @@ export function PaymentOtpModal({
                 </div>
               </div>
 
-              <div className="rounded-xl border border-slate-200/80 bg-slate-50/70 divide-y divide-slate-200/70 overflow-hidden">
+              <div className="rounded-xl border border-[#1B2A24]/12 bg-[#F4F1EA]/70 divide-y divide-slate-200/70 overflow-hidden">
                 <div className="px-4 py-2.5 flex justify-between">
-                  <span className="text-slate-500">Bất động sản / Token:</span>
-                  <strong className="text-slate-900 font-semibold">
+                  <span className="text-[#141413]/55">Bất động sản / Token:</span>
+                  <strong className="text-[#141413] font-semibold">
                     {payload.estateName} ({payload.symbol})
                   </strong>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between">
-                  <span className="text-slate-500">Tổng MockUSDC đã thanh toán:</span>
-                  <strong className="text-emerald-700 text-sm font-bold tabular-nums">
-                    ${Number(receipt.usdc_paid).toLocaleString("en-US")} MockUSDC
+                  <span className="text-[#141413]/55">Tổng số tiền đã thanh toán:</span>
+                  <strong className="text-[#1E6B52] text-sm font-bold tabular-nums">
+                    ${Number(receipt.usdc_paid).toLocaleString("en-US")} mUSDC
                   </strong>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between">
-                  <span className="text-slate-500">Số dư {payload.symbol} &amp; Tỷ lệ sở hữu mới:</span>
-                  <strong className="text-blue-600 font-semibold tabular-nums">
+                  <span className="text-[#141413]/55">Số dư {payload.symbol} &amp; Tỷ lệ sở hữu mới:</span>
+                  <strong className="text-[#1B2A24] font-semibold tabular-nums">
                     {Number(receipt.new_token_balance).toLocaleString("en-US")} {payload.symbol} (
                     {Number(receipt.ownership_percent).toFixed(4)}%)
                   </strong>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between">
-                  <span className="text-slate-500">Số dư MockUSDC còn lại:</span>
-                  <strong className="text-slate-900 font-semibold tabular-nums">
-                    ${Number(receipt.new_usdc_balance).toLocaleString("en-US")} MockUSDC
+                  <span className="text-[#141413]/55">Số dư mUSDC còn lại:</span>
+                  <strong className="text-[#141413] font-semibold tabular-nums">
+                    ${Number(receipt.new_usdc_balance).toLocaleString("en-US")} mUSDC
                   </strong>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between items-center gap-2">
-                  <span className="text-slate-500 shrink-0">Mã giao dịch (TxHash):</span>
+                  <span className="text-[#141413]/55 shrink-0">Mã giao dịch (TxHash):</span>
                   <div className="flex items-center gap-1.5 min-w-0">
-                    <code className="font-mono text-[11px] text-blue-600 truncate" title={receipt.tx_hash}>
+                    <code className="font-mono text-[11px] text-[#1B2A24] truncate" title={receipt.tx_hash}>
                       {receipt.tx_hash}
                     </code>
                     <button
                       type="button"
                       onClick={copyTxHash}
-                      className="p-1 rounded-md border border-slate-200 bg-white hover:bg-slate-50 shrink-0 transition-colors"
+                      className="p-1 rounded-md border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] shrink-0 transition-colors"
                       title="Sao chép TxHash"
                     >
                       {copiedTx ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-600" strokeWidth={2} />
+                        <Check className="w-3.5 h-3.5 text-[#1E6B52]" strokeWidth={2} />
                       ) : (
-                        <Copy className="w-3.5 h-3.5 text-slate-400" strokeWidth={1.75} />
+                        <Copy className="w-3.5 h-3.5 text-[#141413]/45" strokeWidth={1.75} />
                       )}
                     </button>
                   </div>
                 </div>
                 <div className="px-4 py-2.5 flex justify-between">
-                  <span className="text-slate-500">Số khối xác nhận:</span>
-                  <code className="font-mono text-slate-900 tabular-nums">Block #{receipt.block_number}</code>
+                  <span className="text-[#141413]/55">Số khối xác nhận:</span>
+                  <code className="font-mono text-[#141413] tabular-nums">Block #{receipt.block_number}</code>
                 </div>
               </div>
 
@@ -656,7 +656,7 @@ export function PaymentOtpModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium shadow-xs transition-colors"
+                  className="px-5 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium shadow-xs transition-colors"
                 >
                   Hoàn tất &amp; Đóng
                 </button>

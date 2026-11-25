@@ -179,7 +179,7 @@ export default function KYCPage() {
       ctx.fillStyle = "#206bc4";
       ctx.fillText("CĂN CƯỚC CÔNG DÂN", 320, 92);
       ctx.font = "11px sans-serif";
-      ctx.fillStyle = "#6c7a91";
+      ctx.fillStyle = "#141413/60";
       ctx.fillText("IDENTITY CARD", 320, 108);
 
       // Ảnh chân dung mô phỏng
@@ -202,28 +202,28 @@ export default function KYCPage() {
       ctx.fillStyle = "#d63939";
       ctx.fillText(`Số / No: ${idNumber || "079099005678"}`, 210, 150);
 
-      ctx.fillStyle = "#6c7a91";
+      ctx.fillStyle = "#141413/60";
       ctx.font = "12px sans-serif";
       ctx.fillText("Họ và tên / Full name:", 210, 180);
       ctx.fillStyle = "#182433";
       ctx.font = "bold 14px sans-serif";
       ctx.fillText((fullName || currentUser?.display_name || "NGUYỄN VĂN AN").toUpperCase(), 210, 202);
 
-      ctx.fillStyle = "#6c7a91";
+      ctx.fillStyle = "#141413/60";
       ctx.font = "12px sans-serif";
       ctx.fillText("Ngày sinh / Date of birth:", 210, 230);
       ctx.fillStyle = "#182433";
       ctx.font = "bold 13px sans-serif";
       ctx.fillText("01/01/1990 | Giới tính / Sex: Nam", 210, 248);
 
-      ctx.fillStyle = "#6c7a91";
+      ctx.fillStyle = "#141413/60";
       ctx.font = "12px sans-serif";
       ctx.fillText("Quốc tịch / Nationality:", 210, 274);
       ctx.fillStyle = "#182433";
       ctx.font = "bold 13px sans-serif";
       ctx.fillText("Việt Nam", 210, 292);
 
-      ctx.fillStyle = "#6c7a91";
+      ctx.fillStyle = "#141413/60";
       ctx.font = "12px sans-serif";
       ctx.fillText("Quê quán / Place of origin:", 210, 318);
       ctx.fillStyle = "#182433";
@@ -322,21 +322,21 @@ export default function KYCPage() {
 
   if (!currentUser) {
     return (
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-8 max-w-2xl mx-auto text-center space-y-4 my-8">
-        <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-8 max-w-2xl mx-auto text-center space-y-4 my-8">
+        <div className="w-12 h-12 rounded-xl bg-[#F8EFE2] text-[#B8844A] flex items-center justify-center mx-auto">
           <ShieldAlert className="w-6 h-6" strokeWidth={1.75} />
         </div>
         <StatusBadge variant="warning">401 · YÊU CẦU ĐĂNG NHẬP</StatusBadge>
-        <h1 className="text-lg font-semibold text-slate-900">
+        <h1 className="text-lg font-semibold text-[#141413]">
           Vui lòng đăng nhập để nộp hồ sơ Xác minh Danh tính (KYC)
         </h1>
-        <p className="text-[13px] text-slate-500">
+        <p className="text-[13px] text-[#141413]/55">
           Chức năng nộp hồ sơ KYC 2 mặt CCCD yêu cầu bạn đăng nhập hoặc đăng ký tài khoản Nhà đầu tư trước.
         </p>
         <div className="pt-2">
           <Link
             href="/login"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium shadow-xs transition-colors"
+            className="inline-flex items-center px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium shadow-xs transition-colors"
           >
             Đi tới trang Đăng nhập / Đăng ký →
           </Link>
@@ -347,16 +347,16 @@ export default function KYCPage() {
 
   if (role !== "investor") {
     return (
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-8 max-w-2xl mx-auto text-center space-y-4 my-8">
-        <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-8 max-w-2xl mx-auto text-center space-y-4 my-8">
+        <div className="w-12 h-12 rounded-xl bg-[#EEF2F0] text-[#1B2A24] flex items-center justify-center mx-auto">
           <ShieldAlert className="w-6 h-6" strokeWidth={1.75} />
         </div>
         <StatusBadge variant="info">ROLE NOTICE · {role.toUpperCase()}</StatusBadge>
-        <h1 className="text-lg font-semibold text-slate-900">
+        <h1 className="text-lg font-semibold text-[#141413]">
           Trang Nộp Hồ sơ KYC Cá nhân chỉ dành cho Nhà đầu tư
         </h1>
-        <p className="text-[13px] text-slate-500">
-          Bạn đang đăng nhập với vai trò <strong className="font-medium text-slate-900">{currentUser?.display_name}</strong>.
+        <p className="text-[13px] text-[#141413]/55">
+          Bạn đang đăng nhập với vai trò <strong className="font-medium text-[#141413]">{currentUser?.display_name}</strong>.
         </p>
         <div className="pt-2">
           <Link
@@ -367,7 +367,7 @@ export default function KYCPage() {
                 ? "/admin?tab=issuer-dashboard"
                 : "/admin?tab=dashboard"
             }
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium shadow-xs transition-colors"
+            className="inline-flex items-center px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium shadow-xs transition-colors"
           >
             Đi tới Bảng điều khiển {role.toUpperCase()} →
           </Link>
@@ -480,10 +480,10 @@ export default function KYCPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-2xl font-semibold tracking-tight text-[#141413]">
           Hồ sơ Xác minh Danh tính Cá nhân (KYC)
         </h1>
-        <p className="text-[13px] text-slate-500 mt-0.5">
+        <p className="text-[13px] text-[#141413]/55 mt-0.5">
           Định danh điện tử 2 mặt Căn cước công dân (CCCD) mã hóa AES-256-GCM để cấp quyền Whitelist giao dịch On-chain.
         </p>
       </div>
@@ -492,8 +492,8 @@ export default function KYCPage() {
         <div
           className={`rounded-xl border px-4 py-3 text-xs font-medium flex items-center justify-between ${
             feedback.type === "ok"
-              ? "border-emerald-200/80 bg-emerald-50 text-emerald-800"
-              : "border-rose-200/80 bg-rose-50 text-rose-800"
+              ? "border-[#1E6B52]/22 bg-[#E9F4EF] text-[#1E6B52]"
+              : "border-[#A63A3A]/22 bg-[#FBF0F0] text-[#A63A3A]"
           }`}
         >
           <span>{feedback.text}</span>
@@ -506,45 +506,45 @@ export default function KYCPage() {
       {/* Modal phóng to xem trước ảnh */}
       {activePreviewSide && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 backdrop-blur-xs p-4">
-          <div className="bg-white rounded-xl border border-slate-200/80 shadow-xl max-w-2xl w-full p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
+          <div className="bg-white rounded-2xl border border-[#1B2A24]/12 shadow-xl max-w-2xl w-full p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#1B2A24]/12 pb-3">
               <div className="flex items-center gap-2">
-                <ImageIcon className="w-5 h-5 text-blue-600" strokeWidth={1.75} />
-                <h3 className="text-base font-semibold text-slate-900">
+                <ImageIcon className="w-5 h-5 text-[#1B2A24]" strokeWidth={1.75} />
+                <h3 className="text-base font-semibold text-[#141413]">
                   Xem trước {activePreviewSide === "front" ? "Ảnh Mặt Trước CCCD" : "Ảnh Mặt Sau CCCD"}
                 </h3>
               </div>
               <button
                 onClick={() => setActivePreviewSide(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 hover:bg-slate-100"
+                className="p-1.5 rounded-lg text-[#141413]/45 hover:text-[#141413] hover:bg-[#EAE5DA]"
               >
                 ✕
               </button>
             </div>
-            <div className="flex justify-center p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+            <div className="flex justify-center p-3 bg-[#F4F1EA]/70 rounded-xl border border-[#1B2A24]/12">
               {activePreviewSide === "front" && frontPreview ? (
                 <img
                   src={frontPreview}
                   alt="Ảnh mặt trước CCCD"
-                  className="max-h-[380px] max-w-full rounded-lg object-contain border border-slate-200"
+                  className="max-h-[380px] max-w-full rounded-lg object-contain border border-[#1B2A24]/14"
                 />
               ) : activePreviewSide === "back" && backPreview ? (
                 <img
                   src={backPreview}
                   alt="Ảnh mặt sau CCCD"
-                  className="max-h-[380px] max-w-full rounded-lg object-contain border border-slate-200"
+                  className="max-h-[380px] max-w-full rounded-lg object-contain border border-[#1B2A24]/14"
                 />
               ) : (
-                <p className="text-xs text-slate-500">Chưa có hình ảnh xem trước</p>
+                <p className="text-xs text-[#141413]/55">Chưa có hình ảnh xem trước</p>
               )}
             </div>
-            <div className="flex justify-between items-center pt-1 text-xs text-slate-500">
+            <div className="flex justify-between items-center pt-1 text-xs text-[#141413]/55">
               <span className="font-mono">
                 {activePreviewSide === "front" ? frontDocName : backDocName}
               </span>
               <button
                 onClick={() => setActivePreviewSide(null)}
-                className="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition-colors"
+                className="px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium transition-colors"
               >
                 Đóng
               </button>
@@ -553,20 +553,20 @@ export default function KYCPage() {
         </div>
       )}
 
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
         {/* Card Header */}
-        <div className="px-6 py-4 border-b border-slate-200/80 bg-slate-50/40 flex flex-wrap items-center justify-between gap-3">
+        <div className="px-6 py-4 border-b border-[#1B2A24]/12 bg-slate-50/40 flex flex-wrap items-center justify-between gap-3">
           <div>
             <StatusBadge variant="info" className="mb-1.5">
               INVESTOR KYC SUBMISSION
             </StatusBadge>
-            <h2 className="text-base font-semibold text-slate-900">
+            <h2 className="text-base font-semibold text-[#141413]">
               Hồ sơ Xác minh Danh tính Cá nhân (KYC) — {currentUser?.display_name}
             </h2>
-            <p className="text-[13px] text-slate-500 mt-0.5 max-w-3xl">
+            <p className="text-[13px] text-[#141413]/55 mt-0.5 max-w-3xl">
               Dữ liệu định danh gồm thông tin cá nhân và hình ảnh 2 mặt Căn cước công dân (CCCD) được mã hóa AES-256-GCM
               lưu trữ bảo mật; khi được Cán bộ Tuân thủ phê duyệt, địa chỉ ví sẽ được ghi vào hợp đồng{" "}
-              <code className="font-mono text-xs text-slate-700">IdentityRegistry</code> On-chain.
+              <code className="font-mono text-xs text-[#141413]/80">IdentityRegistry</code> On-chain.
             </p>
           </div>
 
@@ -595,9 +595,9 @@ export default function KYCPage() {
 
         {/* Rejection / Revocation Banners */}
         {kycStatus === "rejected" && (
-          <div className="mx-6 mt-5 p-4 rounded-xl bg-rose-50/80 border border-rose-200/80 text-xs text-rose-800 space-y-1.5">
+          <div className="mx-6 mt-5 p-4 rounded-xl bg-[#FBF0F0] border border-[#A63A3A]/22 text-xs text-[#A63A3A] space-y-1.5">
             <div className="flex items-center gap-2 font-semibold">
-              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" strokeWidth={1.75} />
+              <ShieldAlert className="w-4 h-4 text-[#A63A3A] shrink-0" strokeWidth={1.75} />
               <span>Hồ sơ KYC của bạn đã bị từ chối bởi Cán bộ Tuân thủ</span>
             </div>
             {rejectionReason && (
@@ -606,7 +606,7 @@ export default function KYCPage() {
               </p>
             )}
             {rejectionNotes && (
-              <p className="text-xs bg-white/80 p-2.5 rounded-lg border border-rose-200/70">
+              <p className="text-xs bg-white/80 p-2.5 rounded-lg border border-[#A63A3A]/22">
                 <strong>Ghi chú hướng dẫn:</strong> {rejectionNotes}
               </p>
             )}
@@ -617,9 +617,9 @@ export default function KYCPage() {
         )}
 
         {kycStatus === "revoked" && (
-          <div className="mx-6 mt-5 p-4 rounded-xl bg-rose-50/80 border border-rose-200/80 text-xs text-rose-800 space-y-1.5">
+          <div className="mx-6 mt-5 p-4 rounded-xl bg-[#FBF0F0] border border-[#A63A3A]/22 text-xs text-[#A63A3A] space-y-1.5">
             <div className="flex items-center gap-2 font-semibold">
-              <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0" strokeWidth={1.75} />
+              <ShieldAlert className="w-4 h-4 text-[#A63A3A] shrink-0" strokeWidth={1.75} />
               <span>Quyền Whitelist của tài khoản đã bị thu hồi bởi Cán bộ Tuân thủ</span>
             </div>
             {revocationReason && (
@@ -637,15 +637,15 @@ export default function KYCPage() {
         <form onSubmit={handleSubmit} className="p-6 space-y-6 text-xs">
           {/* Nhóm 1: Thông tin cơ bản */}
           <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
-              <h3 className="font-semibold text-sm text-slate-900">1. Thông tin Định danh Cá nhân</h3>
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1B2A24]/8 pb-2.5">
+              <h3 className="font-semibold text-sm text-[#141413]">1. Thông tin Định danh Cá nhân</h3>
               <button
                 type="button"
                 onClick={() => {
                   setForceEditMode(true);
                   handleUseMockBothSides();
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-600/20 hover:bg-blue-100/80 font-medium text-xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#EEF2F0] text-[#1B2A24] ring-1 ring-inset ring-[#1B2A24]/18 hover:bg-[#EAE5DA]/80 font-medium text-xs transition-colors"
                 title="Điền tự động thông tin & tạo 2 mặt ảnh CCCD mẫu để kiểm thử nhanh"
               >
                 <Sparkles className="w-4 h-4" strokeWidth={1.75} />
@@ -655,7 +655,7 @@ export default function KYCPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block font-medium text-slate-700 mb-1.5">
+                <label className="block font-medium text-[#141413]/80 mb-1.5">
                   Họ và tên Nhà đầu tư (*):
                 </label>
                 <input
@@ -665,19 +665,19 @@ export default function KYCPage() {
                   placeholder="Trần Thị Bình"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm text-[#141413] focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
                 />
               </div>
 
               <div>
-                <label className="block font-medium text-slate-700 mb-1.5">
+                <label className="block font-medium text-[#141413]/80 mb-1.5">
                   Loại giấy tờ định danh:
                 </label>
                 <select
                   value={docType}
                   disabled={isFormLocked}
                   onChange={(e) => setDocType(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm text-[#141413] focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
                 >
                   <option value="National ID">Căn cước công dân (CCCD / CMND gắn chip)</option>
                   <option value="Passport">Hộ chiếu</option>
@@ -687,7 +687,7 @@ export default function KYCPage() {
               </div>
 
               <div>
-                <label className="block font-medium text-slate-700 mb-1.5">
+                <label className="block font-medium text-[#141413]/80 mb-1.5">
                   Số CCCD / Hộ chiếu (*):
                 </label>
                 <input
@@ -697,31 +697,31 @@ export default function KYCPage() {
                   placeholder="079099005678"
                   value={idNumber}
                   onChange={(e) => setIdNumber(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 font-mono text-sm text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 font-mono text-sm text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block font-medium text-slate-700 mb-1.5">Địa chỉ Email:</label>
+                <label className="block font-medium text-[#141413]/80 mb-1.5">Địa chỉ Email:</label>
                 <input
                   type="email"
                   required
                   disabled={isFormLocked}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm text-[#141413] focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
                 />
               </div>
               <div>
-                <label className="block font-medium text-slate-700 mb-1.5">Số điện thoại:</label>
+                <label className="block font-medium text-[#141413]/80 mb-1.5">Số điện thoại:</label>
                 <input
                   type="text"
                   disabled={isFormLocked}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+                  className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
                 />
               </div>
             </div>
@@ -729,12 +729,12 @@ export default function KYCPage() {
 
           {/* Nhóm 2: Chụp & Tải lên 2 mặt CCCD */}
           <div className="space-y-4 pt-2">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1B2A24]/8 pb-2.5">
               <div>
-                <h3 className="font-semibold text-sm text-slate-900">
+                <h3 className="font-semibold text-sm text-[#141413]">
                   2. Chụp &amp; Đính kèm 2 Mặt Căn cước công dân (CCCD) (*)
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-[#141413]/55 mt-0.5">
                   Vui lòng chụp rõ nét cả mặt trước (thông tin chân dung) và mặt sau (chip điện tử &amp; mã MRZ). Tệp ảnh được mã hóa AES-256-GCM.
                 </p>
               </div>
@@ -743,13 +743,13 @@ export default function KYCPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* VÙNG 1: MẶT TRƯỚC CCCD */}
-              <div className="p-4 rounded-xl border border-slate-200/90 bg-slate-50/50 flex flex-col justify-between space-y-3">
+              <div className="p-4 rounded-xl border border-slate-200/90 bg-[#F4F1EA]/65 flex flex-col justify-between space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-blue-600 text-white font-semibold flex items-center justify-center text-xs">
+                    <span className="w-6 h-6 rounded-full bg-[#1B2A24] text-white font-semibold flex items-center justify-center text-xs">
                       1
                     </span>
-                    <span className="font-semibold text-slate-900 text-sm">Ảnh Mặt Trước CCCD (*)</span>
+                    <span className="font-semibold text-[#141413] text-sm">Ảnh Mặt Trước CCCD (*)</span>
                   </div>
                   {frontPreview && (
                     <StatusBadge variant="success" dot>
@@ -759,17 +759,17 @@ export default function KYCPage() {
                 </div>
 
                 {frontPreview ? (
-                  <div className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white flex flex-col items-center justify-center h-48">
+                  <div className="relative group rounded-xl overflow-hidden border border-[#1B2A24]/14 bg-white flex flex-col items-center justify-center h-48">
                     <img
                       src={frontPreview}
                       alt="Ảnh mặt trước CCCD"
                       className="max-h-full max-w-full object-contain p-1.5"
                     />
-                    <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-[#141413]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                       <button
                         type="button"
                         onClick={() => setActivePreviewSide("front")}
-                        className="px-3 py-1.5 rounded-lg bg-white text-slate-900 text-xs font-medium flex items-center gap-1.5 shadow-sm"
+                        className="px-3 py-1.5 rounded-lg bg-white text-[#141413] text-xs font-medium flex items-center gap-1.5 shadow-sm"
                       >
                         <Eye className="w-4 h-4" strokeWidth={1.75} />
                         Phóng to
@@ -782,7 +782,7 @@ export default function KYCPage() {
                             setFrontPreview(null);
                             setFrontCid("");
                           }}
-                          className="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 border border-rose-200 text-xs font-medium flex items-center gap-1.5 shadow-sm"
+                          className="px-3 py-1.5 rounded-lg bg-[#FBF0F0] text-[#A63A3A] border border-[#A63A3A]/22 text-xs font-medium flex items-center gap-1.5 shadow-sm"
                         >
                           <Trash2 className="w-4 h-4" strokeWidth={1.75} />
                           Xóa &amp; chụp lại
@@ -791,19 +791,19 @@ export default function KYCPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="h-48 rounded-xl border border-dashed border-slate-300 bg-white flex flex-col items-center justify-center p-4 text-center space-y-2">
-                    <ImageIcon className="w-10 h-10 text-slate-400" strokeWidth={1.5} />
+                  <div className="h-48 rounded-xl border border-dashed border-[#1B2A24]/20 bg-white flex flex-col items-center justify-center p-4 text-center space-y-2">
+                    <ImageIcon className="w-10 h-10 text-[#141413]/45" strokeWidth={1.5} />
                     <div>
-                      <p className="font-medium text-slate-900 text-sm">Chưa có ảnh mặt trước</p>
-                      <p className="text-xs text-slate-500">Mặt trước có ảnh chân dung và số CCCD</p>
+                      <p className="font-medium text-[#141413] text-sm">Chưa có ảnh mặt trước</p>
+                      <p className="text-xs text-[#141413]/55">Mặt trước có ảnh chân dung và số CCCD</p>
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-2 pt-1">
-                  <div className="text-xs text-slate-500 truncate font-mono">
+                  <div className="text-xs text-[#141413]/55 truncate font-mono">
                     {frontDocName ? `Tệp: ${frontDocName}` : "Chưa chọn tệp"}
-                    {frontCid && <span className="block text-blue-600">Vault CID: {frontCid}</span>}
+                    {frontCid && <span className="block text-[#1B2A24]">Vault CID: {frontCid}</span>}
                   </div>
 
                   {!isFormLocked && (
@@ -811,16 +811,16 @@ export default function KYCPage() {
                       <button
                         type="button"
                         onClick={() => frontCameraRef.current?.click()}
-                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium shadow-xs transition-colors"
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white border border-[#1B2A24]/14 text-[#141413]/80 hover:bg-[#F4F1EA] font-medium shadow-xs transition-colors"
                       >
-                        <Camera className="w-4 h-4 text-blue-600" strokeWidth={1.75} />
+                        <Camera className="w-4 h-4 text-[#1B2A24]" strokeWidth={1.75} />
                         <span>Chụp ảnh</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => frontInputRef.current?.click()}
-                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 font-medium shadow-xs transition-colors"
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#1B2A24] text-white hover:bg-[#14201B] font-medium shadow-xs transition-colors"
                       >
                         <UploadCloud className="w-4 h-4" strokeWidth={1.75} />
                         <span>Tải ảnh lên</span>
@@ -855,13 +855,13 @@ export default function KYCPage() {
               </div>
 
               {/* VÙNG 2: MẶT SAU CCCD */}
-              <div className="p-4 rounded-xl border border-slate-200/90 bg-slate-50/50 flex flex-col justify-between space-y-3">
+              <div className="p-4 rounded-xl border border-slate-200/90 bg-[#F4F1EA]/65 flex flex-col justify-between space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-semibold flex items-center justify-center text-xs">
+                    <span className="w-6 h-6 rounded-full bg-[#1B2A24] text-white font-semibold flex items-center justify-center text-xs">
                       2
                     </span>
-                    <span className="font-semibold text-slate-900 text-sm">Ảnh Mặt Sau CCCD (*)</span>
+                    <span className="font-semibold text-[#141413] text-sm">Ảnh Mặt Sau CCCD (*)</span>
                   </div>
                   {backPreview && (
                     <StatusBadge variant="success" dot>
@@ -871,17 +871,17 @@ export default function KYCPage() {
                 </div>
 
                 {backPreview ? (
-                  <div className="relative group rounded-xl overflow-hidden border border-slate-200 bg-white flex flex-col items-center justify-center h-48">
+                  <div className="relative group rounded-xl overflow-hidden border border-[#1B2A24]/14 bg-white flex flex-col items-center justify-center h-48">
                     <img
                       src={backPreview}
                       alt="Ảnh mặt sau CCCD"
                       className="max-h-full max-w-full object-contain p-1.5"
                     />
-                    <div className="absolute inset-0 bg-slate-900/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-[#141413]/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                       <button
                         type="button"
                         onClick={() => setActivePreviewSide("back")}
-                        className="px-3 py-1.5 rounded-lg bg-white text-slate-900 text-xs font-medium flex items-center gap-1.5 shadow-sm"
+                        className="px-3 py-1.5 rounded-lg bg-white text-[#141413] text-xs font-medium flex items-center gap-1.5 shadow-sm"
                       >
                         <Eye className="w-4 h-4" strokeWidth={1.75} />
                         Phóng to
@@ -894,7 +894,7 @@ export default function KYCPage() {
                             setBackPreview(null);
                             setBackCid("");
                           }}
-                          className="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-600 border border-rose-200 text-xs font-medium flex items-center gap-1.5 shadow-sm"
+                          className="px-3 py-1.5 rounded-lg bg-[#FBF0F0] text-[#A63A3A] border border-[#A63A3A]/22 text-xs font-medium flex items-center gap-1.5 shadow-sm"
                         >
                           <Trash2 className="w-4 h-4" strokeWidth={1.75} />
                           Xóa &amp; chụp lại
@@ -903,19 +903,19 @@ export default function KYCPage() {
                     </div>
                   </div>
                 ) : (
-                  <div className="h-48 rounded-xl border border-dashed border-slate-300 bg-white flex flex-col items-center justify-center p-4 text-center space-y-2">
-                    <ImageIcon className="w-10 h-10 text-slate-400" strokeWidth={1.5} />
+                  <div className="h-48 rounded-xl border border-dashed border-[#1B2A24]/20 bg-white flex flex-col items-center justify-center p-4 text-center space-y-2">
+                    <ImageIcon className="w-10 h-10 text-[#141413]/45" strokeWidth={1.5} />
                     <div>
-                      <p className="font-medium text-slate-900 text-sm">Chưa có ảnh mặt sau</p>
-                      <p className="text-xs text-slate-500">Mặt sau có chip điện tử, vân tay và dải mã vạch MRZ</p>
+                      <p className="font-medium text-[#141413] text-sm">Chưa có ảnh mặt sau</p>
+                      <p className="text-xs text-[#141413]/55">Mặt sau có chip điện tử, vân tay và dải mã vạch MRZ</p>
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-2 pt-1">
-                  <div className="text-xs text-slate-500 truncate font-mono">
+                  <div className="text-xs text-[#141413]/55 truncate font-mono">
                     {backDocName ? `Tệp: ${backDocName}` : "Chưa chọn tệp"}
-                    {backCid && <span className="block text-indigo-600">Vault CID: {backCid}</span>}
+                    {backCid && <span className="block text-[#B8844A]">Vault CID: {backCid}</span>}
                   </div>
 
                   {!isFormLocked && (
@@ -923,16 +923,16 @@ export default function KYCPage() {
                       <button
                         type="button"
                         onClick={() => backCameraRef.current?.click()}
-                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium shadow-xs transition-colors"
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white border border-[#1B2A24]/14 text-[#141413]/80 hover:bg-[#F4F1EA] font-medium shadow-xs transition-colors"
                       >
-                        <Camera className="w-4 h-4 text-indigo-600" strokeWidth={1.75} />
+                        <Camera className="w-4 h-4 text-[#B8844A]" strokeWidth={1.75} />
                         <span>Chụp ảnh</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => backInputRef.current?.click()}
-                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 font-medium shadow-xs transition-colors"
+                        className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#1B2A24] text-white hover:bg-[#14201B] font-medium shadow-xs transition-colors"
                       >
                         <UploadCloud className="w-4 h-4" strokeWidth={1.75} />
                         <span>Tải ảnh lên</span>
@@ -970,7 +970,7 @@ export default function KYCPage() {
 
           {/* Ghi chú thêm */}
           <div>
-            <label className="block font-medium text-slate-700 mb-1.5">
+            <label className="block font-medium text-[#141413]/80 mb-1.5">
               Ghi chú bổ sung (tuỳ chọn):
             </label>
             <input
@@ -979,15 +979,15 @@ export default function KYCPage() {
               placeholder="VD: Cập nhật CCCD gắn chip mới nhất cấp tháng 6/2022..."
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
+              className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm text-[#141413] focus:border-[#B8844A] focus:outline-none disabled:bg-slate-50 disabled:text-slate-500"
             />
           </div>
 
           {isApproved && (
-            <div className="p-4 bg-emerald-50/80 border border-emerald-200/80 rounded-xl flex items-start gap-3 text-xs text-emerald-800">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" strokeWidth={1.75} />
+            <div className="p-4 bg-[#E9F4EF] border border-[#1E6B52]/22 rounded-xl flex items-start gap-3 text-xs text-[#1E6B52]">
+              <CheckCircle2 className="w-5 h-5 text-[#1E6B52] shrink-0 mt-0.5" strokeWidth={1.75} />
               <div className="space-y-1.5">
-                <p className="font-semibold text-sm text-emerald-900">
+                <p className="font-semibold text-sm text-[#1B2A24]">
                   Tài khoản {account} đã được phê duyệt KYC 2 mặt và nằm trong Whitelist của IdentityRegistry!
                 </p>
                 <p className="text-xs text-emerald-800/90 leading-relaxed">
@@ -998,7 +998,7 @@ export default function KYCPage() {
                 {txHash && (
                   <div className="flex items-center gap-1.5 text-xs pt-0.5">
                     <span className="font-medium">TxHash Whitelist On-chain:</span>
-                    <CopyAddress value={txHash} prefixLen={12} suffixLen={8} textClassName="text-xs text-emerald-800" />
+                    <CopyAddress value={txHash} prefixLen={12} suffixLen={8} textClassName="text-xs text-[#1E6B52]" />
                   </div>
                 )}
                 {!forceEditMode && (
@@ -1009,10 +1009,10 @@ export default function KYCPage() {
                         setForceEditMode(true);
                         if (!frontPreview) handleUseMockBothSides();
                       }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-emerald-800 border border-emerald-200 font-medium text-xs hover:bg-emerald-100/60 transition-colors shadow-xs"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-[#1E6B52] border border-[#1E6B52]/22 font-medium text-xs hover:bg-emerald-100/60 transition-colors shadow-xs"
                     >
                       <Sparkles className="w-4 h-4" strokeWidth={1.75} />
-                      <span>Chế độ mô phỏng Lab: Mở form nộp lại / thử nghiệm chụp 2 mặt CCCD</span>
+                      <span>Mở lại biểu mẫu để cập nhật hoặc chụp lại ảnh CCCD 2 mặt</span>
                     </button>
                   </div>
                 )}
@@ -1025,7 +1025,7 @@ export default function KYCPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 px-5 py-2.5 font-medium text-white shadow-xs transition-colors disabled:opacity-50 text-sm"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-5 py-2.5 font-medium text-white shadow-xs transition-colors disabled:opacity-50 text-sm"
               >
                 <ShieldCheck className="w-4 h-4" strokeWidth={1.75} />
                 <span>

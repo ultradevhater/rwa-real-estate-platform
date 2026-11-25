@@ -38,27 +38,12 @@ import {
   LogIn,
 } from "lucide-react";
 
-const ROLE_PILL_MAP: Record<string, { label: string; defaultRoute: string }> = {
-  admin: {
-    label: "DEFAULT_ADMIN_ROLE",
-    defaultRoute: "/admin?tab=dashboard",
-  },
-  issuer: {
-    label: "ISSUER_ROLE",
-    defaultRoute: "/admin?tab=issuer-dashboard",
-  },
-  compliance: {
-    label: "COMPLIANCE_ROLE",
-    defaultRoute: "/admin?tab=compliance-dashboard",
-  },
-  investor: {
-    label: "INVESTOR (EOA)",
-    defaultRoute: "/assets",
-  },
-  guest: {
-    label: "GUEST (PUBLIC)",
-    defaultRoute: "/assets",
-  },
+const ROLE_DISPLAY: Record<string, { vi: string; en: string }> = {
+  admin: { vi: "Quản trị hệ thống", en: "System Admin" },
+  issuer: { vi: "Đơn vị phát hành", en: "Property Issuer" },
+  compliance: { vi: "Kiểm duyệt KYC", en: "Compliance" },
+  investor: { vi: "Nhà đầu tư", en: "Investor" },
+  guest: { vi: "Khách tham quan", en: "Guest" },
 };
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -75,7 +60,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     claimFaucet,
     setAuthNotice,
   } = useWeb3();
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isEn = lang === "en";
 
   const role = isAuthenticated && currentUser ? currentUser.role_label : "guest";
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
@@ -90,7 +76,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       pathname.startsWith("/admin") ||
       pathname.startsWith("/portfolio");
     if (isProtectedPersonalRoute) {
-      setAuthNotice("Vui lòng đăng nhập tài khoản để truy cập chức năng này!");
+      setAuthNotice("Vui lòng đăng nhập tài khoản để truy cập chức năng này.");
       router.replace("/login");
     }
   }, [isAuthReady, isAuthenticated, pathname, router, setAuthNotice]);
@@ -105,131 +91,140 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     setOpenMenus((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // Breadcrumb tự động theo đường dẫn & vai trò hiện tại
+  // Breadcrumb thân thiện theo đường dẫn & vai trò hiện tại
   const getBreadcrumbs = () => {
     if (pathname.startsWith("/admin")) {
       if (role === "issuer" || activeTabParam.startsWith("issuer")) {
         if (activeTabParam === "issuer-register") {
-          return ["BẢNG ĐIỀU KHIỂN", "CỔNG PHÁT HÀNH", "ĐĂNG KÝ & TOKEN HÓA BĐS"];
+          return ["BẢNG ĐIỀU KHIỂN", "PHÁT HÀNH TÀI SẢN", "ĐĂNG KÝ & PHÁT HÀNH CỔ PHẦN"];
         }
         if (activeTabParam === "issuer-sales") {
-          return ["BẢNG ĐIỀU KHIỂN", "CỔNG PHÁT HÀNH", "QUẢN LÝ MỞ BÁN SƠ CẤP"];
+          return ["BẢNG ĐIỀU KHIỂN", "PHÁT HÀNH TÀI SẢN", "QUẢN LÝ ĐỢT MỞ BÁN"];
         }
         if (activeTabParam === "issuer-docs") {
-          return ["BẢNG ĐIỀU KHIỂN", "CỔNG PHÁT HÀNH", "QUẢN LÝ HỒ SƠ PHÁP LÝ IPFS"];
+          return ["BẢNG ĐIỀU KHIỂN", "PHÁT HÀNH TÀI SẢN", "HỒ SƠ PHÁP LÝ SỐ"];
         }
         if (activeTabParam === "issuer-reports") {
-          return ["BẢNG ĐIỀU KHIỂN", "CỔNG PHÁT HÀNH", "BÁO CÁO PHÁT HÀNH & ĐỊNH GIÁ"];
+          return ["BẢNG ĐIỀU KHIỂN", "PHÁT HÀNH TÀI SẢN", "BÁO CÁO PHÁT HÀNH & ĐỊNH GIÁ"];
         }
-        return ["BẢNG ĐIỀU KHIỂN", "CỔNG PHÁT HÀNH", "TỔNG QUAN PHÁT HÀNH"];
+        return ["BẢNG ĐIỀU KHIỂN", "PHÁT HÀNH TÀI SẢN", "TỔNG QUAN PHÁT HÀNH"];
       }
       if (role === "compliance" || activeTabParam.startsWith("compliance")) {
         if (activeTabParam === "compliance-queue" || activeTabParam === "compliance") {
-          return ["BẢNG ĐIỀU KHIỂN", "XÁC MINH KYC", "HÀNG ĐỢI XÉT DUYỆT KYC"];
+          return ["BẢNG ĐIỀU KHIỂN", "XÁC MINH DANH TÍNH", "HÀNG ĐỢI XÉT DUYỆT KYC"];
         }
         if (activeTabParam === "compliance-history") {
-          return ["BẢNG ĐIỀU KHIỂN", "XÁC MINH KYC", "LỊCH SỬ XÉT DUYỆT KYC"];
+          return ["BẢNG ĐIỀU KHIỂN", "XÁC MINH DANH TÍNH", "LỊCH SỬ XÉT DUYỆT"];
         }
         if (activeTabParam === "compliance-freeze") {
-          return ["BẢNG ĐIỀU KHIỂN", "QUẢN LÝ TÀI KHOẢN", "ĐÓNG BĂNG / MỞ KHÓA TÀI KHOẢN"];
+          return ["BẢNG ĐIỀU KHIỂN", "AN TOÀN TÀI KHOẢN", "KHÓA / MỞ KHÓA TÀI KHOẢN"];
         }
         if (activeTabParam === "compliance-freeze-history") {
-          return ["BẢNG ĐIỀU KHIỂN", "QUẢN LÝ TÀI KHOẢN", "LỊCH SỬ ĐÓNG BĂNG"];
+          return ["BẢNG ĐIỀU KHIỂN", "AN TOÀN TÀI KHOẢN", "LỊCH SỬ KHÓA TÀI KHOẢN"];
         }
         if (activeTabParam === "compliance-audit") {
-          return ["BẢNG ĐIỀU KHIỂN", "CỔNG TUÂN THỦ", "NHẬT KÝ KIỂM TOÁN TUÂN THỦ"];
+          return ["BẢNG ĐIỀU KHIỂN", "KIỂM DUYỆT KYC", "NHẬT KÝ KIỂM TOÁN"];
         }
-        return ["BẢNG ĐIỀU KHIỂN", "CỔNG TUÂN THỦ", "TỔNG QUAN TUÂN THỦ"];
+        return ["BẢNG ĐIỀU KHIỂN", "KIỂM DUYỆT KYC", "TỔNG QUAN KIỂM DUYỆT"];
       }
       if (activeTabParam === "pause") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "TẠM DỪNG KHẨN CẤP"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "TẠM DỪNG GIAO DỊCH KHẨN CẤP"];
       }
       if (activeTabParam === "forced-transfer") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "CHUYỂN NHƯỢNG CƯỠNG CHẾ"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "KHÔI PHỤC & CHUYỂN QUYỀN CỔ PHẦN"];
       }
       if (activeTabParam === "roles" || activeTabParam === "role-management") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "QUẢN LÝ PHÂN QUYỀN"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "QUẢN LÝ PHÂN QUYỀN"];
       }
       if (activeTabParam === "audit") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "NHẬT KÝ KIỂM TOÁN"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "NHẬT KÝ KIỂM TOÁN"];
       }
       if (activeTabParam === "monitoring") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "GIÁM SÁT HỆ THỐNG"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "GIÁM SÁT HỆ THỐNG"];
       }
       if (activeTabParam === "settings") {
-        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ NỀN TẢNG", "CẤU HÌNH HỆ THỐNG"];
+        return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "CẤU HÌNH HỆ THỐNG"];
       }
       return ["BẢNG ĐIỀU KHIỂN", "QUẢN TRỊ HỆ THỐNG", "TỔNG QUAN QUẢN TRỊ"];
     }
     if (pathname.startsWith("/kyc")) {
-      return ["BẢNG ĐIỀU KHIỂN", "XÁC MINH KYC CÁ NHÂN", "NỘP HỒ SƠ KYC NHÀ ĐẦU TƯ"];
+      return ["TÀI KHOẢN", "XÁC MINH DANH TÍNH", "HỒ SƠ ĐỊNH DANH CÁ NHÂN"];
     }
     if (pathname.startsWith("/marketplace")) {
-      return ["BẢNG ĐIỀU KHIỂN", "SÀN THỨ CẤP MARKETPLACE", "DANH SÁCH LỆNH ESCROW"];
+      return ["GIAO DỊCH", "SÀN GIAO DỊCH THỨ CẤP", "LỆNH KÝ QUỸ ĐANG MỞ"];
     }
     if (pathname.startsWith("/wallet")) {
-      return ["BẢNG ĐIỀU KHIỂN", "VÍ & DANH MỤC ĐẦU TƯ", "SỞ HỮU, CỔ TỨC & CHUYỂN P2P"];
+      return ["TÀI KHOẢN", "VÍ & DANH MỤC ĐẦU TƯ", "CỔ PHẦN, CỔ TỨC & CHUYỂN NHƯỢNG"];
     }
     if (pathname.startsWith("/dividends")) {
-      return ["BẢNG ĐIỀU KHIỂN", "PHÂN PHỐI CỔ TỨC", "PHÂN PHỐI CỔ TỨC & LỢI TỨC BĐS (mUSDC)"];
+      return ["ĐẦU TƯ", "CỔ TỨC & LỢI NHUẬN", "PHÂN PHỐI CỔ TỨC BẤT ĐỘNG SẢN"];
     }
     if (pathname.startsWith("/login") || pathname.startsWith("/lab-login")) {
-      return ["BẢNG ĐIỀU KHIỂN", "QUẢN LÝ TÀI KHOẢN", "ĐĂNG NHẬP & CHUYỂN ĐỔI VAI TRÒ"];
+      return ["TÀI KHOẢN", "XÁC THỰC", "ĐĂNG NHẬP & CHUYỂN ĐỔI VAI TRÒ"];
     }
     if (pathname.startsWith("/assets/") && pathname !== "/assets") {
-      return ["BẢNG ĐIỀU KHIỂN", "TÀI SẢN BẤT ĐỘNG SẢN", "CHI TIẾT BĐS & MỞ BÁN SƠ CẤP"];
+      return ["BẤT ĐỘNG SẢN", "HỒ SƠ TÀI SẢN", "CHI TIẾT & ĐẦU TƯ SƠ CẤP"];
     }
-    return ["BẢNG ĐIỀU KHIỂN", "TÀI SẢN BẤT ĐỘNG SẢN", "DANH MỤC BĐS TOKEN HÓA"];
+    return ["BẤT ĐỘNG SẢN", "DANH MỤC ĐẦU TƯ", "TÀI SẢN ĐANG NIÊM YẾT"];
   };
 
+  // Full-bleed cinematic landing page bypasses dashboard sidebar/topbar chrome
+  if (pathname === "/") {
+    return <>{children}</>;
+  }
+
   const breadcrumbs = getBreadcrumbs();
-  const rolePill = ROLE_PILL_MAP[role] || ROLE_PILL_MAP.investor;
+  const roleLabel = (ROLE_DISPLAY[role] || ROLE_DISPLAY.investor)[isEn ? "en" : "vi"];
 
   const navItemClass = (active: boolean) =>
-    `flex items-center gap-3 px-4 py-2.5 transition-colors border-l-2 ${
+    `flex items-center gap-3 px-4 py-2.5 transition-all duration-150 border-l-2 ${
       active
-        ? "bg-blue-600/15 text-blue-400 border-blue-500 font-medium"
-        : "border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/60"
+        ? "bg-[#B8844A]/18 text-[#EED7B2] border-[#B8844A] font-medium"
+        : "border-transparent text-[#F4F1EA]/65 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/[0.05]"
     }`;
 
   const subNavItemClass = (active: boolean) =>
     `flex items-center gap-2.5 ${
       sidebarCollapsed ? "px-4 justify-center" : "pl-9 pr-4"
-    } py-2 text-[12.5px] transition-colors border-l-2 ${
+    } py-2 text-[12.5px] transition-all duration-150 border-l-2 ${
       active
-        ? "bg-blue-600/15 text-blue-400 border-blue-500 font-medium"
-        : "border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
+        ? "bg-[#B8844A]/18 text-[#EED7B2] border-[#B8844A] font-medium"
+        : "border-transparent text-[#F4F1EA]/55 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/[0.05]"
     }`;
 
   return (
-    <div className="min-h-screen flex bg-slate-50 text-slate-900 antialiased">
-      {/* LEFT VERTICAL DARK SIDEBAR — CHUẨN FINTECH / WEB3 */}
+    <div className="min-h-screen flex bg-[#F4F1EA] text-[#141413] font-jakarta antialiased">
+      {/* LEFT VERTICAL DEEP ESTATE SIDEBAR */}
       <aside
         className={`${
-          sidebarCollapsed ? "w-[68px]" : "w-[260px]"
-        } shrink-0 bg-slate-900 text-slate-400 flex flex-col border-r border-slate-800 select-none transition-all duration-200 sticky top-0 h-screen`}
+          sidebarCollapsed ? "w-[70px]" : "w-[264px]"
+        } shrink-0 bg-[#1B2A24] text-[#F4F1EA]/70 flex flex-col border-r border-[#F4F1EA]/10 select-none transition-all duration-200 sticky top-0 h-screen`}
       >
-        {/* Brand Header */}
-        <div className="px-3.5 py-3.5 border-b border-slate-800 flex items-center justify-between gap-2 bg-slate-950/40">
-          <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="h-8 w-8 shrink-0 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs shadow-xs">
-              RWA
+        {/* Brand Header — Links back to Landing Page (/) */}
+        <div className="px-4 py-4 border-b border-[#F4F1EA]/10 flex items-center justify-between gap-2 bg-[#141F1B]">
+          <Link
+            href="/"
+            title={isEn ? "Back to RWA Registry Home" : "Về trang chủ Cổng Bất Động Sản RWA"}
+            className="flex items-center gap-3 overflow-hidden group"
+          >
+            <div className="h-9 w-9 shrink-0 rounded-full bg-[#F4F1EA] text-[#141413] flex items-center justify-center font-cormorant italic font-bold text-lg shadow-xs ring-2 ring-[#B8844A]/45 group-hover:bg-[#B8844A] group-hover:text-[#F4F1EA] transition-colors">
+              R
             </div>
             {!sidebarCollapsed && (
               <div className="leading-tight truncate">
-                <span className="text-sm font-semibold text-white block tracking-tight truncate">
-                  Cổng RWA
+                <span className="font-jakarta text-[13.5px] font-bold text-[#F4F1EA] block tracking-tight truncate group-hover:text-[#EED7B2] transition-colors">
+                  {t("brand.title")}
                 </span>
-                <span className="text-[11px] text-slate-400 block truncate font-mono">
-                  {isAuthenticated ? `Vai trò: ${role.toUpperCase()}` : "Khách (Chưa đăng nhập)"}
+                <span className="text-[10.5px] text-[#D7BC8D] block truncate mt-0.5 font-medium">
+                  {roleLabel}
                 </span>
               </div>
             )}
-          </div>
+          </Link>
           <button
             onClick={() => setSidebarCollapsed((prev) => !prev)}
-            title={sidebarCollapsed ? "Mở rộng Sidebar" : "Thu gọn Sidebar"}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
+            title={sidebarCollapsed ? "Mở rộng thanh điều hướng" : "Thu gọn thanh điều hướng"}
+            className="p-1.5 rounded-lg text-[#F4F1EA]/55 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/10 transition-colors shrink-0"
           >
             {sidebarCollapsed ? (
               <PanelLeftOpen className="w-4 h-4" strokeWidth={1.75} />
@@ -240,7 +235,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Navigation Links Filtered by Role */}
-        <nav className="flex-1 overflow-y-auto py-3 text-[13px] space-y-0.5">
+        <nav className="flex-1 overflow-y-auto py-4 text-[13px] space-y-0.5">
           {role === "admin" ? (
             <>
               <Link
@@ -252,57 +247,57 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 )}
               >
                 <LayoutDashboard className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Bảng điều khiển</span>}
+                {!sidebarCollapsed && <span>Tổng quan quản trị</span>}
               </Link>
 
               <Link
                 href="/assets"
-                title="Quản lý tài sản RWA"
-                className={navItemClass(pathname === "/" || pathname.startsWith("/assets"))}
+                title="Danh mục bất động sản"
+                className={navItemClass(pathname.startsWith("/assets"))}
               >
                 <Building2 className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Quản lý tài sản</span>}
+                {!sidebarCollapsed && <span>Danh mục bất động sản</span>}
               </Link>
 
               <Link
                 href="/login"
-                title="Quản lý người dùng & Session Lab"
+                title="Quản lý tài khoản & Chuyển vai trò"
                 className={navItemClass(pathname.startsWith("/login"))}
               >
                 <Users className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Quản lý người dùng</span>}
+                {!sidebarCollapsed && <span>Tài khoản & Vai trò</span>}
               </Link>
 
-              <div className="pt-1">
+              <div className="pt-1.5">
                 <button
                   onClick={() => toggleMenu("admin")}
-                  title="Quản trị nền tảng"
+                  title="Quản trị hệ thống"
                   className={`w-full flex items-center justify-between px-4 py-2.5 transition-colors border-l-2 ${
                     pathname.startsWith("/admin") &&
                     ["pause", "forced-transfer", "roles", "role-management", "audit", "monitoring"].includes(
                       activeTabParam
                     )
-                      ? "bg-slate-800/60 text-slate-100 border-blue-500/60 font-medium"
-                      : "border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
+                      ? "bg-[#F4F1EA]/[0.06] text-[#F4F1EA] border-[#B8844A]/70 font-medium"
+                      : "border-transparent text-[#F4F1EA]/65 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/[0.05]"
                   }`}
                 >
                   <span className="flex items-center gap-3">
                     <Lock className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Quản trị nền tảng</span>}
+                    {!sidebarCollapsed && <span>Quản trị hệ thống</span>}
                   </span>
                   {!sidebarCollapsed &&
                     (openMenus.admin ? (
-                      <ChevronUp className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                      <ChevronUp className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                     ) : (
-                      <ChevronDown className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                      <ChevronDown className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                     ))}
                 </button>
 
                 {openMenus.admin && (
-                  <div className="bg-slate-950/40 py-1 space-y-0.5">
+                  <div className="bg-[#141F1B]/70 py-1 space-y-0.5">
                     <Link
                       href="/admin?tab=pause"
-                      title="Tạm dừng khẩn cấp"
+                      title="Tạm dừng giao dịch khẩn cấp"
                       className={subNavItemClass(
                         pathname.startsWith("/admin") && activeTabParam === "pause"
                       )}
@@ -313,13 +308,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
                     <Link
                       href="/admin?tab=forced-transfer"
-                      title="Chuyển nhượng cưỡng chế"
+                      title="Khôi phục & chuyển quyền cổ phần"
                       className={subNavItemClass(
                         pathname.startsWith("/admin") && activeTabParam === "forced-transfer"
                       )}
                     >
                       <Repeat className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                      {!sidebarCollapsed && <span className="truncate">Chuyển nhượng cưỡng chế</span>}
+                      {!sidebarCollapsed && <span className="truncate">Khôi phục cổ phần</span>}
                     </Link>
 
                     <Link
@@ -368,7 +363,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 )}
               </div>
 
-              <div className="pt-1 border-t border-slate-800 mt-1">
+              <div className="pt-2 border-t border-[#F4F1EA]/10 mt-2">
                 <Link
                   href="/admin?tab=settings"
                   title="Cấu hình hệ thống"
@@ -385,20 +380,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <>
               <Link
                 href="/admin?tab=issuer-dashboard"
-                title="Bảng điều khiển phát hành"
+                title="Tổng quan phát hành"
                 className={navItemClass(
                   pathname.startsWith("/admin") &&
                     (activeTabParam === "issuer-dashboard" || activeTabParam === "issuer" || !activeTabParam)
                 )}
               >
                 <LayoutDashboard className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Bảng điều khiển</span>}
+                {!sidebarCollapsed && <span>Tổng quan phát hành</span>}
               </Link>
 
               <Link
                 href="/assets"
                 title="Danh mục bất động sản"
-                className={navItemClass(pathname === "/" || pathname.startsWith("/assets"))}
+                className={navItemClass(pathname.startsWith("/assets"))}
               >
                 <Building2 className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                 {!sidebarCollapsed && <span>Danh mục bất động sản</span>}
@@ -406,35 +401,35 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
               <Link
                 href="/admin?tab=issuer-register"
-                title="Đăng ký & Token hóa"
+                title="Đăng ký & phát hành cổ phần"
                 className={navItemClass(
                   pathname.startsWith("/admin") && activeTabParam === "issuer-register"
                 )}
               >
                 <FileSignature className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Đăng ký & Token hóa</span>}
+                {!sidebarCollapsed && <span>Đăng ký bất động sản</span>}
               </Link>
 
               <Link
                 href="/admin?tab=issuer-sales"
-                title="Quản lý mở bán sơ cấp"
+                title="Quản lý đợt mở bán"
                 className={navItemClass(
                   pathname.startsWith("/admin") && activeTabParam === "issuer-sales"
                 )}
               >
                 <Coins className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Quản lý mở bán</span>}
+                {!sidebarCollapsed && <span>Quản lý đợt mở bán</span>}
               </Link>
 
               <Link
                 href="/admin?tab=issuer-docs"
-                title="Quản lý Hồ sơ pháp lý IPFS"
+                title="Hồ sơ pháp lý số"
                 className={navItemClass(
                   pathname.startsWith("/admin") && activeTabParam === "issuer-docs"
                 )}
               >
                 <FileCheck className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Hồ sơ pháp lý</span>}
+                {!sidebarCollapsed && <span>Hồ sơ pháp lý số</span>}
               </Link>
 
               <Link
@@ -445,7 +440,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 )}
               >
                 <Activity className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Báo cáo phát hành</span>}
+                {!sidebarCollapsed && <span>Báo cáo & Định giá</span>}
               </Link>
 
               <Link
@@ -457,14 +452,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 {!sidebarCollapsed && <span>Phân phối cổ tức</span>}
               </Link>
 
-              <div className="pt-2 mt-2 border-t border-slate-800">
+              <div className="pt-2 mt-2 border-t border-[#F4F1EA]/10">
                 <Link
                   href="/login"
-                  title="Chuyển đổi vai trò"
+                  title="Chuyển đổi tài khoản"
                   className={navItemClass(pathname.startsWith("/login"))}
                 >
                   <Users className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                  {!sidebarCollapsed && <span>Chuyển đổi vai trò</span>}
+                  {!sidebarCollapsed && <span>Chuyển đổi tài khoản</span>}
                 </Link>
               </div>
             </>
@@ -472,10 +467,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <>
               <Link
                 href="/assets"
-                className={navItemClass(pathname === "/" || pathname === "/assets")}
+                className={navItemClass(pathname === "/assets")}
               >
                 <LayoutDashboard className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                {!sidebarCollapsed && <span>Danh mục BĐS</span>}
+                {!sidebarCollapsed && <span>Danh mục bất động sản</span>}
               </Link>
 
               {role === "investor" && (
@@ -487,7 +482,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     )}
                   >
                     <Coins className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Mua Sơ cấp BĐS</span>}
+                    {!sidebarCollapsed && <span>Mua cổ phần sơ cấp</span>}
                   </Link>
 
                   <Link
@@ -497,12 +492,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     <span className="flex items-center gap-3 min-w-0">
                       <Store className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                       {!sidebarCollapsed && (
-                        <span className="whitespace-nowrap truncate">Marketplace</span>
+                        <span className="whitespace-nowrap truncate">Sàn giao dịch</span>
                       )}
                     </span>
                     {!sidebarCollapsed && (
-                      <span className="whitespace-nowrap shrink-0 rounded-full bg-blue-500/15 text-blue-400 ring-1 ring-inset ring-blue-500/30 text-[10px] font-medium px-2 py-0.5">
-                        Escrow
+                      <span className="whitespace-nowrap shrink-0 rounded-full bg-[#B8844A]/20 text-[#EED7B2] ring-1 ring-inset ring-[#B8844A]/35 text-[10px] font-medium px-2 py-0.5">
+                        Ký quỹ
                       </span>
                     )}
                   </Link>
@@ -512,7 +507,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     className={navItemClass(pathname.startsWith("/wallet"))}
                   >
                     <Wallet className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Ví & Chuyển P2P</span>}
+                    {!sidebarCollapsed && <span>Ví & Chuyển cổ phần</span>}
                   </Link>
 
                   <Link
@@ -520,7 +515,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     className={navItemClass(pathname.startsWith("/kyc"))}
                   >
                     <FileCheck className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Hồ sơ KYC Cá nhân</span>}
+                    {!sidebarCollapsed && <span>Xác minh danh tính</span>}
                   </Link>
                 </>
               )}
@@ -534,7 +529,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     )}
                   >
                     <BarChart3 className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Bảng điều khiển</span>}
+                    {!sidebarCollapsed && <span>Tổng quan kiểm duyệt</span>}
                   </Link>
 
                   <div>
@@ -544,23 +539,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                         activeTabParam.startsWith("compliance-queue") ||
                         activeTabParam.startsWith("compliance-history") ||
                         activeTabParam === "compliance"
-                          ? "bg-slate-800/60 text-slate-100 border-blue-500/60 font-medium"
-                          : "border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
+                          ? "bg-[#F4F1EA]/[0.06] text-[#F4F1EA] border-[#B8844A]/70 font-medium"
+                          : "border-transparent text-[#F4F1EA]/65 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/[0.05]"
                       }`}
                     >
                       <span className="flex items-center gap-3">
-                        <ShieldCheck className="w-4 h-4 shrink-0 text-blue-400" strokeWidth={1.75} />
-                        {!sidebarCollapsed && <span>Xác minh KYC</span>}
+                        <ShieldCheck className="w-4 h-4 shrink-0 text-[#D7BC8D]" strokeWidth={1.75} />
+                        {!sidebarCollapsed && <span>Xác minh danh tính</span>}
                       </span>
                       {!sidebarCollapsed &&
                         (openMenus.compliance_kyc !== false ? (
-                          <ChevronUp className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                          <ChevronUp className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                         ) : (
-                          <ChevronDown className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                          <ChevronDown className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                         ))}
                     </button>
                     {openMenus.compliance_kyc !== false && !sidebarCollapsed && (
-                      <div className="bg-slate-950/40 py-1 space-y-0.5">
+                      <div className="bg-[#141F1B]/70 py-1 space-y-0.5">
                         <Link
                           href="/admin?tab=compliance-queue"
                           className={subNavItemClass(
@@ -575,7 +570,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                           className={subNavItemClass(activeTabParam === "compliance-history")}
                         >
                           <History className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                          <span className="truncate">Lịch sử xét duyệt KYC</span>
+                          <span className="truncate">Lịch sử xét duyệt</span>
                         </Link>
                       </div>
                     )}
@@ -586,36 +581,36 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                       onClick={() => toggleMenu("compliance_account")}
                       className={`w-full flex items-center justify-between px-4 py-2.5 transition-colors border-l-2 ${
                         activeTabParam.startsWith("compliance-freeze")
-                          ? "bg-slate-800/60 text-slate-100 border-blue-500/60 font-medium"
-                          : "border-transparent text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
+                          ? "bg-[#F4F1EA]/[0.06] text-[#F4F1EA] border-[#B8844A]/70 font-medium"
+                          : "border-transparent text-[#F4F1EA]/65 hover:text-[#F4F1EA] hover:bg-[#F4F1EA]/[0.05]"
                       }`}
                     >
                       <span className="flex items-center gap-3">
-                        <Lock className="w-4 h-4 shrink-0 text-amber-400" strokeWidth={1.75} />
-                        {!sidebarCollapsed && <span>Quản lý tài khoản</span>}
+                        <Lock className="w-4 h-4 shrink-0 text-[#D7BC8D]" strokeWidth={1.75} />
+                        {!sidebarCollapsed && <span>An toàn tài khoản</span>}
                       </span>
                       {!sidebarCollapsed &&
                         (openMenus.compliance_account !== false ? (
-                          <ChevronUp className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                          <ChevronUp className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                         ) : (
-                          <ChevronDown className="w-4 h-4 opacity-75" strokeWidth={1.75} />
+                          <ChevronDown className="w-4 h-4 opacity-70" strokeWidth={1.75} />
                         ))}
                     </button>
                     {openMenus.compliance_account !== false && !sidebarCollapsed && (
-                      <div className="bg-slate-950/40 py-1 space-y-0.5">
+                      <div className="bg-[#141F1B]/70 py-1 space-y-0.5">
                         <Link
                           href="/admin?tab=compliance-freeze"
                           className={subNavItemClass(activeTabParam === "compliance-freeze")}
                         >
-                          <ShieldAlert className="w-4 h-4 shrink-0 text-rose-400" strokeWidth={1.75} />
-                          <span className="truncate">Đóng băng / Mở khóa tài khoản</span>
+                          <ShieldAlert className="w-4 h-4 shrink-0 text-[#E07A7A]" strokeWidth={1.75} />
+                          <span className="truncate">Khóa / Mở khóa tài khoản</span>
                         </Link>
                         <Link
                           href="/admin?tab=compliance-freeze-history"
                           className={subNavItemClass(activeTabParam === "compliance-freeze-history")}
                         >
                           <History className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                          <span className="truncate">Lịch sử đóng băng</span>
+                          <span className="truncate">Lịch sử khóa tài khoản</span>
                         </Link>
                       </div>
                     )}
@@ -626,19 +621,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     className={navItemClass(activeTabParam === "compliance-audit")}
                   >
                     <FileText className="w-4 h-4 shrink-0" strokeWidth={1.75} />
-                    {!sidebarCollapsed && <span>Nhật ký kiểm toán tuân thủ</span>}
+                    {!sidebarCollapsed && <span>Nhật ký kiểm toán</span>}
                   </Link>
                 </div>
               )}
 
-              <div className="pt-2 mt-2 border-t border-slate-800">
+              <div className="pt-2 mt-2 border-t border-[#F4F1EA]/10">
                 <Link
                   href="/login"
                   className={navItemClass(pathname.startsWith("/login"))}
                 >
                   <LogIn className="w-4 h-4 shrink-0" strokeWidth={1.75} />
                   {!sidebarCollapsed && (
-                    <span>{currentUser ? "Tài khoản & Đăng nhập" : "Đăng nhập / Đăng ký"}</span>
+                    <span>{currentUser ? "Tài khoản & Đổi vai trò" : "Đăng nhập / Đăng ký"}</span>
                   )}
                 </Link>
               </div>
@@ -646,53 +641,54 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           )}
         </nav>
 
-        {/* Sidebar Footer: Anvil RPC + SyncHealthBadge */}
-        <div className="p-3 border-t border-slate-800 bg-slate-950/50 text-[11px] text-slate-400 space-y-2">
+        {/* Sidebar Footer: System Health Status */}
+        <div className="p-3.5 border-t border-[#F4F1EA]/10 bg-[#141F1B] text-[11px] text-[#F4F1EA]/60 space-y-2.5">
           <SyncHealthBadge compact={sidebarCollapsed} />
-          <div className="flex items-center gap-2 text-emerald-400 font-medium px-1">
+          <div className="flex items-center gap-2 text-emerald-300/90 font-medium px-1">
             <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400 animate-pulse" />
-            {!sidebarCollapsed && <span className="truncate">Anvil RPC :8545 Connected</span>}
+            {!sidebarCollapsed && <span className="truncate">{t("nav.rpcConnected")}</span>}
           </div>
         </div>
       </aside>
 
       {/* RIGHT WORKSPACE AREA */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Clean Minimal Top Header */}
-        <header className="bg-white/95 backdrop-blur border-b border-slate-200/80 px-6 py-2.5 flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sticky top-0 z-30">
-          {/* Left: Breadcrumb */}
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider uppercase min-w-0 overflow-hidden">
+        {/* Frosted Warm Limestone Topbar */}
+        <header className="bg-[#F4F1EA]/85 backdrop-blur-xl border-b border-[#1B2A24]/10 px-6 py-3 flex flex-wrap lg:flex-nowrap items-center justify-between gap-3 sticky top-0 z-30">
+          {/* Left: Clean Tracked Breadcrumb */}
+          <div className="flex items-center gap-2 text-[10.5px] font-semibold tracking-[0.16em] uppercase min-w-0 overflow-hidden">
             {breadcrumbs.map((crumb, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
               return (
                 <React.Fragment key={idx}>
                   <span
                     className={`whitespace-nowrap ${
-                      isLast ? "text-slate-900 truncate" : "text-slate-500 hidden md:inline"
+                      isLast ? "text-[#141413] truncate" : "text-[#141413]/45 hidden md:inline"
                     }`}
                   >
                     {crumb}
                   </span>
-                  {!isLast && <span className="text-slate-300 font-normal hidden md:inline">/</span>}
+                  {!isLast && <span className="text-[#B8844A]/70 font-normal hidden md:inline">/</span>}
                 </React.Fragment>
               );
             })}
           </div>
 
-          {/* Right: mUSDC + Faucet (Investor only), Language Switcher, Notification Bell, Account Dropdown */}
-          <div className="flex items-center gap-2 shrink-0 ml-auto">
+          {/* Right: mUSDC Balance + Quick Demo Top-up, Language Switcher, Bell, Account */}
+          <div className="flex items-center gap-2.5 shrink-0 ml-auto">
             {isAuthenticated && currentUser && role === "investor" && (
-              <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-lg px-2.5 py-1 text-xs tabular-nums">
-                <span className="text-slate-500 font-medium">mUSDC:</span>
-                <span className="font-semibold text-slate-900">
-                  ${Number(usdcBalance).toLocaleString("en-US")}
+              <div className="inline-flex items-center gap-2 bg-white border border-[#1B2A24]/12 rounded-xl px-3 py-1.5 text-xs tabular-nums shadow-xs">
+                <span className="text-[#141413]/55 font-medium">Số dư:</span>
+                <span className="font-mono font-semibold text-[#141413]">
+                  ${Number(usdcBalance).toLocaleString("en-US")}{" "}
+                  <span className="text-[10.5px] font-normal text-[#B8844A]">mUSDC</span>
                 </span>
                 <button
                   onClick={claimFaucet}
-                  title="Nhận 50,000 MockUSDC thử nghiệm"
-                  className="rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 px-2 py-0.5 text-[11px] font-medium transition-colors"
+                  title={t("nav.faucetTooltip")}
+                  className="rounded-full bg-[#1B2A24]/8 hover:bg-[#1B2A24] text-[#1B2A24] hover:text-[#F4F1EA] px-2.5 py-0.5 text-[11px] font-semibold transition-colors"
                 >
-                  +Faucet
+                  + Nạp thử
                 </button>
               </div>
             )}
@@ -706,9 +702,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             ) : (
               <Link
                 href="/login"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 px-3.5 py-1.5 text-xs font-medium text-white shadow-xs transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2 text-xs font-semibold text-[#F4F1EA] shadow-xs transition-colors"
               >
-                <LogIn className="w-4 h-4" strokeWidth={1.75} />
+                <LogIn className="w-3.5 h-3.5 text-[#D7BC8D]" strokeWidth={1.75} />
                 <span>{t("common.loginRegister")}</span>
               </Link>
             )}
@@ -716,12 +712,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Main Content Canvas */}
-        <main className="flex-1 px-6 py-6 max-w-[1400px] w-full mx-auto">
+        <main className="flex-1 px-6 lg:px-8 py-7 max-w-[1420px] w-full mx-auto">
           {children}
         </main>
 
-        {/* Compact Footer */}
-        <footer className="px-6 py-3 border-t border-slate-200/80 bg-white text-[11px] text-slate-400 text-center">
+        {/* Compact Warm Limestone Footer */}
+        <footer className="px-6 py-3.5 border-t border-[#1B2A24]/10 bg-[#EAE5DA]/50 text-[11px] text-[#141413]/55 text-center">
           {t("footer.disclaimerBody")}
         </footer>
       </div>

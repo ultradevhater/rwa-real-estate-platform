@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #0F172A;
+  --background: #F4F1EA;
+  --foreground: #141413;
+  --estate: #1B2A24;
+  --bronze: #B8844A;
+  --surface: #FFFFFF;
+  --surface-muted: #EAE5DA;
+  --border-subtle: rgba(27, 42, 36, 0.12);
 }
 
 @layer base {
@@ -22,7 +27,7 @@
   }
 }
 
-/* Thanh cuộn tinh gọn cho Sidebar và Bảng dữ liệu */
+/* Thanh cuộn tinh gọn tông màu đồng trầm & đá vôi */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -33,10 +38,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(27, 42, 36, 0.22);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.55);
+  background: rgba(184, 132, 74, 0.55);
 }

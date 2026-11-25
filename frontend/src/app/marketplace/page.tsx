@@ -80,7 +80,7 @@ export default function MarketplacePage() {
       await loadMarketplace();
       setFeedback({
         type: "ok",
-        text: `[Niêm yết Ký quỹ thành công] Đã ký gộp AssetToken.approve + Marketplace.list()! Mã lệnh #${res.listing_id} (TxHash: ${res.tx_hash})`,
+        text: `Đăng bán cổ phần thành công! Mã lệnh #${res.listing_id} (TxHash: ${res.tx_hash})`,
       });
     } catch (err: any) {
       setFeedback({ type: "err", text: err.message });
@@ -164,10 +164,10 @@ export default function MarketplacePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-2xl font-semibold tracking-tight text-[#141413]">
           Sàn Giao dịch Thứ cấp Marketplace
         </h1>
-        <p className="text-[13px] text-slate-500 mt-0.5">
+        <p className="text-[13px] text-[#141413]/55 mt-0.5">
           Giao dịch cổ phần bất động sản qua hợp đồng ký quỹ cố định giá (Fixed-Price Escrow) an toàn On-chain.
         </p>
       </div>
@@ -176,8 +176,8 @@ export default function MarketplacePage() {
         <div
           className={`rounded-xl border px-4 py-3 text-xs font-medium flex items-center justify-between ${
             feedback.type === "ok"
-              ? "border-emerald-200/80 bg-emerald-50 text-emerald-800"
-              : "border-rose-200/80 bg-rose-50 text-rose-800"
+              ? "border-[#1E6B52]/22 bg-[#E9F4EF] text-[#1E6B52]"
+              : "border-[#A63A3A]/22 bg-[#FBF0F0] text-[#A63A3A]"
           }`}
         >
           <span>{feedback.text}</span>
@@ -188,16 +188,16 @@ export default function MarketplacePage() {
       )}
 
       {/* MAIN DATA TABLE CARD: MARKETPLACE ESCROW LISTINGS */}
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
         {/* Toolbar */}
-        <div className="px-5 py-3.5 border-b border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+        <div className="px-5 py-3.5 border-b border-[#1B2A24]/12 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2.5">
             <div className="relative inline-flex items-center">
               <select
                 aria-label="Filter Listing Status"
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="appearance-none pl-3.5 pr-7 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:border-blue-500"
+                className="appearance-none pl-3.5 pr-7 py-1.5 border border-[#1B2A24]/14 rounded-lg text-xs font-medium text-[#141413]/80 bg-white hover:bg-[#F4F1EA] focus:outline-none focus:border-[#B8844A]"
               >
                 <option value="all">Bộ lọc: Tất cả</option>
                 <option value="open">Trạng thái: Đang mở</option>
@@ -205,7 +205,7 @@ export default function MarketplacePage() {
                 <option value="cancelled">Trạng thái: Đã hủy</option>
               </select>
               <Filter
-                className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 pointer-events-none"
+                className="w-3.5 h-3.5 text-[#141413]/45 absolute right-2.5 pointer-events-none"
                 strokeWidth={1.75}
               />
             </div>
@@ -216,10 +216,10 @@ export default function MarketplacePage() {
                 placeholder="Tìm kiếm..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-60 pl-3 pr-8 py-1.5 border border-slate-200 rounded-lg text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-60 pl-3 pr-8 py-1.5 border border-[#1B2A24]/14 rounded-lg text-xs text-[#141413] placeholder-[#141413]/40 focus:outline-none focus:border-[#B8844A]"
               />
               <Search
-                className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2"
+                className="w-4 h-4 text-[#141413]/45 absolute right-2.5 top-1/2 -translate-y-1/2"
                 strokeWidth={1.75}
               />
             </div>
@@ -229,10 +229,10 @@ export default function MarketplacePage() {
             <button
               onClick={loadMarketplace}
               disabled={busy || loading}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-[#1B2A24]/14 rounded-lg text-xs font-medium text-[#141413]/80 bg-white hover:bg-[#F4F1EA] shadow-xs transition-colors"
             >
               <RefreshCw
-                className={`w-4 h-4 ${busy || loading ? "animate-spin text-blue-600" : ""}`}
+                className={`w-4 h-4 ${busy || loading ? "animate-spin text-[#1B2A24]" : ""}`}
                 strokeWidth={1.75}
               />
               <span>Tải lại</span>
@@ -244,7 +244,7 @@ export default function MarketplacePage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+              <tr className="bg-[#F4F1EA]/80 border-b border-[#1B2A24]/12 text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55">
                 <th className="py-3 px-4 w-16 whitespace-nowrap">
                   <span className="inline-flex items-center gap-1">
                     ID <ArrowUpDown className="w-3 h-3 opacity-60" strokeWidth={1.75} />
@@ -252,19 +252,19 @@ export default function MarketplacePage() {
                 </th>
                 <th className="py-3 px-4 whitespace-nowrap">TÀI SẢN BĐS</th>
                 <th className="py-3 px-4 whitespace-nowrap">NGƯỜI BÁN</th>
-                <th className="py-3 px-4 whitespace-nowrap">CỔ PHẦN ESCROW</th>
+                <th className="py-3 px-4 whitespace-nowrap">CỔ PHẦN ĐANG BÁN</th>
                 <th className="py-3 px-4 whitespace-nowrap">ĐƠN GIÁ / CỔ PHẦN</th>
                 <th className="py-3 px-4 whitespace-nowrap">TRẠNG THÁI</th>
                 <th className="py-3 px-4 whitespace-nowrap">CẬP NHẬT LÚC</th>
                 <th className="py-3 px-4 text-right whitespace-nowrap">THAO TÁC</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-sm text-slate-900">
+            <tbody className="divide-y divide-[#1B2A24]/8 text-sm text-[#141413]">
               {loading ? (
                 <TableRowsSkeleton rows={4} cols={8} />
               ) : filteredListings.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-xs text-slate-500">
+                  <td colSpan={8} className="py-12 text-center text-xs text-[#141413]/55">
                     Chưa có lệnh niêm yết nào trên sàn thứ cấp. Hãy dùng biểu mẫu bên dưới để ký quỹ token vào Marketplace!
                   </td>
                 </tr>
@@ -284,12 +284,12 @@ export default function MarketplacePage() {
                       : { label: "Đã hủy", variant: "neutral" };
 
                   return (
-                    <tr key={item.listing_id} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="py-3.5 px-4 font-mono text-xs font-semibold text-slate-700 whitespace-nowrap tabular-nums">
+                    <tr key={item.listing_id} className="hover:bg-[#F4F1EA]/75 transition-colors">
+                      <td className="py-3.5 px-4 font-mono text-xs font-semibold text-[#141413]/80 whitespace-nowrap tabular-nums">
                         #{item.listing_id}
                       </td>
                       <td className="py-3.5 px-4">
-                        <div className="text-sm font-medium text-slate-900">{item.real_estate_name}</div>
+                        <div className="text-sm font-medium text-[#141413]">{item.real_estate_name}</div>
                         <div className="mt-0.5">
                           <StatusBadge variant="info" className="font-mono">
                             {item.symbol}
@@ -297,7 +297,7 @@ export default function MarketplacePage() {
                         </div>
                       </td>
                       <td className="py-3.5 px-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-slate-900">{item.seller_name}</div>
+                        <div className="text-sm font-medium text-[#141413]">{item.seller_name}</div>
                         <CopyAddress value={item.seller_address} prefixLen={8} suffixLen={4} />
                       </td>
                       <td className="py-3.5 px-4 whitespace-nowrap tabular-nums">
@@ -306,16 +306,16 @@ export default function MarketplacePage() {
                           {Number(item.initial_amount).toLocaleString("en-US")} {item.symbol}
                         </StatusBadge>
                       </td>
-                      <td className="py-3.5 px-4 text-sm font-semibold text-slate-900 whitespace-nowrap tabular-nums">
+                      <td className="py-3.5 px-4 text-sm font-semibold text-[#141413] whitespace-nowrap tabular-nums">
                         ${Number(item.price_per_share).toLocaleString("en-US")}{" "}
-                        <span className="text-xs font-normal text-slate-500">mUSDC</span>
+                        <span className="text-xs font-normal text-[#141413]/55">mUSDC</span>
                       </td>
                       <td className="py-3.5 px-4 whitespace-nowrap">
                         <StatusBadge variant={statusBadge.variant} dot={statusBadge.dot}>
                           {statusBadge.label}
                         </StatusBadge>
                       </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-500 whitespace-nowrap tabular-nums">
+                      <td className="py-3.5 px-4 text-xs text-[#141413]/55 whitespace-nowrap tabular-nums">
                         {item.updated_at
                           ? item.updated_at.replace("T", " ").slice(0, 16)
                           : "2026-04-15 08:59"}
@@ -334,12 +334,12 @@ export default function MarketplacePage() {
                                   [item.listing_id]: e.target.value,
                                 }))
                               }
-                              className="w-16 rounded-lg border border-slate-200 px-2 py-1 text-xs text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+                              className="w-16 rounded-lg border border-[#1B2A24]/14 px-2 py-1 text-xs text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
                             />
                             <button
                               onClick={() => handleBuyListing(item)}
                               disabled={busy}
-                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium shadow-xs transition-colors"
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-xs font-medium shadow-xs transition-colors"
                             >
                               <ShoppingCart className="w-3.5 h-3.5" strokeWidth={1.75} />
                               <span>Mua</span>
@@ -348,7 +348,7 @@ export default function MarketplacePage() {
                               <button
                                 onClick={() => handleCancelListing(item.listing_id)}
                                 disabled={busy}
-                                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-rose-50 text-rose-600 border border-rose-200/70 hover:bg-rose-100 text-xs font-medium transition-colors"
+                                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FBF0F0] text-[#A63A3A] border border-[#A63A3A]/22 hover:bg-[#F5E0E0] text-xs font-medium transition-colors"
                               >
                                 <XCircle className="w-3.5 h-3.5" strokeWidth={1.75} />
                                 <span>Hủy lệnh</span>
@@ -356,7 +356,7 @@ export default function MarketplacePage() {
                             )}
                           </div>
                         ) : (
-                          <span className="text-xs text-slate-400">Đã đóng</span>
+                          <span className="text-xs text-[#141413]/45">Đã đóng</span>
                         )}
                       </td>
                     </tr>
@@ -368,9 +368,9 @@ export default function MarketplacePage() {
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-3.5 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 tabular-nums">
+        <div className="px-5 py-3.5 border-t border-[#1B2A24]/12 flex flex-wrap items-center justify-between gap-2 text-xs text-[#141413]/55 tabular-nums">
           <div className="flex items-center gap-1.5">
-            <Globe className="w-4 h-4 text-slate-400" strokeWidth={1.75} />
+            <Globe className="w-4 h-4 text-[#141413]/45" strokeWidth={1.75} />
             <span>
               Hiển thị từ 1 đến {filteredListings.length} trong{" "}
               <StatusBadge variant="neutral" className="mx-0.5">
@@ -380,23 +380,23 @@ export default function MarketplacePage() {
             </span>
           </div>
           <div>
-            Smart Contract: <code className="font-mono text-blue-600">Marketplace (Fixed-Price Escrow)</code>
+            Smart Contract: <code className="font-mono text-[#1B2A24]">Marketplace (Fixed-Price Escrow)</code>
           </div>
         </div>
       </div>
 
       {/* CREATE ESCROW LISTING CARD (UC-11) */}
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5">
-        <div className="border-b border-slate-100 pb-3.5 mb-4">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5">
+        <div className="border-b border-[#1B2A24]/8 pb-3.5 mb-4">
           <StatusBadge variant="purple" className="mb-1.5">
             ESCROW LISTING CREATION
           </StatusBadge>
-          <h2 className="text-base font-semibold text-slate-900">
+          <h2 className="text-base font-semibold text-[#141413]">
             Đăng bán Cổ phần BĐS vào Hợp đồng Ký quỹ (Escrow)
           </h2>
-          <p className="text-[13px] text-slate-500 mt-0.5">
-            Tự động ký gộp <code className="font-mono text-xs text-slate-700">AssetToken.approve(Marketplace, amount)</code> và{" "}
-            <code className="font-mono text-xs text-slate-700">Marketplace.list(token, amount, pricePerShare)</code>.
+          <p className="text-[13px] text-[#141413]/55 mt-0.5">
+            Tự động ký gộp <code className="font-mono text-xs text-[#141413]/80">AssetToken.approve(Marketplace, amount)</code> và{" "}
+            <code className="font-mono text-xs text-[#141413]/80">Marketplace.list(token, amount, pricePerShare)</code>.
           </p>
         </div>
 
@@ -405,13 +405,13 @@ export default function MarketplacePage() {
           className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end text-xs"
         >
           <div>
-            <label className="block font-medium text-slate-700 mb-1.5">
+            <label className="block font-medium text-[#141413]/80 mb-1.5">
               Chọn Token BĐS đang sở hữu:
             </label>
             <select
               value={listTokenAddr}
               onChange={(e) => setListTokenAddr(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-[#141413] focus:border-[#B8844A] focus:outline-none"
             >
               {holdings.map((h) => (
                 <option key={h.token_address} value={h.token_address}>
@@ -422,7 +422,7 @@ export default function MarketplacePage() {
           </div>
 
           <div>
-            <label className="block font-medium text-slate-700 mb-1.5">
+            <label className="block font-medium text-[#141413]/80 mb-1.5">
               Số lượng cổ phần ký quỹ:
             </label>
             <input
@@ -430,12 +430,12 @@ export default function MarketplacePage() {
               min="1"
               value={listAmount}
               onChange={(e) => setListAmount(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block font-medium text-slate-700 mb-1.5">
+            <label className="block font-medium text-[#141413]/80 mb-1.5">
               Đơn giá mỗi cổ phần (mUSDC):
             </label>
             <input
@@ -444,14 +444,14 @@ export default function MarketplacePage() {
               step="0.5"
               value={listPrice}
               onChange={(e) => setListPrice(e.target.value)}
-              className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={busy || !listTokenAddr}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-2 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
           >
             <PlusCircle className="w-4 h-4" strokeWidth={1.75} />
             <span>{busy ? "Đang xử lý..." : "Ký quỹ & Đăng bán"}</span>
@@ -459,7 +459,7 @@ export default function MarketplacePage() {
         </form>
       </div>
 
-      {/* Modal Xác Thực OTP qua Gmail & Thanh Toán MockUSDC (UC-11) */}
+      {/* Modal Xác Thực OTP qua Gmail & Thanh Toán mUSDC (UC-11) */}
       <PaymentOtpModal
         open={Boolean(paymentOtpPayload)}
         payload={paymentOtpPayload}

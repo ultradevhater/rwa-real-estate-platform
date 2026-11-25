@@ -47,9 +47,9 @@ export function ExportCsvButton({ endpoint, filename, label = "Xuất CSV" }: Ex
       type="button"
       onClick={handleDownload}
       disabled={busy}
-      className="inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-medium shadow-xs transition-colors disabled:opacity-50"
+      className="inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-1.5 rounded-xl border border-[#1B2A24]/15 bg-white hover:bg-[#EAE5DA]/70 hover:border-[#B8844A]/50 text-[#141413] text-xs font-medium shadow-xs transition-colors disabled:opacity-50"
     >
-      <Download className="w-3.5 h-3.5 text-slate-500" strokeWidth={1.75} />
+      <Download className="w-3.5 h-3.5 text-[#1B2A24]/65" strokeWidth={1.75} />
       <span>{busy ? "Đang xuất..." : label}</span>
     </button>
   );

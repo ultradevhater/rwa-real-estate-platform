@@ -85,7 +85,6 @@ export function NotificationBell() {
       window.removeEventListener("rwa:notifications-updated", onRefresh);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeAddress]);
 
   useEffect(() => {
@@ -122,14 +121,14 @@ export function NotificationBell() {
 
   const renderIcon = (cat: string) => {
     if (cat === "transfer")
-      return <ArrowLeftRight className="w-4 h-4 text-emerald-600 shrink-0" strokeWidth={1.75} />;
+      return <ArrowLeftRight className="w-4 h-4 text-[#1E6B52] shrink-0" strokeWidth={1.75} />;
     if (cat === "kyc")
-      return <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" strokeWidth={1.75} />;
+      return <ShieldCheck className="w-4 h-4 text-[#1B2A24] shrink-0" strokeWidth={1.75} />;
     if (cat === "freeze")
-      return <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" strokeWidth={1.75} />;
+      return <AlertTriangle className="w-4 h-4 text-[#A63A3A] shrink-0" strokeWidth={1.75} />;
     if (cat === "dividend")
-      return <Coins className="w-4 h-4 text-emerald-600 shrink-0" strokeWidth={1.75} />;
-    return <Info className="w-4 h-4 text-slate-500 shrink-0" strokeWidth={1.75} />;
+      return <Coins className="w-4 h-4 text-[#B8844A] shrink-0" strokeWidth={1.75} />;
+    return <Info className="w-4 h-4 text-[#141413]/50 shrink-0" strokeWidth={1.75} />;
   };
 
   const formatNotifTime = (iso?: string | null) => {
@@ -152,27 +151,27 @@ export function NotificationBell() {
           if (!open) loadNotifications();
         }}
         title={t("notif.title")}
-        className="relative inline-flex items-center justify-center w-8 h-8 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs transition-colors"
+        className="relative inline-flex items-center justify-center w-9 h-9 rounded-xl border border-[#1B2A24]/15 bg-white hover:bg-[#FAF8F4] hover:border-[#B8844A]/60 text-[#141413] shadow-xs transition-colors"
       >
         <Bell className="w-4 h-4" strokeWidth={1.75} />
         {unread > 0 && (
-          <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-rose-600 text-white text-[10px] font-semibold tabular-nums flex items-center justify-center shadow-xs">
+          <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-[#A63A3A] text-[#F4F1EA] text-[10px] font-semibold tabular-nums flex items-center justify-center shadow-xs">
             {unread > 99 ? "99+" : unread}
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-slate-200/80 rounded-xl shadow-lg z-50 overflow-hidden">
-          <div className="px-4 py-3 bg-slate-50/80 border-b border-slate-200/80 flex items-center justify-between">
-            <div className="text-xs font-semibold text-slate-900 tabular-nums">
+        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-[#1B2A24]/15 rounded-2xl shadow-[0_20px_50px_-18px_rgba(20,20,19,0.28)] z-50 overflow-hidden">
+          <div className="px-4 py-3 bg-[#F4F1EA]/90 border-b border-[#1B2A24]/10 flex items-center justify-between">
+            <div className="text-xs font-semibold text-[#141413] tabular-nums">
               {t("notif.header")} ({unread} {t("notif.unread")})
             </div>
             {unread > 0 && (
               <button
                 type="button"
                 onClick={markAllRead}
-                className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#B8844A] hover:text-[#1B2A24] transition-colors"
               >
                 <CheckCheck className="w-3.5 h-3.5" strokeWidth={1.75} />
                 <span>{t("notif.markAll")}</span>
@@ -180,9 +179,9 @@ export function NotificationBell() {
             )}
           </div>
 
-          <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
+          <div className="max-h-80 overflow-y-auto divide-y divide-[#1B2A24]/8">
             {items.length === 0 ? (
-              <div className="px-4 py-8 text-center text-xs text-slate-500">
+              <div className="px-4 py-8 text-center text-xs text-[#141413]/55">
                 {t("notif.empty")}
               </div>
             ) : (
@@ -190,22 +189,22 @@ export function NotificationBell() {
                 <div
                   key={item.id}
                   onClick={() => !item.is_read && markRead(item.id)}
-                  className={`px-4 py-3 text-xs cursor-pointer transition-colors hover:bg-slate-50/80 ${
-                    !item.is_read ? "bg-blue-50/40" : "bg-white"
+                  className={`px-4 py-3 text-xs cursor-pointer transition-colors hover:bg-[#F4F1EA]/70 ${
+                    !item.is_read ? "bg-[#F8EFE2]/55" : "bg-white"
                   }`}
                 >
                   <div className="flex items-start gap-2.5">
                     <div className="mt-0.5">{renderIcon(item.category)}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <p className={`font-medium text-slate-900 ${!item.is_read ? "font-semibold" : ""}`}>
+                        <p className={`font-medium text-[#141413] ${!item.is_read ? "font-semibold" : ""}`}>
                           {item.title}
                         </p>
-                        {!item.is_read && <span className="w-2 h-2 rounded-full bg-blue-600 shrink-0" />}
+                        {!item.is_read && <span className="w-2 h-2 rounded-full bg-[#B8844A] shrink-0" />}
                       </div>
-                      <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{item.message}</p>
+                      <p className="text-xs text-[#141413]/60 mt-0.5 leading-relaxed">{item.message}</p>
                       <div className="flex items-center justify-between gap-2 mt-1.5">
-                        <span className="text-[11px] text-slate-400 tabular-nums">
+                        <span className="text-[11px] text-[#141413]/45 tabular-nums">
                           {formatNotifTime(item.created_at)}
                         </span>
                         {item.tx_hash && (
@@ -216,12 +215,12 @@ export function NotificationBell() {
                               copyTx(item.id, item.tx_hash!);
                             }}
                             title={copiedId === item.id ? "Đã sao chép" : item.tx_hash}
-                            className="inline-flex items-center gap-1 font-mono text-[11px] text-blue-600 hover:text-blue-700"
+                            className="inline-flex items-center gap-1 font-mono text-[11px] text-[#B8844A] hover:text-[#1B2A24]"
                           >
                             {copiedId === item.id ? (
                               <>
-                                <Check className="w-3 h-3 text-emerald-600" strokeWidth={1.75} />
-                                <span className="font-sans text-emerald-600 font-medium">Đã sao chép</span>
+                                <Check className="w-3 h-3 text-[#1E6B52]" strokeWidth={1.75} />
+                                <span className="font-sans text-[#1E6B52] font-medium">Đã sao chép</span>
                               </>
                             ) : (
                               <>

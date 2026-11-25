@@ -12,28 +12,28 @@ interface StatusBadgeProps {
 
 const VARIANT_CLASSES: Record<BadgeVariant, { pill: string; dot: string }> = {
   success: {
-    pill: "bg-emerald-50 text-emerald-700 ring-emerald-600/20",
-    dot: "bg-emerald-500",
+    pill: "bg-[#E9F4EF] text-[#1E6B52] ring-[#1E6B52]/20",
+    dot: "bg-[#1E6B52]",
   },
   warning: {
-    pill: "bg-amber-50 text-amber-700 ring-amber-600/20",
-    dot: "bg-amber-500",
+    pill: "bg-[#F8EFE2] text-[#8F622C] ring-[#B8844A]/30",
+    dot: "bg-[#B8844A]",
   },
   danger: {
-    pill: "bg-rose-50 text-rose-700 ring-rose-600/20",
-    dot: "bg-rose-500",
+    pill: "bg-[#FBF0F0] text-[#A63A3A] ring-[#A63A3A]/20",
+    dot: "bg-[#A63A3A]",
   },
   info: {
-    pill: "bg-blue-50 text-blue-700 ring-blue-600/20",
-    dot: "bg-blue-500",
+    pill: "bg-[#EEF2F0] text-[#1B2A24] ring-[#1B2A24]/18",
+    dot: "bg-[#1B2A24]",
   },
   neutral: {
-    pill: "bg-slate-100 text-slate-700 ring-slate-500/20",
-    dot: "bg-slate-400",
+    pill: "bg-[#EAE5DA] text-[#141413]/75 ring-[#141413]/12",
+    dot: "bg-[#141413]/45",
   },
   purple: {
-    pill: "bg-violet-50 text-violet-700 ring-violet-600/20",
-    dot: "bg-violet-500",
+    pill: "bg-[#F3EDF5] text-[#5C3D6E] ring-[#5C3D6E]/20",
+    dot: "bg-[#5C3D6E]",
   },
 };
 
@@ -48,7 +48,7 @@ export function StatusBadge({
   return (
     <span
       title={title}
-      className={`inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${styles.pill} ${className}`}
+      className={`inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 rounded-full px-2.5 py-0.5 text-[11.5px] font-medium ring-1 ring-inset ${styles.pill} ${className}`}
     >
       {dot && <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${styles.dot}`} />}
       {children}

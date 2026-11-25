@@ -128,10 +128,10 @@ export function DividendPanel() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-2xl font-semibold tracking-tight text-[#141413]">
           Phân phối Cổ tức &amp; Lợi tức BĐS
         </h1>
-        <p className="text-[13px] text-slate-500 mt-0.5">
+        <p className="text-[13px] text-[#141413]/55 mt-0.5">
           Chụp tỷ lệ sở hữu thực tế On-chain (Snapshot) và tự động chi trả mUSDC tới ví nhà đầu tư hợp lệ.
         </p>
       </div>
@@ -140,15 +140,15 @@ export function DividendPanel() {
         <div
           className={`rounded-xl border px-4 py-3 text-xs font-medium flex items-center justify-between ${
             feedback.type === "ok"
-              ? "border-emerald-200/80 bg-emerald-50 text-emerald-800"
-              : "border-rose-200/80 bg-rose-50 text-rose-800"
+              ? "border-[#1E6B52]/22 bg-[#E9F4EF] text-[#1E6B52]"
+              : "border-[#A63A3A]/22 bg-[#FBF0F0] text-[#A63A3A]"
           }`}
         >
           <div className="flex items-center gap-2">
             {feedback.type === "ok" ? (
-              <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" strokeWidth={1.75} />
+              <CheckCircle2 className="w-4 h-4 shrink-0 text-[#1E6B52]" strokeWidth={1.75} />
             ) : (
-              <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" strokeWidth={1.75} />
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#A63A3A]" strokeWidth={1.75} />
             )}
             <span>{feedback.text}</span>
           </div>
@@ -160,31 +160,31 @@ export function DividendPanel() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 tabular-nums">
-        <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs">
-          <div className="text-xs font-medium text-slate-500">Tổng quỹ cổ tức đã chi trả</div>
-          <div className="text-2xl font-semibold text-emerald-600 mt-1.5">
+        <div className="bg-white border border-[#1B2A24]/12 rounded-2xl p-5 shadow-xs">
+          <div className="text-xs font-medium text-[#141413]/55">Tổng quỹ cổ tức đã chi trả</div>
+          <div className="text-2xl font-semibold text-[#1E6B52] mt-1.5">
             ${totalDistributedAll.toLocaleString("en-US", { maximumFractionDigits: 2 })}{" "}
-            <span className="text-xs font-medium text-slate-500">mUSDC</span>
+            <span className="text-xs font-medium text-[#141413]/55">mUSDC</span>
           </div>
         </div>
-        <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs">
-          <div className="text-xs font-medium text-slate-500">Số đợt phân phối</div>
-          <div className="text-2xl font-semibold text-slate-900 mt-1.5">{distributions.length}</div>
+        <div className="bg-white border border-[#1B2A24]/12 rounded-2xl p-5 shadow-xs">
+          <div className="text-xs font-medium text-[#141413]/55">Số đợt phân phối</div>
+          <div className="text-2xl font-semibold text-[#141413] mt-1.5">{distributions.length}</div>
         </div>
-        <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs">
-          <div className="text-xs font-medium text-slate-500">Giao dịch chuyển mUSDC on-chain</div>
-          <div className="text-2xl font-semibold text-blue-600 mt-1.5">{totalPayoutTxs}</div>
+        <div className="bg-white border border-[#1B2A24]/12 rounded-2xl p-5 shadow-xs">
+          <div className="text-xs font-medium text-[#141413]/55">Giao dịch chuyển mUSDC on-chain</div>
+          <div className="text-2xl font-semibold text-[#1B2A24] mt-1.5">{totalPayoutTxs}</div>
         </div>
       </div>
 
       {canDistribute && (
-        <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
-          <div className="px-5 py-4 border-b border-slate-200/80">
-            <h2 className="text-base font-semibold text-slate-900 flex items-center gap-2">
-              <Coins className="w-4 h-4 text-emerald-600" strokeWidth={1.75} />
+        <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
+          <div className="px-5 py-4 border-b border-[#1B2A24]/12">
+            <h2 className="text-base font-semibold text-[#141413] flex items-center gap-2">
+              <Coins className="w-4 h-4 text-[#1E6B52]" strokeWidth={1.75} />
               <span>Khởi tạo Đợt Phân phối Cổ tức / Tiền thuê BĐS (On-chain Snapshot)</span>
             </h2>
-            <p className="text-[13px] text-slate-500 mt-0.5">
+            <p className="text-[13px] text-[#141413]/55 mt-0.5">
               Hệ thống tự động chụp tỷ lệ sở hữu thực tế (balanceOf) trên Smart Contract, loại trừ ví bị đóng băng / chưa KYC và chuyển mUSDC trực tiếp.
             </p>
           </div>
@@ -194,14 +194,14 @@ export function DividendPanel() {
             className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           >
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1.5">
+              <label className="block text-xs font-medium text-[#141413]/80 mb-1.5">
                 Bất động sản đã Token hóa
               </label>
               <select
                 value={selectedAssetId}
                 onChange={(e) => setSelectedAssetId(e.target.value)}
                 required
-                className="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 bg-white focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-xs text-[#141413] bg-white focus:border-[#B8844A] focus:outline-none"
               >
                 {assets.length === 0 && <option value="">Chưa có tài sản nào được Token hóa</option>}
                 {assets.map((a) => (
@@ -213,19 +213,19 @@ export function DividendPanel() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1.5">Kỳ phân phối</label>
+              <label className="block text-xs font-medium text-[#141413]/80 mb-1.5">Kỳ phân phối</label>
               <input
                 type="text"
                 value={periodLabel}
                 onChange={(e) => setPeriodLabel(e.target.value)}
                 required
                 placeholder="VD: Q4/2026 - Doanh thu cho thuê"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-xs text-[#141413] focus:border-[#B8844A] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1.5">
+              <label className="block text-xs font-medium text-[#141413]/80 mb-1.5">
                 Tổng quỹ phân phối (mUSDC)
               </label>
               <input
@@ -235,12 +235,12 @@ export function DividendPanel() {
                 value={amountUsdc}
                 onChange={(e) => setAmountUsdc(e.target.value)}
                 required
-                className="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-xs text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1.5">
+              <label className="block text-xs font-medium text-[#141413]/80 mb-1.5">
                 Ghi chú minh bạch
               </label>
               <input
@@ -248,7 +248,7 @@ export function DividendPanel() {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="VD: Tiền thuê tháng 10-12/2026 sau thuế"
-                className="w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-xs text-[#141413] focus:border-[#B8844A] focus:outline-none"
               />
             </div>
 
@@ -256,7 +256,7 @@ export function DividendPanel() {
               <button
                 type="submit"
                 disabled={submitting || assets.length === 0}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white text-sm font-medium shadow-xs transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] disabled:opacity-50 text-white text-sm font-medium shadow-xs transition-colors"
               >
                 <Send className="w-4 h-4" strokeWidth={1.75} />
                 <span>
@@ -271,22 +271,22 @@ export function DividendPanel() {
       )}
 
       {/* Distribution History Table */}
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
-        <div className="px-5 py-4 border-b border-slate-200/80 flex items-center justify-between">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
+        <div className="px-5 py-4 border-b border-[#1B2A24]/12 flex items-center justify-between">
           <div>
-            <h2 className="text-base font-semibold text-slate-900">
+            <h2 className="text-base font-semibold text-[#141413]">
               Lịch sử các đợt phân phối cổ tức
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-[#141413]/55 mt-0.5">
               Nhấn vào từng đợt để xem chi tiết giao dịch chuyển mUSDC tới từng ví Nhà đầu tư.
             </p>
           </div>
           <button
             onClick={loadData}
             disabled={loading}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 bg-white hover:bg-slate-50 shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-[#1B2A24]/14 rounded-lg text-xs font-medium text-[#141413]/80 bg-white hover:bg-[#F4F1EA] shadow-xs transition-colors"
           >
-            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin text-blue-600" : ""}`} strokeWidth={1.75} />
+            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin text-[#1B2A24]" : ""}`} strokeWidth={1.75} />
             <span>Tải lại</span>
           </button>
         </div>
@@ -294,7 +294,7 @@ export function DividendPanel() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+              <tr className="bg-[#F4F1EA]/80 border-b border-[#1B2A24]/12 text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55">
                 <th className="py-3 px-4 whitespace-nowrap">Đợt</th>
                 <th className="py-3 px-4 whitespace-nowrap">Bất động sản</th>
                 <th className="py-3 px-4 whitespace-nowrap">Kỳ phân phối</th>
@@ -304,34 +304,34 @@ export function DividendPanel() {
                 <th className="py-3 px-4 text-right whitespace-nowrap">Chi tiết</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-sm text-slate-900">
+            <tbody className="divide-y divide-[#1B2A24]/8 text-sm text-[#141413]">
               {loading ? (
                 <TableRowsSkeleton rows={3} cols={7} />
               ) : distributions.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="py-10 text-center text-xs text-slate-500">
+                  <td colSpan={7} className="py-10 text-center text-xs text-[#141413]/55">
                     Chưa có đợt phân phối cổ tức nào được thực hiện.
                   </td>
                 </tr>
               ) : (
                 distributions.map((dist) => (
                   <React.Fragment key={dist.id}>
-                    <tr className="hover:bg-slate-50/80 transition-colors tabular-nums">
-                      <td className="py-3.5 px-4 font-mono text-xs font-semibold text-blue-600 whitespace-nowrap">
+                    <tr className="hover:bg-[#F4F1EA]/75 transition-colors tabular-nums">
+                      <td className="py-3.5 px-4 font-mono text-xs font-semibold text-[#1B2A24] whitespace-nowrap">
                         #DIV-{dist.id}
                       </td>
                       <td className="py-3.5 px-4">
                         <div className="font-medium flex items-center gap-1.5">
-                          <Building2 className="w-4 h-4 text-slate-400" strokeWidth={1.75} />
+                          <Building2 className="w-4 h-4 text-[#141413]/45" strokeWidth={1.75} />
                           <span>{dist.asset_symbol}</span>
                         </div>
-                        <div className="text-xs text-slate-500">{dist.asset_name}</div>
+                        <div className="text-xs text-[#141413]/55">{dist.asset_name}</div>
                       </td>
                       <td className="py-3.5 px-4">
                         <div className="text-sm font-medium">{dist.period_label}</div>
-                        {dist.notes && <div className="text-xs text-slate-500">{dist.notes}</div>}
+                        {dist.notes && <div className="text-xs text-[#141413]/55">{dist.notes}</div>}
                       </td>
-                      <td className="py-3.5 px-4 text-right font-semibold text-emerald-600 whitespace-nowrap">
+                      <td className="py-3.5 px-4 text-right font-semibold text-[#1E6B52] whitespace-nowrap">
                         +${Number(dist.total_amount_usdc).toLocaleString("en-US", { maximumFractionDigits: 2 })}
                       </td>
                       <td className="py-3.5 px-4 text-center whitespace-nowrap">
@@ -340,30 +340,30 @@ export function DividendPanel() {
                           {dist.recipients_count}
                         </StatusBadge>
                       </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-500 whitespace-nowrap">
+                      <td className="py-3.5 px-4 text-xs text-[#141413]/55 whitespace-nowrap">
                         {dist.created_at ? new Date(dist.created_at).toLocaleString("vi-VN") : "—"}
                       </td>
                       <td className="py-3.5 px-4 text-right whitespace-nowrap">
                         <button
                           type="button"
                           onClick={() => setExpandedId(expandedId === dist.id ? null : dist.id)}
-                          className="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 shadow-xs transition-colors"
+                          className="px-2.5 py-1.5 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 shadow-xs transition-colors"
                         >
                           {expandedId === dist.id ? "Thu gọn" : "Xem Payouts"}
                         </button>
                       </td>
                     </tr>
                     {expandedId === dist.id && (
-                      <tr className="bg-slate-50/70">
+                      <tr className="bg-[#F4F1EA]/70">
                         <td colSpan={7} className="px-6 py-4">
-                          <div className="text-xs font-semibold text-slate-900 mb-2 tabular-nums">
+                          <div className="text-xs font-semibold text-[#141413] mb-2 tabular-nums">
                             Chi tiết giải ngân on-chain (Tổng cổ phần hợp lệ:{" "}
                             {Number(dist.total_eligible_shares).toLocaleString("en-US")} {dist.asset_symbol})
                           </div>
-                          <div className="border border-slate-200/80 rounded-xl bg-white overflow-x-auto">
+                          <div className="border border-[#1B2A24]/12 rounded-xl bg-white overflow-x-auto">
                             <table className="w-full text-left text-xs">
                               <thead>
-                                <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                                <tr className="bg-[#F4F1EA]/80 border-b border-[#1B2A24]/12 text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55">
                                   <th className="py-2.5 px-3">Nhà đầu tư</th>
                                   <th className="py-2.5 px-3">Địa chỉ ví</th>
                                   <th className="py-2.5 px-3 text-right">Cổ phần nắm giữ</th>
@@ -372,10 +372,10 @@ export function DividendPanel() {
                                   <th className="py-2.5 px-3">TxHash On-chain</th>
                                 </tr>
                               </thead>
-                              <tbody className="divide-y divide-slate-100 tabular-nums">
+                              <tbody className="divide-y divide-[#1B2A24]/8 tabular-nums">
                                 {dist.payouts.map((p, idx) => (
-                                  <tr key={p.id || idx} className="hover:bg-slate-50/80">
-                                    <td className="py-2.5 px-3 font-medium text-slate-900">
+                                  <tr key={p.id || idx} className="hover:bg-[#F4F1EA]/75">
+                                    <td className="py-2.5 px-3 font-medium text-[#141413]">
                                       {p.investor_name}
                                     </td>
                                     <td className="py-2.5 px-3">
@@ -384,10 +384,10 @@ export function DividendPanel() {
                                     <td className="py-2.5 px-3 text-right">
                                       {Number(p.shares_held).toLocaleString("en-US")}
                                     </td>
-                                    <td className="py-2.5 px-3 text-right font-semibold text-blue-600">
+                                    <td className="py-2.5 px-3 text-right font-semibold text-[#1B2A24]">
                                       {Number(p.ownership_pct).toFixed(2)}%
                                     </td>
-                                    <td className="py-2.5 px-3 text-right font-semibold text-emerald-600">
+                                    <td className="py-2.5 px-3 text-right font-semibold text-[#1E6B52]">
                                       +${Number(p.payout_usdc).toLocaleString("en-US", { maximumFractionDigits: 2 })}
                                     </td>
                                     <td className="py-2.5 px-3">

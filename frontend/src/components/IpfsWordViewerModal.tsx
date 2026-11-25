@@ -107,33 +107,33 @@ export function IpfsWordViewerModal({
 
   return (
     <div
-      className="fixed inset-0 z-[80] bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-center p-3 sm:p-5"
+      className="fixed inset-0 z-[80] bg-[#141413]/60 backdrop-blur-[2px] flex items-center justify-center p-3 sm:p-5"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-xl shadow-2xl border border-slate-200/80 w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden">
+      <div className="bg-white rounded-xl shadow-2xl border border-[#1B2A24]/12 w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden">
         {/* Top Word Viewer Toolbar */}
-        <div className="bg-slate-900 text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 shrink-0 border-b border-slate-800">
+        <div className="bg-[#1B2A24] text-white px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 shrink-0 border-b border-slate-800">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center shrink-0">
-              <FileText className="w-4 h-4 text-blue-400" strokeWidth={1.75} />
+            <div className="w-9 h-9 rounded-lg bg-[#B8844A]/20 border border-[#B8844A]/35 flex items-center justify-center shrink-0">
+              <FileText className="w-4 h-4 text-[#D7BC8D]" strokeWidth={1.75} />
             </div>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-sm font-semibold truncate text-white">
                   {docData?.file_name || "Đang mở tài liệu Word IPFS..."}
                 </h3>
-                <span className="inline-flex items-center whitespace-nowrap shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium bg-blue-500/15 text-blue-300 ring-1 ring-inset ring-blue-400/25">
+                <span className="inline-flex items-center whitespace-nowrap shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium bg-[#B8844A]/18 text-[#D7BC8D] ring-1 ring-inset ring-blue-400/25">
                   {formatBadge}
                 </span>
                 {docData?.size_bytes ? (
-                  <span className="text-[11px] text-slate-400 tabular-nums shrink-0">
+                  <span className="text-[11px] text-[#141413]/45 tabular-nums shrink-0">
                     {(docData.size_bytes / 1024).toFixed(2)} KB
                   </span>
                 ) : null}
               </div>
-              <div className="text-xs text-slate-400 truncate mt-0.5">
+              <div className="text-xs text-[#141413]/45 truncate mt-0.5">
                 {docData
                   ? `${docData.estate_name} (${docData.symbol}) · Hiển thị trực tiếp từ IPFS Gateway`
                   : "Đang giải mã & kết xuất nội dung tài liệu trực tiếp trên trình duyệt"}
@@ -145,7 +145,7 @@ export function IpfsWordViewerModal({
             <a
               href={downloadHref}
               download={docData?.file_name || "Ho_so_Phap_ly.docx"}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#1E6B52] hover:bg-[#175540] text-white text-xs font-medium transition-colors shadow-xs"
             >
               <Download className="w-3.5 h-3.5" strokeWidth={1.75} />
               <span>Tải tài liệu (.docx)</span>
@@ -154,7 +154,7 @@ export function IpfsWordViewerModal({
               type="button"
               onClick={onClose}
               aria-label="Đóng trình xem tài liệu"
-              className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+              className="p-1.5 rounded-lg hover:bg-[#14201B] text-[#141413]/45 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" strokeWidth={1.75} />
             </button>
@@ -162,9 +162,9 @@ export function IpfsWordViewerModal({
         </div>
 
         {/* Document Canvas Area (A4 Paper Preview) */}
-        <div className="flex-1 overflow-y-auto bg-slate-100 p-4 sm:p-6">
+        <div className="flex-1 overflow-y-auto bg-[#EAE5DA]/85 p-4 sm:p-6">
           {loading && (
-            <div className="bg-white rounded-xl border border-slate-200/80 p-10 max-w-[820px] mx-auto space-y-4 shadow-xs">
+            <div className="bg-white rounded-2xl border border-[#1B2A24]/12 p-10 max-w-[820px] mx-auto space-y-4 shadow-xs">
               <Skeleton className="h-6 w-2/3" />
               <Skeleton className="h-4 w-1/2" />
               <div className="pt-4 space-y-2.5">
@@ -177,17 +177,17 @@ export function IpfsWordViewerModal({
           )}
 
           {!loading && error && (
-            <div className="bg-white rounded-xl border border-rose-200 p-8 max-w-[720px] mx-auto text-center space-y-3 shadow-xs">
+            <div className="bg-white rounded-2xl border border-[#A63A3A]/22 p-8 max-w-[720px] mx-auto text-center space-y-3 shadow-xs">
               <AlertCircle className="w-7 h-7 text-rose-500 mx-auto" strokeWidth={1.75} />
-              <p className="text-sm font-semibold text-rose-700">Không thể hiển thị tài liệu</p>
-              <p className="text-xs text-slate-500">{error}</p>
+              <p className="text-sm font-semibold text-[#A63A3A]">Không thể hiển thị tài liệu</p>
+              <p className="text-xs text-[#141413]/55">{error}</p>
             </div>
           )}
 
           {!loading && !error && docData && (
             <>
               {docData.format === "pdf" ? (
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden max-w-[860px] mx-auto">
+                <div className="bg-white rounded-xl shadow-sm border border-[#1B2A24]/12 overflow-hidden max-w-[860px] mx-auto">
                   <iframe
                     src={`${backendBaseUrl}${docData.raw_url}`}
                     title={docData.file_name}
@@ -195,15 +195,15 @@ export function IpfsWordViewerModal({
                   />
                 </div>
               ) : docData.format === "image" ? (
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200/80 p-4 max-w-[860px] mx-auto text-center">
+                <div className="bg-white rounded-xl shadow-sm border border-[#1B2A24]/12 p-4 max-w-[860px] mx-auto text-center">
                   <img
                     src={`${backendBaseUrl}${docData.raw_url}`}
                     alt={docData.file_name}
-                    className="max-h-[68vh] mx-auto rounded-lg border border-slate-200"
+                    className="max-h-[68vh] mx-auto rounded-lg border border-[#1B2A24]/14"
                   />
                 </div>
               ) : (
-                <div className="bg-white rounded-lg shadow-sm border border-slate-200/80 max-w-[820px] mx-auto px-6 py-8 sm:px-12 sm:py-11 text-slate-900">
+                <div className="bg-white rounded-lg shadow-sm border border-[#1B2A24]/12 max-w-[820px] mx-auto px-6 py-8 sm:px-12 sm:py-11 text-[#141413]">
                   <div
                     className="docx-web-preview"
                     dangerouslySetInnerHTML={{ __html: docData.html_content }}
@@ -216,24 +216,24 @@ export function IpfsWordViewerModal({
 
         {/* Footer with IPFS CID & On-chain Keccak-256 Hash */}
         {docData && (
-          <div className="bg-slate-50 border-t border-slate-200/80 px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 shrink-0">
+          <div className="bg-[#F4F1EA]/70 border-t border-[#1B2A24]/12 px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-[#141413]/55 shrink-0">
             <div className="flex flex-wrap items-center gap-3 min-w-0">
               <StatusBadge variant="success" dot>
                 <ShieldCheck className="w-3.5 h-3.5" strokeWidth={1.75} />
                 <span>IPFS Verified</span>
               </StatusBadge>
-              <span className="font-mono text-xs text-slate-700 truncate">
-                CID: <strong className="text-blue-600">{docData.doc_cid}</strong>
+              <span className="font-mono text-xs text-[#141413]/80 truncate">
+                CID: <strong className="text-[#1B2A24]">{docData.doc_cid}</strong>
               </span>
               <button
                 type="button"
                 onClick={handleCopyCid}
-                className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                className="inline-flex items-center gap-1 text-xs font-medium text-[#1B2A24] hover:text-[#1B2A24] transition-colors"
               >
                 {copiedCid ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-600" strokeWidth={2} />
-                    <span className="text-emerald-600">Đã sao chép</span>
+                    <Check className="w-3.5 h-3.5 text-[#1E6B52]" strokeWidth={2} />
+                    <span className="text-[#1E6B52]">Đã sao chép</span>
                   </>
                 ) : (
                   <>
@@ -243,7 +243,7 @@ export function IpfsWordViewerModal({
                 )}
               </button>
             </div>
-            <div className="font-mono text-[11px] text-slate-500 truncate max-w-md">
+            <div className="font-mono text-[11px] text-[#141413]/55 truncate max-w-md">
               docHash: {docData.doc_hash}
             </div>
           </div>

@@ -122,8 +122,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = lang;
     document.title =
       lang === "en"
-        ? "Real Estate Tokenization Platform (RWA) — Official Edition"
-        : "Hệ thống Token hóa Bất động sản (RWA) — Bản Chính thức";
+        ? "RWA Registry — Fractional Real Estate Ownership"
+        : "Cổng Bất Động Sản RWA — Đầu tư & Sở hữu Bất động sản Số hóa";
 
     const origTexts = origTextMapRef.current;
     const origPlaceholders = origPlaceholderMapRef.current;

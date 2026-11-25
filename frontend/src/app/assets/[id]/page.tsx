@@ -267,7 +267,7 @@ export default function AssetDetailPage() {
         await loadDetail();
         setStatusMsg({
           type: "ok",
-          text: `[Đóng đợt bán sơ cấp] Đã gọi PrimarySale.closeSale() thành công!`,
+          text: `Đã đóng đợt mở bán sơ cấp thành công.`,
           txHash: res.tx_hash,
         });
       } else if (confirmModal.action === "update_valuation") {
@@ -315,14 +315,14 @@ export default function AssetDetailPage() {
           <Skeleton className="h-5 w-48" />
           <Skeleton className="h-9 w-32 rounded-lg" />
         </div>
-        <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
-          <div className="bg-slate-900 p-6 space-y-3">
+        <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
+          <div className="bg-[#1B2A24] p-6 space-y-3">
             <div className="flex gap-2">
-              <Skeleton className="h-5 w-20 rounded-full bg-slate-800" />
-              <Skeleton className="h-5 w-28 rounded-full bg-slate-800" />
+              <Skeleton className="h-5 w-20 rounded-full bg-[#141413]" />
+              <Skeleton className="h-5 w-28 rounded-full bg-[#141413]" />
             </div>
-            <Skeleton className="h-7 w-96 bg-slate-800" />
-            <Skeleton className="h-4 w-72 bg-slate-800" />
+            <Skeleton className="h-7 w-96 bg-[#141413]" />
+            <Skeleton className="h-4 w-72 bg-[#141413]" />
           </div>
           <div className="p-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {Array.from({ length: 6 }).map((_, idx) => (
@@ -331,7 +331,7 @@ export default function AssetDetailPage() {
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white border border-slate-200/80 rounded-xl p-5">
+          <div className="lg:col-span-2 bg-white border border-[#1B2A24]/12 rounded-2xl p-5">
             <table className="w-full">
               <tbody>
                 <TableRowsSkeleton rows={5} cols={6} />
@@ -346,11 +346,11 @@ export default function AssetDetailPage() {
 
   if (!estate) {
     return (
-      <div className="bg-white border border-slate-200/80 rounded-xl p-10 text-center space-y-3 shadow-xs">
-        <p className="text-sm font-semibold text-rose-600">Không tìm thấy hồ sơ bất động sản</p>
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl p-10 text-center space-y-3 shadow-xs">
+        <p className="text-sm font-semibold text-[#A63A3A]">Không tìm thấy hồ sơ bất động sản</p>
         <Link
           href="/assets"
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white text-sm font-medium transition-colors"
         >
           <ArrowLeft className="w-4 h-4" strokeWidth={1.75} />
           <span>Quay lại Danh mục Bất động sản</span>
@@ -387,7 +387,7 @@ export default function AssetDetailPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <Link
           href="/assets"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#141413]/65 hover:text-[#141413] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" strokeWidth={1.75} />
           <span>Quay lại Danh mục Bất động sản</span>
@@ -396,7 +396,7 @@ export default function AssetDetailPage() {
           {role === "issuer" && (
             <Link
               href="/admin?tab=issuer-dashboard"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 shadow-xs transition-colors"
             >
               Về Issuer Dashboard
             </Link>
@@ -404,7 +404,7 @@ export default function AssetDetailPage() {
           <button
             onClick={loadDetail}
             disabled={loading || busy}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 shadow-xs transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 shadow-xs transition-colors disabled:opacity-50"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} strokeWidth={1.75} />
             <span>Làm mới dữ liệu</span>
@@ -417,8 +417,8 @@ export default function AssetDetailPage() {
         <div
           className={`rounded-xl border px-4 py-3 text-xs font-medium flex items-center justify-between shadow-xs ${
             statusMsg.type === "ok"
-              ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-              : "border-rose-200 bg-rose-50 text-rose-700"
+              ? "border-[#1E6B52]/22 bg-[#E9F4EF] text-[#1E6B52]"
+              : "border-[#A63A3A]/22 bg-[#FBF0F0] text-[#A63A3A]"
           }`}
         >
           <div className="space-y-0.5">
@@ -441,9 +441,9 @@ export default function AssetDetailPage() {
       {/* =====================================================================
           PHẦN 5.1 & 5.2: TỔNG QUAN TÀI SẢN + THỐNG KÊ TOKEN
          ===================================================================== */}
-      <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
+      <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
         {/* Banner Tổng quan Tài sản */}
-        <div className="bg-slate-900 p-6 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden">
+        <div className="bg-[#1B2A24] p-6 text-white flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative overflow-hidden">
           <div className="space-y-2.5 relative z-10">
             <div className="flex flex-wrap items-center gap-2">
               <StatusBadge variant="info">
@@ -454,7 +454,7 @@ export default function AssetDetailPage() {
               </StatusBadge>
               {!estate.token_address ? (
                 <StatusBadge variant="warning" dot>
-                  Chờ Token hóa
+                  Sẵn sàng phát hành
                 </StatusBadge>
               ) : estate.is_paused ? (
                 <StatusBadge variant="danger" dot>
@@ -474,14 +474,14 @@ export default function AssetDetailPage() {
             <h1 className="text-2xl font-semibold tracking-tight text-white">{estate.name}</h1>
             <p className="text-[13px] text-slate-300 flex flex-wrap items-center gap-x-2 gap-y-1 tabular-nums">
               <span className="inline-flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" strokeWidth={1.75} />
+                <MapPin className="w-3.5 h-3.5 text-[#D7BC8D] shrink-0" strokeWidth={1.75} />
                 {estate.address_text}
               </span>
-              <span className="text-slate-600">·</span>
+              <span className="text-[#141413]/65">·</span>
               <span>
                 Diện tích: <strong className="text-white">{Number(estate.area_m2).toLocaleString("en-US")} m²</strong>
               </span>
-              <span className="text-slate-600">·</span>
+              <span className="text-[#141413]/65">·</span>
               <span>
                 Năm xây dựng: <strong className="text-white">{estate.build_year || 2024}</strong>
               </span>
@@ -489,7 +489,7 @@ export default function AssetDetailPage() {
           </div>
 
           <div className="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 text-xs space-y-1.5 shrink-0 relative z-10">
-            <span className="text-slate-400 block text-[11px] uppercase tracking-wider font-semibold">
+            <span className="text-[#141413]/45 block text-[11px] uppercase tracking-wider font-semibold">
               Smart Contract (AssetToken ERC-20)
             </span>
             {estate.token_address ? (
@@ -514,7 +514,7 @@ export default function AssetDetailPage() {
                 Chưa triển khai lên chuỗi
               </span>
             )}
-            <div className="text-xs text-slate-400">
+            <div className="text-xs text-[#141413]/45">
               Đơn vị phát hành: <strong className="text-slate-200">{estate.issuer_name}</strong>
             </div>
           </div>
@@ -523,66 +523,66 @@ export default function AssetDetailPage() {
         {/* Mô tả chi tiết & Thống kê Token */}
         <div className="p-6 space-y-5">
           {estate.description && (
-            <p className="text-[13px] text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/70">
-              <strong className="text-slate-900 font-semibold">Mô tả tài sản:</strong> {estate.description}
+            <p className="text-[13px] text-[#141413]/65 leading-relaxed bg-[#F4F1EA]/70 p-4 rounded-xl border border-slate-200/70">
+              <strong className="text-[#141413] font-semibold">Mô tả tài sản:</strong> {estate.description}
             </p>
           )}
 
           <div>
-            <h2 className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-3">
+            <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55 mb-3">
               Thống kê Token &amp; Cấu trúc Phân bổ Cổ phần On-chain
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-xl">
-                <span className="text-slate-500 block text-xs">Tổng cổ phần phát hành</span>
-                <strong className="text-base font-bold text-slate-900 tabular-nums whitespace-nowrap block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-[#1B2A24]/12 rounded-xl">
+                <span className="text-[#141413]/55 block text-xs">Tổng cổ phần phát hành</span>
+                <strong className="text-base font-bold text-[#141413] tabular-nums whitespace-nowrap block mt-1">
                   {totalShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
-                <span className="text-[11px] text-slate-400">100% Tổng cung</span>
+                <span className="text-[11px] text-[#141413]/45">100% Tổng cung</span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-xl">
-                <span className="text-slate-500 block text-xs">Cổ phần đã bán sơ cấp</span>
-                <strong className="text-base font-bold text-emerald-600 tabular-nums whitespace-nowrap block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-[#1B2A24]/12 rounded-xl">
+                <span className="text-[#141413]/55 block text-xs">Cổ phần đã bán sơ cấp</span>
+                <strong className="text-base font-bold text-[#1E6B52] tabular-nums whitespace-nowrap block mt-1">
                   {soldShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
-                <span className="text-[11px] text-slate-400 tabular-nums">
+                <span className="text-[11px] text-[#141413]/45 tabular-nums">
                   Chiếm {soldRatioPct}% tổng cung
                 </span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-xl">
-                <span className="text-slate-500 block text-xs">Cổ phần còn lại trong kho</span>
-                <strong className="text-base font-bold text-blue-600 tabular-nums whitespace-nowrap block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-[#1B2A24]/12 rounded-xl">
+                <span className="text-[#141413]/55 block text-xs">Cổ phần còn lại trong kho</span>
+                <strong className="text-base font-bold text-[#1B2A24] tabular-nums whitespace-nowrap block mt-1">
                   {vaultShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
-                <span className="text-[11px] text-slate-400">Lưu ký tại PrimarySale</span>
+                <span className="text-[11px] text-[#141413]/45">Lưu ký tại PrimarySale</span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-xl">
-                <span className="text-slate-500 block text-xs">Tổng định giá tài sản</span>
-                <strong className="text-base font-bold text-slate-900 tabular-nums whitespace-nowrap block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-[#1B2A24]/12 rounded-xl">
+                <span className="text-[#141413]/55 block text-xs">Tổng định giá tài sản</span>
+                <strong className="text-base font-bold text-[#141413] tabular-nums whitespace-nowrap block mt-1">
                   ${Number(estate.valuation).toLocaleString("en-US")}
                 </strong>
-                <span className="text-[11px] text-slate-400">Đơn vị: mUSDC</span>
+                <span className="text-[11px] text-[#141413]/45">Đơn vị: mUSDC</span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-xl">
-                <span className="text-slate-500 block text-xs">Giá trị nội tại / cổ phần</span>
-                <strong className="text-base font-bold text-slate-900 tabular-nums whitespace-nowrap block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-[#1B2A24]/12 rounded-xl">
+                <span className="text-[#141413]/55 block text-xs">Giá trị nội tại / cổ phần</span>
+                <strong className="text-base font-bold text-[#141413] tabular-nums whitespace-nowrap block mt-1">
                   ${Number(estate.intrinsic_price_per_share).toLocaleString("en-US")}
                 </strong>
-                <span className="text-[11px] text-slate-400">Định giá ÷ Tổng cung</span>
+                <span className="text-[11px] text-[#141413]/45">Định giá ÷ Tổng cung</span>
               </div>
 
-              <div className="p-3.5 bg-blue-50/70 border border-blue-200/70 rounded-xl">
-                <span className="text-blue-700 font-medium block text-xs">
+              <div className="p-3.5 bg-[#EEF2F0] border border-[#1B2A24]/15 rounded-xl">
+                <span className="text-[#1B2A24] font-medium block text-xs">
                   Ví hiện tại nắm giữ
                 </span>
-                <strong className="text-base font-bold text-blue-700 tabular-nums whitespace-nowrap block mt-1">
+                <strong className="text-base font-bold text-[#1B2A24] tabular-nums whitespace-nowrap block mt-1">
                   {userTokenBalance.toLocaleString("en-US")} {estate.symbol}
                 </strong>
-                <span className="text-[11px] text-blue-600/80 tabular-nums">
+                <span className="text-[11px] text-[#1B2A24]/75 tabular-nums">
                   Tỷ lệ ví: {currentWalletOwnershipPct}%
                 </span>
               </div>
@@ -598,13 +598,13 @@ export default function AssetDetailPage() {
         {/* CỘT TRÁI (2/3) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Tình hình mở bán sơ cấp */}
-          <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3.5">
+          <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1B2A24]/8 pb-3.5">
               <div>
-                <h2 className="text-base font-semibold text-slate-900">
+                <h2 className="text-base font-semibold text-[#141413]">
                   Tình hình Mở bán Sơ cấp &amp; Huy động Vốn
                 </h2>
-                <p className="text-[13px] text-slate-500">
+                <p className="text-[13px] text-[#141413]/55">
                   Tiến độ phân phối cổ phần trực tiếp từ hợp đồng PrimarySale
                 </p>
               </div>
@@ -614,33 +614,33 @@ export default function AssetDetailPage() {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 text-xs">
-              <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70">
-                <span className="text-slate-500 block">Đưa ra chào bán</span>
-                <strong className="text-sm font-semibold text-slate-900 tabular-nums whitespace-nowrap mt-0.5 block">
+              <div className="p-3 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70">
+                <span className="text-[#141413]/55 block">Đưa ra chào bán</span>
+                <strong className="text-sm font-semibold text-[#141413] tabular-nums whitespace-nowrap mt-0.5 block">
                   {offeredShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70">
-                <span className="text-slate-500 block">Số lượng đã bán</span>
-                <strong className="text-sm font-semibold text-emerald-600 tabular-nums whitespace-nowrap mt-0.5 block">
+              <div className="p-3 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70">
+                <span className="text-[#141413]/55 block">Số lượng đã bán</span>
+                <strong className="text-sm font-semibold text-[#1E6B52] tabular-nums whitespace-nowrap mt-0.5 block">
                   {soldShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70">
-                <span className="text-slate-500 block">Số lượng còn lại</span>
-                <strong className="text-sm font-semibold text-blue-600 tabular-nums whitespace-nowrap mt-0.5 block">
+              <div className="p-3 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70">
+                <span className="text-[#141413]/55 block">Số lượng còn lại</span>
+                <strong className="text-sm font-semibold text-[#1B2A24] tabular-nums whitespace-nowrap mt-0.5 block">
                   {remainingSaleShares.toLocaleString("en-US")} {estate.symbol}
                 </strong>
               </div>
-              <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/70">
-                <span className="text-slate-500 block">Giá bán / cổ phần</span>
-                <strong className="text-sm font-semibold text-slate-900 tabular-nums whitespace-nowrap mt-0.5 block">
+              <div className="p-3 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70">
+                <span className="text-[#141413]/55 block">Giá bán / cổ phần</span>
+                <strong className="text-sm font-semibold text-[#141413] tabular-nums whitespace-nowrap mt-0.5 block">
                   ${Number(sale.price_per_share || 0).toLocaleString("en-US")}
                 </strong>
               </div>
-              <div className="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200/70 sm:col-span-2 xl:col-span-1">
-                <span className="text-emerald-700 block font-medium">Tổng vốn huy động</span>
-                <strong className="text-sm font-bold text-emerald-700 tabular-nums whitespace-nowrap mt-0.5 block">
+              <div className="p-3 rounded-xl bg-[#E9F4EF] border border-emerald-200/70 sm:col-span-2 xl:col-span-1">
+                <span className="text-[#1E6B52] block font-medium">Tổng vốn huy động</span>
+                <strong className="text-sm font-bold text-[#1E6B52] tabular-nums whitespace-nowrap mt-0.5 block">
                   ${raisedUsdc.toLocaleString("en-US")}
                 </strong>
               </div>
@@ -649,17 +649,17 @@ export default function AssetDetailPage() {
             {/* Progress Bar Tiến độ bán */}
             <div className="space-y-1.5 pt-1">
               <div className="flex items-center justify-between text-xs">
-                <span className="font-medium text-slate-700">
+                <span className="font-medium text-[#141413]/80">
                   Tiến độ phân phối đợt mở bán sơ cấp
                 </span>
-                <strong className="text-blue-600 tabular-nums">
+                <strong className="text-[#1B2A24] tabular-nums">
                   {saleProgressPct}% ({soldShares.toLocaleString("en-US")} /{" "}
                   {offeredShares.toLocaleString("en-US")} {estate.symbol})
                 </strong>
               </div>
-              <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              <div className="w-full h-2.5 bg-[#EAE5DA]/85 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-[#1B2A24] to-emerald-500 rounded-full transition-all duration-300"
                   style={{ width: `${Math.min(100, saleProgressPct)}%` }}
                 />
               </div>
@@ -667,17 +667,17 @@ export default function AssetDetailPage() {
           </div>
 
           {/* Quản lý và Kiểm chứng Hồ sơ Pháp lý IPFS */}
-          <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3.5">
+          <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1B2A24]/8 pb-3.5">
               <div className="flex items-start gap-2.5">
-                <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-9 h-9 rounded-lg bg-[#EEF2F0] text-[#1B2A24] flex items-center justify-center shrink-0 mt-0.5">
                   <FileCheck2 className="w-4 h-4" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <h2 className="text-base font-semibold text-slate-900">
+                  <h2 className="text-base font-semibold text-[#141413]">
                     Quản lý &amp; Kiểm chứng Hồ sơ Pháp lý (IPFS)
                   </h2>
-                  <p className="text-[13px] text-slate-500">
+                  <p className="text-[13px] text-[#141413]/55">
                     Đối chiếu chữ ký mật mã Keccak-256 giữa tệp IPFS và hợp đồng AssetToken
                   </p>
                 </div>
@@ -689,8 +689,8 @@ export default function AssetDetailPage() {
             </div>
 
             {!hashMatches && (
-              <div className="p-3.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 shrink-0 text-rose-600" strokeWidth={1.75} />
+              <div className="p-3.5 rounded-xl border border-[#A63A3A]/22 bg-[#FBF0F0] text-[#A63A3A] text-xs flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 shrink-0 text-[#A63A3A]" strokeWidth={1.75} />
                 <span>
                   <strong>CẢNH BÁO BẢO MẬT:</strong> Mã băm tài liệu pháp lý hiện tại không khớp với
                   bản ghi bất biến docHash trên hợp đồng AssetToken!
@@ -699,51 +699,51 @@ export default function AssetDetailPage() {
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl">
-                <span className="text-slate-500 block">Tên &amp; Loại tài liệu pháp lý</span>
-                <strong className="text-slate-900 font-semibold block mt-1 truncate" title={estate.doc_name}>
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl">
+                <span className="text-[#141413]/55 block">Tên &amp; Loại tài liệu pháp lý</span>
+                <strong className="text-[#141413] font-semibold block mt-1 truncate" title={estate.doc_name}>
                   {estate.doc_name || `Ho_so_Phap_ly_${estate.symbol}.docx`}
                 </strong>
-                <span className="text-[11px] text-blue-600 font-medium mt-0.5 block">
+                <span className="text-[11px] text-[#1B2A24] font-medium mt-0.5 block">
                   Microsoft Word (.docx) · Hồ sơ thẩm định
                 </span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl">
-                <span className="text-slate-500 block">Thời gian đăng ký &amp; Phiên bản</span>
-                <strong className="text-slate-900 font-semibold tabular-nums block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl">
+                <span className="text-[#141413]/55 block">Thời gian đăng ký &amp; Phiên bản</span>
+                <strong className="text-[#141413] font-semibold tabular-nums block mt-1">
                   {formatDate(estate.created_at)}
                 </strong>
-                <span className="text-[11px] text-emerald-600 font-medium mt-0.5 block">
+                <span className="text-[11px] text-[#1E6B52] font-medium mt-0.5 block">
                   v1.0 (Ghi nhận bất biến On-chain)
                 </span>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl">
-                <span className="text-slate-500 block">Dung lượng &amp; Lưu trữ</span>
-                <strong className="text-slate-900 font-semibold tabular-nums block mt-1">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl">
+                <span className="text-[#141413]/55 block">Dung lượng &amp; Lưu trữ</span>
+                <strong className="text-[#141413] font-semibold tabular-nums block mt-1">
                   {estate.doc_size_bytes
                     ? `${(Number(estate.doc_size_bytes) / 1024).toFixed(2)} KB`
                     : "Bản ghi Genesis IPFS"}
                 </strong>
-                <span className="text-[11px] text-slate-500 mt-0.5 block">IPFS Pinata / Local Gateway</span>
+                <span className="text-[11px] text-[#141413]/55 mt-0.5 block">IPFS Pinata / Local Gateway</span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl space-y-1.5">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 font-medium">
+                  <span className="text-[#141413]/55 font-medium">
                     IPFS Content Identifier (docCID)
                   </span>
                   <button
                     onClick={() => copyToClipboard(estate.doc_cid)}
-                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    className="inline-flex items-center gap-1 text-xs text-[#1B2A24] hover:text-[#1B2A24] font-medium transition-colors"
                   >
                     {copiedText === estate.doc_cid ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-600" strokeWidth={2} />
-                        <span className="text-emerald-600">Đã sao chép</span>
+                        <Check className="w-3.5 h-3.5 text-[#1E6B52]" strokeWidth={2} />
+                        <span className="text-[#1E6B52]">Đã sao chép</span>
                       </>
                     ) : (
                       <>
@@ -753,24 +753,24 @@ export default function AssetDetailPage() {
                     )}
                   </button>
                 </div>
-                <code className="font-mono text-xs text-blue-600 font-medium break-all block">
+                <code className="font-mono text-xs text-[#1B2A24] font-medium break-all block">
                   {estate.doc_cid}
                 </code>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl space-y-1.5">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-500 font-medium">
+                  <span className="text-[#141413]/55 font-medium">
                     Keccak-256 Document Hash (docHash)
                   </span>
                   <button
                     onClick={() => copyToClipboard(estate.doc_hash)}
-                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                    className="inline-flex items-center gap-1 text-xs text-[#1B2A24] hover:text-[#1B2A24] font-medium transition-colors"
                   >
                     {copiedText === estate.doc_hash ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-600" strokeWidth={2} />
-                        <span className="text-emerald-600">Đã sao chép</span>
+                        <Check className="w-3.5 h-3.5 text-[#1E6B52]" strokeWidth={2} />
+                        <span className="text-[#1E6B52]">Đã sao chép</span>
                       </>
                     ) : (
                       <>
@@ -780,7 +780,7 @@ export default function AssetDetailPage() {
                     )}
                   </button>
                 </div>
-                <code className="font-mono text-xs text-slate-700 break-all block">
+                <code className="font-mono text-xs text-[#141413]/80 break-all block">
                   {estate.doc_hash}
                 </code>
               </div>
@@ -791,7 +791,7 @@ export default function AssetDetailPage() {
               <button
                 type="button"
                 onClick={() => setWordViewerOpen(true)}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-white font-medium shadow-xs transition-colors"
               >
                 <Eye className="w-4 h-4" strokeWidth={1.75} />
                 <span>Xem tài liệu IPFS</span>
@@ -800,9 +800,9 @@ export default function AssetDetailPage() {
               <a
                 href={`${backendBaseUrl}/api/assets/${estate.id}/document/download`}
                 download={estate.doc_name || `Ho_so_Phap_ly_${estate.symbol}.docx`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium shadow-xs transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-[#141413]/80 font-medium shadow-xs transition-colors"
               >
-                <Download className="w-4 h-4 text-slate-500" strokeWidth={1.75} />
+                <Download className="w-4 h-4 text-[#141413]/55" strokeWidth={1.75} />
                 <span>Tải tài liệu (.docx)</span>
               </a>
 
@@ -810,7 +810,7 @@ export default function AssetDetailPage() {
                 type="button"
                 onClick={handleReverifyIpfs}
                 disabled={verifyingIpfs}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-medium transition-colors disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-[#1E6B52]/22 bg-[#E9F4EF] hover:bg-[#D8ECE3] text-[#1E6B52] font-medium transition-colors disabled:opacity-50"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${verifyingIpfs ? "animate-spin" : ""}`} strokeWidth={1.75} />
                 <span>Kiểm chứng lại tính toàn vẹn On-chain</span>
@@ -818,8 +818,8 @@ export default function AssetDetailPage() {
             </div>
 
             {ipfsVerifyResult && (
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs space-y-1 font-mono text-slate-700">
-                <div className="font-sans font-semibold text-slate-900 mb-1">
+              <div className="p-3.5 rounded-xl bg-[#F4F1EA]/70 border border-[#1B2A24]/12 text-xs space-y-1 font-mono text-[#141413]/80">
+                <div className="font-sans font-semibold text-[#141413] mb-1">
                   Kết quả đối chiếu mật mã Keccak-256 trực tiếp:
                 </div>
                 <div>• Hash lưu trong Database: {ipfsVerifyResult.db_doc_hash}</div>
@@ -830,13 +830,13 @@ export default function AssetDetailPage() {
           </div>
 
           {/* Bảng Lịch sử các lần thay đổi Định giá */}
-          <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
+            <div className="px-5 py-4 border-b border-[#1B2A24]/8 flex items-center justify-between">
               <div>
-                <h2 className="text-base font-semibold text-slate-900">
+                <h2 className="text-base font-semibold text-[#141413]">
                   Lịch sử Thay đổi Định giá Bất động sản
                 </h2>
-                <p className="text-[13px] text-slate-500">
+                <p className="text-[13px] text-[#141413]/55">
                   Nhật ký cập nhật định giá tài sản bất biến trên hợp đồng thông minh
                 </p>
               </div>
@@ -848,7 +848,7 @@ export default function AssetDetailPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                  <tr className="bg-[#F4F1EA]/80 border-b border-[#1B2A24]/12 text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55">
                     <th className="py-3 px-4">Thời gian</th>
                     <th className="py-3 px-4">Định giá cũ → mới</th>
                     <th className="py-3 px-4">Người thực hiện</th>
@@ -856,48 +856,48 @@ export default function AssetDetailPage() {
                     <th className="py-3 px-4 text-right">Tx Hash</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
+                <tbody className="divide-y divide-[#1B2A24]/8 text-sm">
                   {(estate.valuation_history || []).length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="py-8 text-center text-xs text-slate-500">
+                      <td colSpan={5} className="py-8 text-center text-xs text-[#141413]/55">
                         Chưa có lịch sử điều chỉnh định giá nào được ghi nhận.
                       </td>
                     </tr>
                   ) : (
                     (estate.valuation_history || []).map((v: any, idx: number) => (
-                      <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                        <td className="py-3.5 px-4 whitespace-nowrap text-xs text-slate-500 tabular-nums">
+                      <tr key={idx} className="hover:bg-[#F4F1EA]/75 transition-colors">
+                        <td className="py-3.5 px-4 whitespace-nowrap text-xs text-[#141413]/55 tabular-nums">
                           {formatDate(v.signed_at)}
                         </td>
                         <td className="py-3.5 px-4 whitespace-nowrap tabular-nums">
                           {Number(v.old_valuation) === Number(v.new_valuation) ? (
-                            <strong className="text-sm font-semibold text-slate-900">
+                            <strong className="text-sm font-semibold text-[#141413]">
                               ${Number(v.new_valuation).toLocaleString("en-US")} mUSDC
                             </strong>
                           ) : (
                             <>
-                              <span className="text-xs text-slate-400 line-through mr-1.5">
+                              <span className="text-xs text-[#141413]/45 line-through mr-1.5">
                                 ${Number(v.old_valuation).toLocaleString("en-US")}
                               </span>
-                              <strong className="text-sm font-semibold text-emerald-600">
+                              <strong className="text-sm font-semibold text-[#1E6B52]">
                                 → ${Number(v.new_valuation).toLocaleString("en-US")} mUSDC
                               </strong>
                             </>
                           )}
                         </td>
                         <td className="py-3.5 px-4">
-                          <div className="text-sm font-medium text-slate-900">{v.actor_name}</div>
+                          <div className="text-sm font-medium text-[#141413]">{v.actor_name}</div>
                           {v.actor_address && <CopyAddress address={v.actor_address} chars={4} />}
                         </td>
                         <td className="py-3.5 px-4">
-                          <div className="text-sm font-medium text-slate-900">{v.basis}</div>
-                          <div className="text-xs text-slate-500">{v.notes}</div>
+                          <div className="text-sm font-medium text-[#141413]">{v.basis}</div>
+                          <div className="text-xs text-[#141413]/55">{v.notes}</div>
                         </td>
                         <td className="py-3.5 px-4 text-right">
                           {v.tx_hash ? (
                             <CopyAddress address={v.tx_hash} chars={5} className="justify-end" />
                           ) : (
-                            <span className="font-mono text-xs text-slate-400">Genesis</span>
+                            <span className="font-mono text-xs text-[#141413]/45">Genesis</span>
                           )}
                         </td>
                       </tr>
@@ -909,13 +909,13 @@ export default function AssetDetailPage() {
           </div>
 
           {/* Bảng Lịch sử Giao dịch */}
-          <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs overflow-hidden">
-            <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs overflow-hidden">
+            <div className="px-5 py-4 border-b border-[#1B2A24]/8 flex items-center justify-between">
               <div>
-                <h2 className="text-base font-semibold text-slate-900">
+                <h2 className="text-base font-semibold text-[#141413]">
                   Lịch sử Giao dịch Cổ phần Bất động sản
                 </h2>
-                <p className="text-[13px] text-slate-500">
+                <p className="text-[13px] text-[#141413]/55">
                   Nhấp vào một dòng giao dịch bất kỳ để xem chi tiết Block, Đơn giá và TxHash
                 </p>
               </div>
@@ -924,7 +924,7 @@ export default function AssetDetailPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                  <tr className="bg-[#F4F1EA]/80 border-b border-[#1B2A24]/12 text-[11px] font-semibold uppercase tracking-wider text-[#141413]/55">
                     <th className="py-3 px-4">Thời gian</th>
                     <th className="py-3 px-3">Loại GD</th>
                     <th className="py-3 px-3">Người gửi</th>
@@ -934,10 +934,10 @@ export default function AssetDetailPage() {
                     <th className="py-3 px-4 text-right">Trạng thái</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
+                <tbody className="divide-y divide-[#1B2A24]/8 text-sm">
                   {(estate.transfers || []).length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="py-10 text-center text-xs text-slate-500">
+                      <td colSpan={7} className="py-10 text-center text-xs text-[#141413]/55">
                         Chưa có giao dịch chuyển nhượng nào phát sinh cho tài sản này.
                       </td>
                     </tr>
@@ -946,9 +946,9 @@ export default function AssetDetailPage() {
                       <tr
                         key={t.id}
                         onClick={() => setSelectedTxDetail(t)}
-                        className="hover:bg-slate-50/80 cursor-pointer transition-colors"
+                        className="hover:bg-[#F4F1EA]/75 cursor-pointer transition-colors"
                       >
-                        <td className="py-3.5 px-4 whitespace-nowrap text-xs text-slate-500 tabular-nums">
+                        <td className="py-3.5 px-4 whitespace-nowrap text-xs text-[#141413]/55 tabular-nums">
                           {formatDate(t.created_at)}
                         </td>
                         <td className="py-3.5 px-3 whitespace-nowrap">
@@ -956,16 +956,16 @@ export default function AssetDetailPage() {
                             {formatEventTypeLabel(t.event_type)}
                           </StatusBadge>
                         </td>
-                        <td className="py-3.5 px-3 font-mono text-xs text-slate-500 whitespace-nowrap">
+                        <td className="py-3.5 px-3 font-mono text-xs text-[#141413]/55 whitespace-nowrap">
                           {t.from_address.slice(0, 6)}...{t.from_address.slice(-4)}
                         </td>
-                        <td className="py-3.5 px-3 font-mono text-xs text-slate-900 whitespace-nowrap">
+                        <td className="py-3.5 px-3 font-mono text-xs text-[#141413] whitespace-nowrap">
                           {t.to_address.slice(0, 6)}...{t.to_address.slice(-4)}
                         </td>
-                        <td className="py-3.5 px-3 font-medium text-slate-900 tabular-nums whitespace-nowrap">
+                        <td className="py-3.5 px-3 font-medium text-[#141413] tabular-nums whitespace-nowrap">
                           {Number(t.amount).toLocaleString("en-US")} {estate.symbol}
                         </td>
-                        <td className="py-3.5 px-3 font-semibold text-emerald-600 tabular-nums whitespace-nowrap">
+                        <td className="py-3.5 px-3 font-semibold text-[#1E6B52] tabular-nums whitespace-nowrap">
                           {t.usdc_paid
                             ? `$${Number(t.usdc_paid).toLocaleString("en-US")} mUSDC`
                             : "—"}
@@ -982,10 +982,10 @@ export default function AssetDetailPage() {
               </table>
             </div>
 
-            <div className="px-5 py-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-slate-500 bg-slate-50/40">
-              <Globe className="w-3.5 h-3.5 text-slate-400" strokeWidth={1.75} />
+            <div className="px-5 py-3 border-t border-[#1B2A24]/8 flex items-center gap-1.5 text-xs text-[#141413]/55 bg-slate-50/40">
+              <Globe className="w-3.5 h-3.5 text-[#141413]/45" strokeWidth={1.75} />
               <span>
-                Tổng cộng <strong className="text-slate-700 tabular-nums">{estate.transfers?.length || 0}</strong> sự kiện giao dịch đã xác
+                Tổng cộng <strong className="text-[#141413]/80 tabular-nums">{estate.transfers?.length || 0}</strong> sự kiện giao dịch đã xác
                 nhận từ Blockchain Event Indexer
               </span>
             </div>
@@ -996,36 +996,36 @@ export default function AssetDetailPage() {
         <div className="space-y-6">
           {/* 1. INVESTOR: HỘP ĐẶT MUA SƠ CẤP */}
           {role === "investor" && (
-            <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-4">
-              <div className="border-b border-slate-100 pb-3.5 space-y-1">
+            <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-4">
+              <div className="border-b border-[#1B2A24]/8 pb-3.5 space-y-1">
                 <StatusBadge variant="success" dot>
                   Mua sơ cấp
                 </StatusBadge>
-                <h2 className="text-base font-semibold text-slate-900 pt-1">
+                <h2 className="text-base font-semibold text-[#141413] pt-1">
                   Đặt mua Cổ phần Sơ cấp
                 </h2>
               </div>
 
               {sale.is_open ? (
                 <form onSubmit={handleBuyPrimary} className="space-y-3.5 text-xs">
-                  <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl space-y-2">
+                  <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-slate-500">Đơn giá chào bán:</span>
-                      <strong className="text-slate-900 font-semibold tabular-nums">
+                      <span className="text-[#141413]/55">Đơn giá chào bán:</span>
+                      <strong className="text-[#141413] font-semibold tabular-nums">
                         ${Number(sale.price_per_share).toLocaleString("en-US")} mUSDC
                       </strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500">Cổ phần còn lại:</span>
-                      <strong className="text-blue-600 font-semibold tabular-nums">
+                      <span className="text-[#141413]/55">Cổ phần còn lại:</span>
+                      <strong className="text-[#1B2A24] font-semibold tabular-nums">
                         {remainingSaleShares.toLocaleString("en-US")} /{" "}
                         {offeredShares.toLocaleString("en-US")}
                       </strong>
                     </div>
                     {isAuthenticated && (
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Số dư ví của bạn:</span>
-                        <strong className="text-emerald-600 font-semibold tabular-nums">
+                        <span className="text-[#141413]/55">Số dư ví của bạn:</span>
+                        <strong className="text-[#1E6B52] font-semibold tabular-nums">
                           ${Number(usdcBalance).toLocaleString("en-US")} mUSDC
                         </strong>
                       </div>
@@ -1033,7 +1033,7 @@ export default function AssetDetailPage() {
                   </div>
 
                   <div>
-                    <label className="block font-medium text-slate-700 mb-1.5">
+                    <label className="block font-medium text-[#141413]/80 mb-1.5">
                       Số lượng cổ phần đặt mua:
                     </label>
                     <input
@@ -1042,13 +1042,13 @@ export default function AssetDetailPage() {
                       max={remainingSaleShares}
                       value={buyAmount}
                       onChange={(e) => setBuyAmount(e.target.value)}
-                      className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-900 tabular-nums focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
+                      className="w-full rounded-lg border border-[#1B2A24]/14 bg-white px-3 py-2 text-sm font-medium text-[#141413] tabular-nums focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none transition-all"
                     />
                   </div>
 
-                  <div className="flex justify-between items-center p-3 bg-blue-50/70 rounded-xl border border-blue-200/70">
-                    <span className="text-slate-700 font-medium">Tổng thanh toán:</span>
-                    <strong className="text-sm font-bold text-blue-700 tabular-nums">
+                  <div className="flex justify-between items-center p-3 bg-[#EEF2F0] rounded-xl border border-[#1B2A24]/15">
+                    <span className="text-[#141413]/80 font-medium">Tổng thanh toán:</span>
+                    <strong className="text-sm font-bold text-[#1B2A24] tabular-nums">
                       ${totalCostUsdc.toLocaleString("en-US")} mUSDC
                     </strong>
                   </div>
@@ -1057,7 +1057,7 @@ export default function AssetDetailPage() {
                     <button
                       type="submit"
                       disabled={busy}
-                      className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
                     >
                       <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
                       <span>{busy ? "Đang ký giao dịch..." : "Mua cổ phần sơ cấp"}</span>
@@ -1065,7 +1065,7 @@ export default function AssetDetailPage() {
                   ) : (
                     <Link
                       href="/login"
-                      className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors"
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors"
                     >
                       <LogIn className="w-4 h-4" strokeWidth={1.75} />
                       <span>Đăng nhập để mua cổ phần</span>
@@ -1073,7 +1073,7 @@ export default function AssetDetailPage() {
                   )}
                 </form>
               ) : (
-                <div className="p-4 bg-slate-50 border border-slate-200/70 rounded-xl text-xs text-slate-500 leading-relaxed">
+                <div className="p-4 bg-[#F4F1EA]/70 border border-slate-200/70 rounded-xl text-xs text-[#141413]/55 leading-relaxed">
                   Bất động sản này hiện chưa mở bán sơ cấp hoặc đợt mở bán đã đóng.
                 </div>
               )}
@@ -1084,18 +1084,18 @@ export default function AssetDetailPage() {
           {role === "issuer" && (
             <div className="space-y-6">
               {!estate.token_address ? (
-                <div className="bg-white border border-amber-200 rounded-xl shadow-xs p-5 space-y-4 text-xs">
-                  <div className="border-b border-slate-100 pb-3.5 space-y-1">
+                <div className="bg-white border border-[#B8844A]/30 rounded-xl shadow-xs p-5 space-y-4 text-xs">
+                  <div className="border-b border-[#1B2A24]/8 pb-3.5 space-y-1">
                     <StatusBadge variant="warning" dot>
-                      Chờ Token hóa
+                      Sẵn sàng phát hành
                     </StatusBadge>
-                    <h2 className="text-base font-semibold text-slate-900 pt-1">
+                    <h2 className="text-base font-semibold text-[#141413] pt-1">
                       Phát hành Hợp đồng AssetToken lên Blockchain
                     </h2>
                   </div>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#141413]/65 leading-relaxed">
                     Hồ sơ bất động sản đã được đăng ký. Nhấn nút bên dưới để gọi{" "}
-                    <code className="font-mono text-slate-800">AssetFactory.createAsset()</code> và đúc{" "}
+                    hệ thống phát hành cổ phần và phân bổ{" "}
                     <strong className="tabular-nums">{totalShares.toLocaleString("en-US")}</strong> cổ phần {estate.symbol}.
                   </p>
                   <button
@@ -1114,7 +1114,7 @@ export default function AssetDetailPage() {
                       })
                     }
                     disabled={busy}
-                    className="w-full rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
+                    className="w-full rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors disabled:opacity-50"
                   >
                     Xác nhận Token hóa (AssetFactory)
                   </button>
@@ -1122,30 +1122,30 @@ export default function AssetDetailPage() {
               ) : (
                 <>
                   {/* Quản lý đợt mở bán sơ cấp */}
-                  <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-4 text-xs">
-                    <div className="border-b border-slate-100 pb-3.5 space-y-1">
+                  <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-4 text-xs">
+                    <div className="border-b border-[#1B2A24]/8 pb-3.5 space-y-1">
                       <StatusBadge variant="success" dot>
                         Quản lý mở bán sơ cấp
                       </StatusBadge>
-                      <h2 className="text-base font-semibold text-slate-900 pt-1">
+                      <h2 className="text-base font-semibold text-[#141413] pt-1">
                         Quản lý Đợt Mở bán Sơ cấp
                       </h2>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-slate-50/80 border border-slate-200/70 space-y-1.5">
+                    <div className="p-3.5 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70 space-y-1.5">
                       <div className="flex justify-between items-center">
-                        <span className="text-slate-500">Trạng thái hiện tại:</span>
+                        <span className="text-[#141413]/55">Trạng thái hiện tại:</span>
                         <StatusBadge variant={sale.is_open ? "success" : "danger"} dot>
                           {sale.is_open ? "Đang mở bán" : "Đã đóng bán"}
                         </StatusBadge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Đang phân phối:</span>
-                        <strong className="text-slate-900 tabular-nums">{offeredShares.toLocaleString("en-US")} cp</strong>
+                        <span className="text-[#141413]/55">Đang phân phối:</span>
+                        <strong className="text-[#141413] tabular-nums">{offeredShares.toLocaleString("en-US")} cp</strong>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Đã bán / Còn lại:</span>
-                        <strong className="text-slate-900 tabular-nums">
+                        <span className="text-[#141413]/55">Đã bán / Còn lại:</span>
+                        <strong className="text-[#141413] tabular-nums">
                           {soldShares.toLocaleString("en-US")} /{" "}
                           {remainingSaleShares.toLocaleString("en-US")} cp
                         </strong>
@@ -1155,7 +1155,7 @@ export default function AssetDetailPage() {
                     <div className="space-y-3">
                       <div className="grid grid-cols-2 gap-2.5">
                         <div>
-                          <label className="font-medium text-slate-700 block mb-1">
+                          <label className="font-medium text-[#141413]/80 block mb-1">
                             Giá bán / cp (mUSDC *):
                           </label>
                           <input
@@ -1164,11 +1164,11 @@ export default function AssetDetailPage() {
                             step="any"
                             value={openSalePrice}
                             onChange={(e) => setOpenSalePrice(e.target.value)}
-                            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 font-medium text-slate-900 tabular-nums focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                            className="w-full rounded-lg border border-[#1B2A24]/14 px-2.5 py-2 font-medium text-[#141413] tabular-nums focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none"
                           />
                         </div>
                         <div>
-                          <label className="font-medium text-slate-700 block mb-1">
+                          <label className="font-medium text-[#141413]/80 block mb-1">
                             Số lượng mở bán (*):
                           </label>
                           <input
@@ -1177,13 +1177,13 @@ export default function AssetDetailPage() {
                             max={totalShares}
                             value={openSaleAmount}
                             onChange={(e) => setOpenSaleAmount(e.target.value)}
-                            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 font-medium text-slate-900 tabular-nums focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                            className="w-full rounded-lg border border-[#1B2A24]/14 px-2.5 py-2 font-medium text-[#141413] tabular-nums focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none"
                           />
                         </div>
                       </div>
 
                       {!isSaleAmountValid && (
-                        <p className="text-xs text-rose-600 font-medium">
+                        <p className="text-xs text-[#A63A3A] font-medium">
                           Số lượng mở bán phải lớn hơn 0 và không vượt quá tổng cung (
                           {totalShares.toLocaleString("en-US")} cp)!
                         </p>
@@ -1191,21 +1191,21 @@ export default function AssetDetailPage() {
 
                       <div className="grid grid-cols-2 gap-2.5">
                         <div>
-                          <label className="text-slate-500 block mb-1">Ngày bắt đầu:</label>
+                          <label className="text-[#141413]/55 block mb-1">Ngày bắt đầu:</label>
                           <input
                             type="date"
                             value={openSaleStartDate}
                             onChange={(e) => setOpenSaleStartDate(e.target.value)}
-                            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+                            className="w-full rounded-lg border border-[#1B2A24]/14 px-2.5 py-2 text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
                           />
                         </div>
                         <div>
-                          <label className="text-slate-500 block mb-1">Ngày kết thúc dự kiến:</label>
+                          <label className="text-[#141413]/55 block mb-1">Ngày kết thúc dự kiến:</label>
                           <input
                             type="date"
                             value={openSaleEndDate}
                             onChange={(e) => setOpenSaleEndDate(e.target.value)}
-                            className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-slate-900 tabular-nums focus:border-blue-500 focus:outline-none"
+                            className="w-full rounded-lg border border-[#1B2A24]/14 px-2.5 py-2 text-[#141413] tabular-nums focus:border-[#B8844A] focus:outline-none"
                           />
                         </div>
                       </div>
@@ -1218,7 +1218,7 @@ export default function AssetDetailPage() {
                               open: true,
                               action: "open_sale",
                               title: `Xác nhận Mở bán Sơ cấp (${estate.symbol})`,
-                              description: `Gọi PrimarySale.openSale(${
+                              description: `Mở đợt chào bán sơ cấp cho tài sản (${
                                 estate.token_address
                               }) với số lượng ${Number(openSaleAmount).toLocaleString(
                                 "en-US"
@@ -1228,7 +1228,7 @@ export default function AssetDetailPage() {
                             })
                           }
                           disabled={busy || !isSaleAmountValid || !isSalePriceValid}
-                          className="flex-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 px-3 py-2.5 font-medium text-white shadow-xs transition-colors"
+                          className="flex-1 rounded-lg bg-[#1E6B52] hover:bg-[#175540] disabled:opacity-50 px-3 py-2.5 font-medium text-white shadow-xs transition-colors"
                         >
                           Mở bán sơ cấp
                         </button>
@@ -1245,7 +1245,7 @@ export default function AssetDetailPage() {
                               })
                             }
                             disabled={busy}
-                            className="rounded-lg bg-rose-50 text-rose-600 border border-rose-200/70 hover:bg-rose-100 px-3 py-2.5 font-medium transition-colors"
+                            className="rounded-lg bg-[#FBF0F0] text-[#A63A3A] border border-[#A63A3A]/22 hover:bg-[#F5E0E0] px-3 py-2.5 font-medium transition-colors"
                           >
                             Đóng đợt bán
                           </button>
@@ -1255,26 +1255,26 @@ export default function AssetDetailPage() {
                   </div>
 
                   {/* Cập nhật Định giá */}
-                  <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-4 text-xs">
-                    <div className="border-b border-slate-100 pb-3.5 space-y-1">
+                  <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-4 text-xs">
+                    <div className="border-b border-[#1B2A24]/8 pb-3.5 space-y-1">
                       <StatusBadge variant="info">
                         Cập nhật định giá
                       </StatusBadge>
-                      <h2 className="text-base font-semibold text-slate-900 pt-1">
+                      <h2 className="text-base font-semibold text-[#141413] pt-1">
                         Cập nhật Định giá Tài sản
                       </h2>
                     </div>
 
                     <div className="space-y-3">
-                      <div className="flex justify-between p-3 rounded-xl bg-slate-50/80 border border-slate-200/70">
-                        <span className="text-slate-500">Định giá hiện tại trên chuỗi:</span>
-                        <strong className="text-emerald-600 font-semibold tabular-nums">
+                      <div className="flex justify-between p-3 rounded-xl bg-[#F4F1EA]/80 border border-slate-200/70">
+                        <span className="text-[#141413]/55">Định giá hiện tại trên chuỗi:</span>
+                        <strong className="text-[#1E6B52] font-semibold tabular-nums">
                           ${Number(estate.valuation).toLocaleString("en-US")} mUSDC
                         </strong>
                       </div>
 
                       <div>
-                        <label className="font-medium text-slate-700 block mb-1">
+                        <label className="font-medium text-[#141413]/80 block mb-1">
                           Giá trị Định giá mới (mUSDC *):
                         </label>
                         <input
@@ -1282,31 +1282,31 @@ export default function AssetDetailPage() {
                           min="1"
                           value={newValuation}
                           onChange={(e) => setNewValuation(e.target.value)}
-                          className="w-full rounded-lg border border-slate-200 px-3 py-2 font-semibold text-slate-900 tabular-nums focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+                          className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 font-semibold text-[#141413] tabular-nums focus:border-[#B8844A] focus:ring-2 focus:ring-[#B8844A]/20 focus:outline-none"
                         />
                       </div>
 
                       <div>
-                        <label className="font-medium text-slate-700 block mb-1">
+                        <label className="font-medium text-[#141413]/80 block mb-1">
                           Căn cứ thẩm định giá:
                         </label>
                         <input
                           type="text"
                           value={valuationBasis}
                           onChange={(e) => setValuationBasis(e.target.value)}
-                          className="w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+                          className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-[#141413] focus:border-[#B8844A] focus:outline-none"
                         />
                       </div>
 
                       <div>
-                        <label className="font-medium text-slate-700 block mb-1">
+                        <label className="font-medium text-[#141413]/80 block mb-1">
                           Ghi chú cập nhật định giá:
                         </label>
                         <textarea
                           rows={2}
                           value={valuationNotes}
                           onChange={(e) => setValuationNotes(e.target.value)}
-                          className="w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:border-blue-500 focus:outline-none"
+                          className="w-full rounded-lg border border-[#1B2A24]/14 px-3 py-2 text-[#141413] focus:border-[#B8844A] focus:outline-none"
                         />
                       </div>
 
@@ -1325,7 +1325,7 @@ export default function AssetDetailPage() {
                           })
                         }
                         disabled={busy || Number(newValuation) <= 0}
-                        className="w-full rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-4 py-2.5 font-medium text-white shadow-xs transition-colors"
+                        className="w-full rounded-lg bg-[#1B2A24] hover:bg-[#14201B] disabled:opacity-50 px-4 py-2.5 font-medium text-white shadow-xs transition-colors"
                       >
                         Ghi Định giá Mới lên Chuỗi
                       </button>
@@ -1338,35 +1338,35 @@ export default function AssetDetailPage() {
 
           {/* 3. COMPLIANCE / ADMIN */}
           {(role === "compliance" || role === "admin") && (
-            <div className="bg-white border border-slate-200/80 rounded-xl shadow-xs p-5 space-y-3.5 text-xs">
-              <div className="border-b border-slate-100 pb-3.5 space-y-1">
+            <div className="bg-white border border-[#1B2A24]/12 rounded-2xl shadow-xs p-5 space-y-3.5 text-xs">
+              <div className="border-b border-[#1B2A24]/8 pb-3.5 space-y-1">
                 <StatusBadge variant="purple">
                   Giám sát On-chain
                 </StatusBadge>
-                <h2 className="text-base font-semibold text-slate-900 flex items-center gap-1.5 pt-1">
+                <h2 className="text-base font-semibold text-[#141413] flex items-center gap-1.5 pt-1">
                   {role === "compliance" ? (
                     <>
-                      <ShieldCheck className="w-4 h-4 text-blue-600" strokeWidth={1.75} />
+                      <ShieldCheck className="w-4 h-4 text-[#1B2A24]" strokeWidth={1.75} />
                       <span>Giám sát Tuân thủ</span>
                     </>
                   ) : (
                     <>
-                      <Lock className="w-4 h-4 text-violet-600" strokeWidth={1.75} />
+                      <Lock className="w-4 h-4 text-[#5C3D6E]" strokeWidth={1.75} />
                       <span>Giám sát Quản trị</span>
                     </>
                   )}
                 </h2>
               </div>
 
-              <div className="p-3.5 bg-slate-50/80 border border-slate-200/70 rounded-xl space-y-2">
+              <div className="p-3.5 bg-[#F4F1EA]/80 border border-slate-200/70 rounded-xl space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-500">Trạng thái hợp đồng:</span>
+                  <span className="text-[#141413]/55">Trạng thái hợp đồng:</span>
                   <StatusBadge variant={estate.is_paused ? "danger" : "success"} dot>
                     {estate.is_paused ? "Đang tạm dừng" : "Đang hoạt động"}
                   </StatusBadge>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-500">Đợt bán sơ cấp:</span>
+                  <span className="text-[#141413]/55">Đợt bán sơ cấp:</span>
                   <StatusBadge variant={sale.is_open ? "success" : "neutral"}>
                     {sale.is_open ? "Đang mở bán" : "Đã đóng"}
                   </StatusBadge>
@@ -1375,11 +1375,11 @@ export default function AssetDetailPage() {
 
               <Link
                 href={role === "compliance" ? "/admin?tab=compliance" : "/admin?tab=pause"}
-                className="block w-full text-center rounded-lg bg-blue-600 hover:bg-blue-700 px-4 py-2.5 font-medium text-white shadow-xs transition-colors"
+                className="block w-full text-center rounded-lg bg-[#1B2A24] hover:bg-[#14201B] px-4 py-2.5 font-medium text-white shadow-xs transition-colors"
               >
                 {role === "compliance"
                   ? "Đi tới Hàng đợi KYC & Đóng băng tài khoản →"
-                  : "Đi tới Tạm dừng khẩn cấp & Chuyển nhượng cưỡng chế →"}
+                  : "Đi tới Tạm dừng khẩn cấp & Khôi phục cổ phần →"}
               </Link>
             </div>
           )}
@@ -1388,18 +1388,18 @@ export default function AssetDetailPage() {
 
       {/* MODAL XÁC NHẬN GIAO DỊCH CỦA ISSUER */}
       {confirmModal && confirmModal.open && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl border border-slate-200/80 shadow-xl max-w-lg w-full p-6 space-y-4">
-            <div className="border-b border-slate-100 pb-3">
+        <div className="fixed inset-0 z-50 bg-[#141413]/60 backdrop-blur-[2px] flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl border border-[#1B2A24]/12 shadow-xl max-w-lg w-full p-6 space-y-4">
+            <div className="border-b border-[#1B2A24]/8 pb-3">
               <StatusBadge variant="info">
                 Xác nhận giao dịch Blockchain
               </StatusBadge>
-              <h3 className="text-base font-semibold text-slate-900 mt-1.5">{confirmModal.title}</h3>
+              <h3 className="text-base font-semibold text-[#141413] mt-1.5">{confirmModal.title}</h3>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70 text-xs space-y-2">
-              <p className="text-slate-700 leading-relaxed">{confirmModal.description}</p>
-              <div className="pt-2 border-t border-slate-200/70 flex justify-between items-center text-[11px] text-slate-500">
+            <div className="p-4 rounded-xl bg-[#F4F1EA]/70 border border-slate-200/70 text-xs space-y-2">
+              <p className="text-[#141413]/80 leading-relaxed">{confirmModal.description}</p>
+              <div className="pt-2 border-t border-slate-200/70 flex justify-between items-center text-[11px] text-[#141413]/55">
                 <span>Ví Issuer ký giao dịch:</span>
                 {currentUser?.address && <CopyAddress address={currentUser.address} chars={6} />}
               </div>
@@ -1410,7 +1410,7 @@ export default function AssetDetailPage() {
                 type="button"
                 onClick={() => setConfirmModal(null)}
                 disabled={busy}
-                className="px-4 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-medium text-slate-700 transition-colors"
+                className="px-4 py-2 rounded-lg border border-[#1B2A24]/14 bg-white hover:bg-[#F4F1EA] text-xs font-medium text-[#141413]/80 transition-colors"
               >
                 Hủy bỏ
               </button>
@@ -1418,7 +1418,7 @@ export default function AssetDetailPage() {
                 type="button"
                 onClick={executeConfirmedIssuerAction}
                 disabled={busy}
-                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-xs font-medium text-white shadow-xs transition-colors disabled:opacity-50"
+                className="px-4 py-2 rounded-lg bg-[#1B2A24] hover:bg-[#14201B] text-xs font-medium text-white shadow-xs transition-colors disabled:opacity-50"
               >
                 {busy ? "Đang ký & chờ Block xác nhận..." : "Xác nhận & Gửi giao dịch"}
               </button>
@@ -1429,49 +1429,49 @@ export default function AssetDetailPage() {
 
       {/* MODAL CHI TIẾT GIAO DỊCH TRÊN CHUỖI */}
       {selectedTxDetail && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl border border-slate-200/80 shadow-xl max-w-lg w-full p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div className="fixed inset-0 z-50 bg-[#141413]/60 backdrop-blur-[2px] flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl border border-[#1B2A24]/12 shadow-xl max-w-lg w-full p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-[#1B2A24]/8 pb-3">
               <div>
                 <StatusBadge variant="info">
                   Biên lai giao dịch #{selectedTxDetail.id}
                 </StatusBadge>
-                <h3 className="text-base font-semibold text-slate-900 mt-1.5">
+                <h3 className="text-base font-semibold text-[#141413] mt-1.5">
                   Chi tiết Giao dịch: {formatEventTypeLabel(selectedTxDetail.event_type)}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedTxDetail(null)}
-                className="p-1.5 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+                className="p-1.5 rounded-lg border border-[#1B2A24]/14 text-[#141413]/55 hover:bg-[#F4F1EA] hover:text-[#141413] transition-colors"
               >
                 <X className="w-4 h-4" strokeWidth={1.75} />
               </button>
             </div>
 
-            <div className="space-y-2.5 text-xs bg-slate-50/80 p-4 rounded-xl border border-slate-200/70">
+            <div className="space-y-2.5 text-xs bg-[#F4F1EA]/80 p-4 rounded-xl border border-slate-200/70">
               <div className="flex justify-between">
-                <span className="text-slate-500">Tài sản bất động sản:</span>
-                <strong className="text-slate-900 font-semibold">
+                <span className="text-[#141413]/55">Tài sản bất động sản:</span>
+                <strong className="text-[#141413] font-semibold">
                   {estate.name} ({estate.symbol})
                 </strong>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Địa chỉ Ví gửi:</span>
+                <span className="text-[#141413]/55">Địa chỉ Ví gửi:</span>
                 <CopyAddress address={selectedTxDetail.from_address} chars={6} />
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Địa chỉ Ví nhận:</span>
+                <span className="text-[#141413]/55">Địa chỉ Ví nhận:</span>
                 <CopyAddress address={selectedTxDetail.to_address} chars={6} />
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Số lượng cổ phần:</span>
-                <strong className="text-slate-900 font-semibold tabular-nums">
+                <span className="text-[#141413]/55">Số lượng cổ phần:</span>
+                <strong className="text-[#141413] font-semibold tabular-nums">
                   {Number(selectedTxDetail.amount).toLocaleString("en-US")} {estate.symbol}
                 </strong>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Đơn giá quy đổi:</span>
-                <strong className="text-slate-900 font-semibold tabular-nums">
+                <span className="text-[#141413]/55">Đơn giá quy đổi:</span>
+                <strong className="text-[#141413] font-semibold tabular-nums">
                   $
                   {selectedTxDetail.usdc_paid && selectedTxDetail.amount > 0
                     ? (
@@ -1484,30 +1484,30 @@ export default function AssetDetailPage() {
                 </strong>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Tổng tiền thanh toán:</span>
-                <strong className="text-emerald-600 font-semibold tabular-nums">
+                <span className="text-[#141413]/55">Tổng tiền thanh toán:</span>
+                <strong className="text-[#1E6B52] font-semibold tabular-nums">
                   {selectedTxDetail.usdc_paid
                     ? `$${Number(selectedTxDetail.usdc_paid).toLocaleString("en-US")} mUSDC`
                     : "0 mUSDC (Mint / Chuyển nhượng không qua USDC)"}
                 </strong>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Block Number:</span>
-                <strong className="font-mono text-slate-900 tabular-nums">#{selectedTxDetail.block_number}</strong>
+                <span className="text-[#141413]/55">Block Number:</span>
+                <strong className="font-mono text-[#141413] tabular-nums">#{selectedTxDetail.block_number}</strong>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-500">Thời gian ghi nhận:</span>
-                <span className="text-slate-700 tabular-nums">{formatDate(selectedTxDetail.created_at)}</span>
+                <span className="text-[#141413]/55">Thời gian ghi nhận:</span>
+                <span className="text-[#141413]/80 tabular-nums">{formatDate(selectedTxDetail.created_at)}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-500">Trạng thái xác nhận:</span>
+                <span className="text-[#141413]/55">Trạng thái xác nhận:</span>
                 <StatusBadge variant="success" dot>
                   Đã xác nhận On-chain
                 </StatusBadge>
               </div>
               <div className="pt-2 border-t border-slate-200/70">
-                <span className="text-slate-500 block mb-1">Transaction Hash:</span>
-                <code className="font-mono text-[11px] text-blue-600 break-all">
+                <span className="text-[#141413]/55 block mb-1">Transaction Hash:</span>
+                <code className="font-mono text-[11px] text-[#1B2A24] break-all">
                   {selectedTxDetail.tx_hash}
                 </code>
               </div>
@@ -1523,7 +1523,7 @@ export default function AssetDetailPage() {
         onClose={() => setWordViewerOpen(false)}
       />
 
-      {/* Modal Xác Thực OTP qua Gmail & Thanh Toán MockUSDC (UC-09) */}
+      {/* Modal Xác Thực OTP qua Gmail & Thanh Toán mUSDC (UC-09) */}
       <PaymentOtpModal
         open={Boolean(paymentOtpPayload)}
         payload={paymentOtpPayload}

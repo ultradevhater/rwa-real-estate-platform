@@ -10,17 +10,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const VARIANT_MAP: Record<ButtonVariant, string> = {
-  primary: "bg-blue-600 hover:bg-blue-700 text-white shadow-xs",
-  approve: "bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs",
-  secondary: "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-xs",
-  danger: "bg-rose-50 text-rose-600 border border-rose-200/70 hover:bg-rose-100",
-  ghost: "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900",
+  primary: "bg-[#1B2A24] hover:bg-[#14201B] text-[#F4F1EA] shadow-xs",
+  approve: "bg-[#1E6B52] hover:bg-[#175540] text-[#F4F1EA] shadow-xs",
+  secondary:
+    "bg-white border border-[#1B2A24]/15 text-[#141413] hover:bg-[#EAE5DA]/70 hover:border-[#B8844A]/50 shadow-xs",
+  danger: "bg-[#FBF0F0] text-[#A63A3A] border border-[#A63A3A]/20 hover:bg-[#F5E0E0]",
+  ghost: "bg-transparent text-[#141413]/70 hover:bg-[#EAE5DA] hover:text-[#141413]",
 };
 
 const SIZE_MAP: Record<ButtonSize, string> = {
-  xs: "px-2.5 py-1 text-xs rounded-lg",
-  sm: "px-3 py-1.5 text-xs rounded-lg",
-  md: "px-4 py-2 text-sm rounded-lg",
+  xs: "px-2.5 py-1 text-xs rounded-xl",
+  sm: "px-3.5 py-1.5 text-xs rounded-xl",
+  md: "px-4 py-2 text-sm rounded-xl",
 };
 
 export function Button({
@@ -34,7 +35,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center gap-1.5 whitespace-nowrap font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none ${VARIANT_MAP[variant]} ${SIZE_MAP[size]} ${className}`}
+      className={`inline-flex items-center justify-center gap-1.5 whitespace-nowrap font-semibold tracking-tight transition-colors disabled:opacity-50 disabled:pointer-events-none ${VARIANT_MAP[variant]} ${SIZE_MAP[size]} ${className}`}
       {...props}
     >
       {children}

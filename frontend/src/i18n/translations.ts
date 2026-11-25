@@ -13,7 +13,7 @@ export type AppLang = "vi" | "en";
  */
 export const UI_STRINGS: Record<string, { vi: string; en: string }> = {
   // Brand & Common UI
-  "brand.title": { vi: "Cổng RWA", en: "RWA RealEstate" },
+  "brand.title": { vi: "Cổng Bất Động Sản RWA", en: "RWA Registry" },
   "common.loading": { vi: "Đang tải giao diện...", en: "Loading interface..." },
   "common.close": { vi: "Đóng", en: "Close" },
   "common.copy": { vi: "Sao chép", en: "Copy" },
@@ -23,43 +23,43 @@ export const UI_STRINGS: Record<string, { vi: string; en: string }> = {
   "common.loginRegister": { vi: "Đăng nhập / Đăng ký", en: "Sign In / Register" },
   "common.logout": { vi: "Đăng xuất khỏi hệ thống", en: "Sign Out" },
 
-  // Roles: giữ nguyên hằng số role Smart Contract chuyên ngành, Việt hóa tên gọi ngắn gọn
-  "role.admin.label": { vi: "DEFAULT_ADMIN_ROLE", en: "DEFAULT_ADMIN_ROLE" },
+  // Roles: thân thiện, dễ hiểu cho người dùng phổ thông
+  "role.admin.label": { vi: "Quản trị hệ thống", en: "System Admin" },
   "role.admin.short": { vi: "Quản trị viên", en: "Admin" },
-  "role.issuer.label": { vi: "ISSUER_ROLE", en: "ISSUER_ROLE" },
-  "role.issuer.short": { vi: "Đơn vị phát hành", en: "Issuer" },
-  "role.compliance.label": { vi: "COMPLIANCE_ROLE", en: "COMPLIANCE_ROLE" },
-  "role.compliance.short": { vi: "Tuân thủ KYC", en: "Compliance" },
-  "role.investor.label": { vi: "INVESTOR (EOA)", en: "INVESTOR (EOA)" },
+  "role.issuer.label": { vi: "Đơn vị phát hành", en: "Property Issuer" },
+  "role.issuer.short": { vi: "Phát hành", en: "Issuer" },
+  "role.compliance.label": { vi: "Kiểm duyệt KYC", en: "Compliance" },
+  "role.compliance.short": { vi: "Kiểm duyệt", en: "Compliance" },
+  "role.investor.label": { vi: "Tài khoản Nhà đầu tư", en: "Investor Account" },
   "role.investor.short": { vi: "Nhà đầu tư", en: "Investor" },
 
-  // Navbar Web3 Status (giữ thuật ngữ chuyên ngành Web3 ở cả 2 chế độ hoặc kết hợp tự nhiên ở VI)
-  "nav.whitelisted": { vi: "Whitelisted", en: "Whitelisted" },
-  "nav.pendingKyc": { vi: "Chờ duyệt KYC", en: "Pending KYC" },
-  "nav.frozen": { vi: "Ví bị đóng băng", en: "Frozen Account" },
+  // Navbar Status
+  "nav.whitelisted": { vi: "Đã xác minh", en: "Verified" },
+  "nav.pendingKyc": { vi: "Chờ xác minh", en: "Pending KYC" },
+  "nav.frozen": { vi: "Tài khoản bị khóa", en: "Account Frozen" },
   "nav.faucetTooltip": {
-    vi: "Nhận 50,000 MockUSDC từ Faucet thử nghiệm",
-    en: "Claim 50,000 test MockUSDC from Faucet",
+    vi: "Nhận thêm $50,000 mUSDC dùng thử",
+    en: "Add $50,000 test mUSDC balance",
   },
-  "nav.rpcConnected": { vi: "Đã kết nối Anvil RPC :8545", en: "Anvil RPC :8545 Connected" },
+  "nav.rpcConnected": { vi: "Hệ thống đang hoạt động", en: "System Operational" },
 
   // Account Dropdown
-  "account.walletLabel": { vi: "Ví EOA:", en: "Wallet:" },
+  "account.walletLabel": { vi: "Địa chỉ ví:", en: "Wallet:" },
   "account.balanceLabel": { vi: "Số dư:", en: "Balance:" },
-  "account.myWallet": { vi: "Ví tài sản & Danh mục sở hữu", en: "Wallet & Portfolio" },
-  "account.myKyc": { vi: "Hồ sơ KYC cá nhân", en: "Personal KYC Profile" },
-  "account.marketplace": { vi: "Sàn giao dịch Marketplace", en: "Secondary Marketplace" },
+  "account.myWallet": { vi: "Ví tài sản & Danh mục sở hữu", en: "Portfolio & Wallet" },
+  "account.myKyc": { vi: "Xác minh danh tính cá nhân", en: "Identity Verification (KYC)" },
+  "account.marketplace": { vi: "Sàn giao dịch thứ cấp", en: "Secondary Marketplace" },
   "account.dividends": { vi: "Cổ tức & Lợi nhuận", en: "Dividends & Yield" },
-  "account.dashboard": { vi: "Tổng quan hệ thống", en: "Role Dashboard" },
-  "account.assets": { vi: "Danh mục Bất động sản", en: "Real Estate Registry" },
+  "account.dashboard": { vi: "Bảng điều khiển", en: "Dashboard" },
+  "account.assets": { vi: "Danh mục bất động sản", en: "Property Directory" },
   "account.profilePassword": {
     vi: "Thông tin tài khoản & Đổi mật khẩu",
-    en: "Account Profile & Change Password",
+    en: "Account Profile & Password",
   },
   "account.switchAccount": { vi: "Chuyển đổi tài khoản khác", en: "Switch Account" },
 
   // Notification Bell
-  "notif.title": { vi: "Thông báo hệ thống", en: "System Notifications" },
+  "notif.title": { vi: "Thông báo hệ thống", en: "Notifications" },
   "notif.header": { vi: "Thông báo", en: "Notifications" },
   "notif.unread": { vi: "chưa đọc", en: "unread" },
   "notif.markAll": { vi: "Đánh dấu đã đọc", en: "Mark all read" },
@@ -70,8 +70,8 @@ export const UI_STRINGS: Record<string, { vi: string; en: string }> = {
 
   // Footer
   "footer.disclaimerBody": {
-    vi: "Môi trường mô phỏng Anvil (:8545) — Dữ liệu và token chỉ phục vụ mục đích học thuật.",
-    en: "Anvil (:8545) simulation environment — Data and tokens are for academic purposes only.",
+    vi: "Cổng Bất Động Sản RWA — Môi trường trải nghiệm trực tuyến sử dụng đồng thử nghiệm mUSDC.",
+    en: "RWA Registry — Interactive environment powered by test mUSDC settlement.",
   },
 };
 
@@ -139,15 +139,15 @@ export const VI_LOCALIZE_UI_MAP: Array<[string, string]> = [
   ["Rejected (Bị từ chối)", "Bị từ chối"],
   ["Rejected (Từ chối)", "Từ chối"],
   ["Revoked (Đã thu hồi)", "Đã thu hồi"],
-  ["Ready (Chờ Token hóa)", "Sẵn sàng Tokenize"],
-  ["Tokenized (Đã phát hành Token)", "Đã Tokenized (ERC-20)"],
-  ["Sale Open (Đang mở bán sơ cấp)", "Đang mở Primary Sale"],
+  ["Ready (Chờ Token hóa)", "Sẵn sàng phát hành"],
+  ["Tokenized (Đã phát hành Token)", "Đã phát hành cổ phần"],
+  ["Sale Open (Đang mở bán sơ cấp)", "Đang mở bán sơ cấp"],
   ["Sale Open (Đang mở bán)", "Đang mở bán"],
   ["Sale Closed (Đã đóng / Chưa mở bán)", "Đã đóng / Chưa mở bán"],
   ["Sale Closed (Chưa mở đợt bán)", "Chưa mở bán"],
   ["Sale Closed (Đã đóng)", "Đã đóng bán"],
-  ["Paused (Đang tạm dừng)", "Đang Paused"],
-  ["Paused (Tạm dừng)", "Paused"],
+  ["Paused (Đang tạm dừng)", "Tạm dừng giao dịch"],
+  ["Paused (Tạm dừng)", "Tạm dừng"],
   ["Approve (Phê duyệt KYC)", "Phê duyệt KYC"],
   ["Reject (Từ chối hồ sơ)", "Từ chối hồ sơ"],
   ["Revoke (Thu hồi KYC)", "Thu hồi KYC"],
